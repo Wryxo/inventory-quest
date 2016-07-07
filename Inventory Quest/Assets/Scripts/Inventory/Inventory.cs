@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Inventory : MonoBehaviour {
 
-    public int width = 7;
-    public int height = 4;
+    public int width;
+    public int height;
 
     Item[,] contents; //TODO: If needed, use a smarter solution; the Battleships algorithm seems stupid
 
@@ -13,7 +13,15 @@ public class Inventory : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         contents = new Item[width, height];
-	}
+
+        // Testing mock up data
+        var tmp = new Item() { id = 1, width = 2, height = 2 };
+        Debug.Log(InsertItem(tmp, 0, 0));
+        /*tmp = new Item() { id = 2, width = 3, height = 2 };
+        Debug.Log(InsertItem(tmp, 2, 1));
+        tmp = new Item() { id = 3, width = 1, height = 2 };
+        Debug.Log(InsertItem(tmp, 1, 2));*/
+    }
 	
     public Item ItemAt(int x,int y)
     {
@@ -28,11 +36,11 @@ public class Inventory : MonoBehaviour {
     {
         if (x < 0 || y < 0 || x + w > width || y + h > height) return false; //out of bounds
         //TODO: Maybe use something smarter
-        for (int xi = x;xi < x+w; ++xi)
+        for (int xi = x; xi < x + w; xi++)
         {
-            for (int yi =y;yi < y + w; ++yi)
+            for (int yi =y; yi < y + h; yi++)
             {
-                if (contents[x, y]) return false;
+                if (contents[x, y] != null) return false;
             }
         }
         return true;
@@ -44,10 +52,11 @@ public class Inventory : MonoBehaviour {
         int h = what.height;
         if (IsEmpty(x, y, w, h))
         {
-            for (int xi = x; xi < x + w; ++xi)
+            for (int xi = x; xi < x + w; xi++)
             {
-                for (int yi = y; yi < y + w; ++yi)
+                for (int yi = y; yi < y + h; yi++)
                 {
+                    Debug.Log(x + " " + y);
                     contents[x, y] = what;
                 }
             }
@@ -61,9 +70,9 @@ public class Inventory : MonoBehaviour {
 
     public void RemoveItem(Item what)
     {
-        for(int xi = 0; xi < width; ++xi)
+        for(int xi = 0; xi < width; xi++)
         {
-            for(int yi = 0; yi < height; ++yi)
+            for(int yi = 0; yi < height; yi++)
             {
                 if (contents[xi, yi] == what) contents[xi, yi] = null;
             }
