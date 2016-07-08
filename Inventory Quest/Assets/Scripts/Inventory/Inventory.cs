@@ -81,12 +81,41 @@ public class Inventory : MonoBehaviour {
                             checkedItem.stack = checkedItem.maxStack;
                             what.stack -= checkedItem.maxStack;
                             what.stack += checkedItem.stack;
+                            return what;
                         }
                     }
                 }
             }
-            //TODO: Add swapping
-            return what;
+            //Swapping: Step 1: Find the item to swap if possible
+            Item tmp = null;
+            for (int xi = x; xi < x + w; xi++)
+            {
+                for (int yi = y; yi < y + h; yi++)
+                {
+                    var checkedItem = contents[xi, yi];
+                    if(checkedItem != null)
+                    {
+                        if(tmp == null)
+                        {
+                            tmp = checkedItem;
+                        } else if(tmp != checkedItem)
+                        {
+                            return what;
+                        }
+                    }
+                }
+            }
+            //Swapping: Step 2: Swap them
+            RemoveItem(tmp);
+            for (int xi = x; xi < x + w; xi++)
+            {
+                for (int yi = y; yi < y + h; yi++)
+                {
+                    Debug.Log(xi + " " + yi);
+                    contents[xi, yi] = what;
+                }
+            }
+            return tmp;
         }
     }
 

@@ -10,10 +10,12 @@ public class InventoryUI : MonoBehaviour {
     public Texture2D inventoryImage;
     public Texture2D slotImage;
 
+    Item hand; //Debug, please remove this after this class is programmed
+
     // Use this for initialization
     void Start () {
-	
-	}
+	    hand = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
+    }
 	
 	void OnGUI()
     {
@@ -48,9 +50,17 @@ public class InventoryUI : MonoBehaviour {
                     {
                         Debug.Log("EMPTY");
                     }
-                    var tmp = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
-                    var h = inventory.InsertItem(tmp, j, i);
-                    Debug.Log(h);
+                    var h = inventory.InsertItem(hand, j, i);
+                    if(h == null)
+                    {
+                        hand = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
+                    }
+                    else
+                    {
+                        hand = h;
+                    }
+                    Debug.Log("ITEM ON HAND: " + hand.id);
+                    Debug.Log("AMOUNT: " + hand.stack);
                 }
                 slotPosition.x += tileWidth;
             }
