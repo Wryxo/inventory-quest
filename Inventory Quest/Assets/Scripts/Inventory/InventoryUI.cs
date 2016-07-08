@@ -9,15 +9,14 @@ public class InventoryUI : MonoBehaviour {
     public Rect position;
     public Texture2D inventoryImage;
     public Texture2D slotImage;
-
-    Item hand; //Debug, please remove this after this class is programmed
+    
     StatCheck lu; //Debug
 
     // Use this for initialization
     void Start () {
 
         //testing, debug data
-	    hand = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
+	    inventory.GetComponent<NPC>().hand = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
         lu = new StatCheck() { statName = "Strength", baseDifficulty = 0, nDice = 2, sidesPerDie = 2};
     }
 	
@@ -54,18 +53,19 @@ public class InventoryUI : MonoBehaviour {
                     {
                         Debug.Log("EMPTY");
                     }
-                    var h = inventory.InsertItem(hand, j, i);
+                    var h = inventory.InsertItem(inventory.GetComponent<NPC>().hand, j, i);
                     if(h == null)
                     {
-                        hand = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
+                        inventory.GetComponent<NPC>().hand = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
                     }
                     else
                     {
-                        hand = h;
+                        inventory.GetComponent<NPC>().hand = h;
                     }
-                    Debug.Log("ITEM ON HAND: " + hand.id);
-                    Debug.Log("AMOUNT: " + hand.stack);
-                    Debug.Log("STRENGTH CHECK RESULT: " + lu.Check(hand.stats));
+                    Debug.Log("ITEM ON HAND: " + inventory.GetComponent<NPC>().hand.id);
+                    Debug.Log("AMOUNT: " + inventory.GetComponent<NPC>().hand.stack);
+                    Debug.Log("STRENGTH CHECK RESULT: " + lu.Check(inventory.GetComponent<NPC>().hand.stats));
+                    Debug.Log("MONEY: " + inventory.CountItemsWithId(1));
                 }
                 slotPosition.x += tileWidth;
             }

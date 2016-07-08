@@ -134,6 +134,25 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    public int CountItemsWithId(int id)
+    {
+        int area = 0;
+        int count = 0;
+        for (int xi = 0; xi < width; xi++)
+        {
+            for (int yi = 0; yi < height; yi++)
+            {
+                var checkedItem = contents[xi, yi];
+                if(checkedItem != null && checkedItem.id == id)
+                {
+                    count += checkedItem.stack;
+                    if(area == 0) area = checkedItem.width * checkedItem.height;
+                }
+            }
+        }
+        return count/area;
+    }
+
 	// Update is called once per frame
 	void Update () {
 	
