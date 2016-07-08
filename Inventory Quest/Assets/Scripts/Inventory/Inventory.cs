@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour {
         return true;
     }
 
-    public bool InsertItem(Item what,int x,int y)
+    public Item InsertItem(Item what,int x,int y)
     {
         int w = what.width;
         int h = what.height;
@@ -60,11 +60,11 @@ public class Inventory : MonoBehaviour {
                     contents[xi, yi] = what;
                 }
             }
-            return true;
+            return null;
         } else
         {
             //TODO: Allow items to stack
-            return false;
+            return what;
         }
     }
 
