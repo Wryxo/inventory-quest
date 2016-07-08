@@ -56,16 +56,16 @@ public class InventoryUI : MonoBehaviour {
                     var h = inventory.InsertItem(inventory.GetComponent<NPC>().hand, j, i);
                     if(h == null)
                     {
+                        inventory.GetComponent<NPC>().ExpireStatusEffectById(inventory.GetComponent<NPC>().hand.id | 0x01000000);
                         inventory.GetComponent<NPC>().hand = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
                     }
                     else
                     {
+                        inventory.GetComponent<NPC>().ExpireStatusEffectById(inventory.GetComponent<NPC>().hand.id | 0x01000000);
+                        inventory.GetComponent<NPC>().AddStatusEffect(new StatusEffect() { stats=h.stats,duration=-1,id=h.id | 0x01000000});
+                        Debug.Log("I AM THIS STRONG: "+inventory.GetComponent<NPC>().skills.LevelOf("Strength"));
                         inventory.GetComponent<NPC>().hand = h;
                     }
-                    Debug.Log("ITEM ON HAND: " + inventory.GetComponent<NPC>().hand.id);
-                    Debug.Log("AMOUNT: " + inventory.GetComponent<NPC>().hand.stack);
-                    Debug.Log("STRENGTH CHECK RESULT: " + lu.Check(inventory.GetComponent<NPC>().hand.stats));
-                    Debug.Log("MONEY: " + inventory.CountItemsWithId(1));
                 }
                 slotPosition.x += tileWidth;
             }

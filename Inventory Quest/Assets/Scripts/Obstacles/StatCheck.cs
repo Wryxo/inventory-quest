@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StatCheck : MonoBehaviour {
+public class StatCheck {
 
     public string statName;
     public int baseDifficulty;
@@ -17,31 +17,15 @@ public class StatCheck : MonoBehaviour {
         {
             int r = Mathf.FloorToInt(Random.value * sidesPerDie);
             sum += r;
-            Debug.Log("Die number: " + i + ", Rolled: " + (r+1));
         }
-        Debug.Log("Sum: " + sum);
         if (statLevel >= baseDifficulty + sum) return true;
         return false;
     }
 
-    public bool Check(Hashtable stats)
+    public bool Check(Stats stats)
     {
-        if (stats != null && stats.Contains(statName))
-        {
-            return Roll(((Skill)stats[statName]).level);
-        } else
-        {
-            return Roll(0);
-        }
+        if (stats == null) return Roll(0);
+        return Roll(stats.LevelOf(statName));
     } 
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

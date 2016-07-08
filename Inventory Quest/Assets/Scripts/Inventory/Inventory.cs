@@ -8,21 +8,19 @@ public class Inventory : MonoBehaviour {
 
     Item[,] contents; //TODO: If needed, use a smarter solution; the Battleships algorithm seems stupid
 
-    
-
 	// Use this for initialization
 	void Start () {
         contents = new Item[width, height];
 
         // Testing mock up data
-        var debugstats = new Hashtable();
-        debugstats.Add("Strength", new Skill() { level = 3 });
+        var debugstats = new Stats();
+        debugstats.Add("Strength", new Skill() { level = 3, baselevel = 0 });
         var tmp = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
         Debug.Log(InsertItem(tmp, 0, 0));
         tmp = new Item() { id = 2, width = 3, height = 2, stats = debugstats };
         Debug.Log(InsertItem(tmp, 2, 1));
-        debugstats = new Hashtable();
-        debugstats.Add("Strength", new Skill() { level = 2 });
+        debugstats = new Stats();
+        debugstats.Add("Strength", new Skill() { level = 2, baselevel = 0 });
         tmp = new Item() { id = 3, width = 1, height = 2, stats = debugstats };
         Debug.Log(InsertItem(tmp, 1, 2));
     }
@@ -150,7 +148,8 @@ public class Inventory : MonoBehaviour {
                 }
             }
         }
-        return count/area;
+        if(area > 0) return count/area;
+        return 0;
     }
 
 	// Update is called once per frame
