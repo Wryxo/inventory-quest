@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour {
         {
             for (int yi =y; yi < y + h; yi++)
             {
-                if (contents[x, y] != null) return false;
+                if (contents[xi, yi] != null) return false;
             }
         }
         return true;
@@ -56,8 +56,8 @@ public class Inventory : MonoBehaviour {
             {
                 for (int yi = y; yi < y + h; yi++)
                 {
-                    Debug.Log(x + " " + y);
-                    contents[x, y] = what;
+                    Debug.Log(xi + " " + yi);
+                    contents[xi, yi] = what;
                 }
             }
             return true;

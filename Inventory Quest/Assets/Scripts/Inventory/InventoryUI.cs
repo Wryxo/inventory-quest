@@ -41,7 +41,9 @@ public class InventoryUI : MonoBehaviour {
                 // Put invisible button over image --- TODO: is it responsive enough ?
                 if (GUI.Button(slotPosition, "", new GUIStyle()))
                 {
-                    if (!inventory.IsEmpty(j, i, 1, 1)) { 
+                    Debug.Log(j);
+                    Debug.Log(i);
+                    if (!inventory.IsEmpty(j, i, 1, 1)) {
                         Debug.Log("ITEM " + inventory.ItemAt(j, i).id);
                     } else
                     {
