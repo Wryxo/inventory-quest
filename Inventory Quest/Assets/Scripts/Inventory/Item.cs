@@ -13,7 +13,7 @@ public class Item {
 
     public int id;
 
-    public Hashtable stats;
+    public Stats stats;
 
     public Hashtable compatibleSlots;
 

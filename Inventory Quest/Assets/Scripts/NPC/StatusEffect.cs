@@ -1,18 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StatusEffect : MonoBehaviour {
+public class StatusEffect {
 
-    public Hashtable stats;
+    public Stats stats;
+    public float duration;
+    public float timeleft;
+    public int id;
+    
+
+    bool remove;
+    public NPC owner;
+    public int index;
 
 	// Use this for initialization
-	void Start () {
-	
+	public void Start () {
+        timeleft = duration;
+        remove = false;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
+	public void Update (float dt) {
+        if (duration > 0)
+        {
+            timeleft -= dt;
+            if (timeleft <= 0) expire();
+        }
+    }
+
+    public void expire()
+    {
+        if (!remove)
+        {
+            remove = true;
+            owner.statusEffects[index] = owner.statusEffects[owner.statusEffects.Count - 1];
+            ((StatusEffect)owner.statusEffects[index]).index = index;
+            owner.skills.Subtract(stats);
+        }
+    }
 
 }

@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Skill : MonoBehaviour {
+public class Skill {
 
     public int level;
     public int baselevel;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    int rc;
+
+    public Skill()
+    {
+        rc = 1;
+    }
+
 }

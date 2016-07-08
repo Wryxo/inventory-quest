@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KeyCheck : MonoBehaviour {
+public class KeyCheck {
 
     public int itemID;
     public int amount;
@@ -17,13 +17,4 @@ public class KeyCheck : MonoBehaviour {
         return (guy.inventory.CountItemsWithId(itemID) + otherSources >= amount);
     }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
