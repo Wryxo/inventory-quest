@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour {
         contents = new Item[width, height];
 
         // Testing mock up data
-        var tmp = new Item() { id = 1, width = 2, height = 2 };
+        var tmp = new Item() { id = 1, width = 2, height = 2, stack = 2, maxStack = 5 };
         Debug.Log(InsertItem(tmp, 0, 0));
         /*tmp = new Item() { id = 2, width = 3, height = 2 };
         Debug.Log(InsertItem(tmp, 2, 1));
@@ -63,6 +63,26 @@ public class Inventory : MonoBehaviour {
             return null;
         } else
         {
+            for (int xi = x; xi < x + w; xi++)
+            {
+                for (int yi = y; yi < y + h; yi++)
+                {
+                    var checkedItem = contents[xi, yi];
+                    if(checkedItem != null && checkedItem.id == what.id && checkedItem.stack < checkedItem.maxStack)
+                    {
+                        if(checkedItem.stack + what.stack <= checkedItem.maxStack)
+                        {
+                            checkedItem.stack += what.stack;
+                            return null;
+                        }
+                        else
+                        {
+                            what.stack -= checkedItem.maxStack;
+                            what.stack += checkedItem.stack;
+                        }
+                    }
+                }
+            }
             //TODO: Allow items to stack
             return what;
         }
