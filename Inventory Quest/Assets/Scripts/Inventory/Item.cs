@@ -14,4 +14,7 @@ public class Item {
     public int id;
 
     public Hashtable stats;
+
+    public Hashtable compatibleSlots;
+
 }

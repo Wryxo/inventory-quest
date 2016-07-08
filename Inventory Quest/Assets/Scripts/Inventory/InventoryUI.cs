@@ -11,10 +11,14 @@ public class InventoryUI : MonoBehaviour {
     public Texture2D slotImage;
 
     Item hand; //Debug, please remove this after this class is programmed
+    StatCheck lu; //Debug
 
     // Use this for initialization
     void Start () {
+
+        //testing, debug data
 	    hand = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
+        lu = new StatCheck() { statName = "Strength", baseDifficulty = 0, nDice = 2, sidesPerDie = 2};
     }
 	
 	void OnGUI()
@@ -61,6 +65,7 @@ public class InventoryUI : MonoBehaviour {
                     }
                     Debug.Log("ITEM ON HAND: " + hand.id);
                     Debug.Log("AMOUNT: " + hand.stack);
+                    Debug.Log("STRENGTH CHECK RESULT: " + lu.Check(hand.stats));
                 }
                 slotPosition.x += tileWidth;
             }

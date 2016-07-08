@@ -15,11 +15,15 @@ public class Inventory : MonoBehaviour {
         contents = new Item[width, height];
 
         // Testing mock up data
+        var debugstats = new Hashtable();
+        debugstats.Add("Strength", new Skill() { level = 3 });
         var tmp = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
         Debug.Log(InsertItem(tmp, 0, 0));
-        tmp = new Item() { id = 2, width = 3, height = 2 };
+        tmp = new Item() { id = 2, width = 3, height = 2, stats = debugstats };
         Debug.Log(InsertItem(tmp, 2, 1));
-        tmp = new Item() { id = 3, width = 1, height = 2 };
+        debugstats = new Hashtable();
+        debugstats.Add("Strength", new Skill() { level = 2 });
+        tmp = new Item() { id = 3, width = 1, height = 2, stats = debugstats };
         Debug.Log(InsertItem(tmp, 1, 2));
     }
 	
