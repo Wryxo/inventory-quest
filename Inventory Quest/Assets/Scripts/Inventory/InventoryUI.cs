@@ -20,17 +20,41 @@ public class InventoryUI : MonoBehaviour {
         lu = new StatCheck() { statName = "Strength", baseDifficulty = 0, nDice = 2, sidesPerDie = 2};
     }
 	
-	void OnGUI()
+    public void getSlotItem(int position)
+    {
+        // position / 10  = X coordinate
+        // position % 10  = Y coordinate
+        int x = position / 10;
+        int y = position % 10;
+        Debug.Log("Begin hand " + (inventory.GetComponent<NPC>().hand == null ? "null" : inventory.GetComponent<NPC>().hand.id.ToString()));
+        if (inventory.GetComponent<NPC>().hand == null)
+        {
+            var h = inventory.ItemAt(x, y);
+            if (h != null)
+            {
+                inventory.RemoveItem(h);
+            } 
+            inventory.GetComponent<NPC>().hand = h;
+        }
+        else
+        {
+            var h = inventory.InsertItem(inventory.GetComponent<NPC>().hand, x, y);
+            inventory.GetComponent<NPC>().hand = h;
+        }
+        Debug.Log("End hand " + (inventory.GetComponent<NPC>().hand == null ? "null" : inventory.GetComponent<NPC>().hand.id.ToString()));
+    }
+
+    void OnGUI()
     {
         // Fit sizes to screen size
-        position.width = Screen.width;
+        /*position.width = Screen.width;
         position.height = Screen.height / 2;
         position.y = Screen.height / 2;
         tileWidth = (3 * position.width / 4 - 40) / inventory.width;
         tileHeight = tileWidth;
         GUI.DrawTexture(position, inventoryImage);
         // This is called sooner than inventory is populated => not all slots that should be filled are filled --- TODO: fix it!
-        drawSlots();
+        drawSlots();*/
     }
 
     // Draw graphics for slots according to inventory
