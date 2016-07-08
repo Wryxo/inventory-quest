@@ -15,12 +15,12 @@ public class Inventory : MonoBehaviour {
         contents = new Item[width, height];
 
         // Testing mock up data
-        var tmp = new Item() { id = 1, width = 2, height = 2, stack = 2, maxStack = 5 };
+        var tmp = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
         Debug.Log(InsertItem(tmp, 0, 0));
-        /*tmp = new Item() { id = 2, width = 3, height = 2 };
+        tmp = new Item() { id = 2, width = 3, height = 2 };
         Debug.Log(InsertItem(tmp, 2, 1));
         tmp = new Item() { id = 3, width = 1, height = 2 };
-        Debug.Log(InsertItem(tmp, 1, 2));*/
+        Debug.Log(InsertItem(tmp, 1, 2));
     }
 	
     public Item ItemAt(int x,int y)
@@ -63,6 +63,7 @@ public class Inventory : MonoBehaviour {
             return null;
         } else
         {
+            //Try to stack same items if possible
             for (int xi = x; xi < x + w; xi++)
             {
                 for (int yi = y; yi < y + h; yi++)
@@ -77,13 +78,14 @@ public class Inventory : MonoBehaviour {
                         }
                         else
                         {
+                            checkedItem.stack = checkedItem.maxStack;
                             what.stack -= checkedItem.maxStack;
                             what.stack += checkedItem.stack;
                         }
                     }
                 }
             }
-            //TODO: Allow items to stack
+            //TODO: Add swapping
             return what;
         }
     }
