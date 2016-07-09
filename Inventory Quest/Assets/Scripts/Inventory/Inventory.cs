@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Inventory : MonoBehaviour {
 
@@ -121,6 +122,31 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    public int SpendItem(int id, int amount)
+    {
+        int debt = amount;
+        for (int xi = 0; xi < width; xi++)
+        {
+            for (int yi = 0; yi < height; yi++)
+            {
+                var checkedItem = contents[xi, yi];
+                if(checkedItem.id == id)
+                {
+                    if(debt < checkedItem.stack)
+                    {
+                        checkedItem.stack -= debt;
+                        return 0;
+                    } else
+                    {
+                        debt -= checkedItem.stack;
+                        RemoveItem(checkedItem);
+                    }
+                }
+            }
+        }
+        return debt;
+    }
+
     public void RemoveItem(Item what)
     {
         for(int xi = 0; xi < width; xi++)
@@ -134,7 +160,7 @@ public class Inventory : MonoBehaviour {
 
     public int CountItemsWithId(int id)
     {
-        int area = 0;
+        int area = 1;
         int count = 0;
         for (int xi = 0; xi < width; xi++)
         {
@@ -148,8 +174,7 @@ public class Inventory : MonoBehaviour {
                 }
             }
         }
-        if(area > 0) return count/area;
-        return 0;
+        return count/area;
     }
 
 	// Update is called once per frame

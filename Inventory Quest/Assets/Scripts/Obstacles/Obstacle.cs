@@ -14,7 +14,7 @@ public class Obstacle {
         }
         foreach (KeyCheck x in keyChecks)
         {
-            if (!x.Check(guy.inventory)) return false;
+            if (!x.Check(guy)) return false;
         }
         return true;
     }

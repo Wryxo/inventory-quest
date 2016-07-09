@@ -14,7 +14,7 @@ public class KeyCheck {
     public bool Check(NPC guy)
     {
         int otherSources = 0;
-        return (guy.inventory.CountItemsWithId(itemID) + otherSources >= amount);
+        return (guy.CountItem(itemID) + otherSources >= amount);
     }
 
 }

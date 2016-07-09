@@ -1,13 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class WornEquipment {
 
-    Hashtable validSlots;
+    public Hashtable validSlots;
     Hashtable items;
 
-    Item EquipItem(Item item, object slot = null) //TODO: Maybe fix the RuneScape quiver bug
+    public WornEquipment()
     {
+        items = new Hashtable();
+        validSlots = new Hashtable();
+    }
+
+    public Item EquipItem(Item item, object slot = null) //TODO: Maybe fix the RuneScape quiver bug
+    {
+        if (item == null) return Unequip(slot); 
         if (slot == null) 
         {
             foreach(DictionaryEntry de in validSlots)
@@ -45,31 +53,66 @@ public class WornEquipment {
         else return item;
     }
 
-    Item Unequip(object slot)
+    public Item Unequip(object slot)
     {
+        if (slot == null) throw (new System.Exception("Error: Can't remove item from null slot")); //this should never happen
         var s = ItemAt(slot);
         if(s != null) items.Remove(slot);
         return s;
     }
 
-    Item ItemAt(object slot)
+    public Item ItemAt(object slot)
     {
         if (!items.Contains(slot)) return null;
         return (Item)items[slot];
     }
 
-    bool AddSlot(object slot)
+    public bool AddSlot(object slot)
     {
         if (validSlots.Contains(slot)) return false;
         validSlots.Add(slot, null);
         return true;
     }
 
-    bool RemoveSlot(object slot)
+    public bool RemoveSlot(object slot)
     {
         if (!validSlots.Contains(slot)) return false;
         validSlots.Remove(slot);
         return true; 
     }
 
+    public int CountItem(int id)
+    {
+        var count = 0;
+        foreach (DictionaryEntry de in items)
+        {
+            if (((Item)de.Value).id == id)
+            {
+                count += ((Item)de.Value).stack;
+            }
+        }
+        return count;
+    }
+
+    public int SpendItem(int id, int amount) //TODO: Make this work
+    {
+        int debt = amount;
+        foreach(DictionaryEntry de in items)
+        {
+            if(((Item)de.Value).id == id)
+            {
+                if(((Item)de.Value).stack > debt)
+                {
+                    ((Item)de.Value).stack -= debt;
+                    return 0;
+                }
+                else
+                {
+                    debt -= ((Item)de.Value).stack;
+                    Unequip(de.Key);
+                }
+            }
+        }
+        return debt;
+    }
 }
