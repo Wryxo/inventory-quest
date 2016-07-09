@@ -6,6 +6,7 @@ public class NPC : MonoBehaviour {
     public Stats skills;
     public Inventory inventory;
     public Item hand;
+    public WornEquipment gear;
 
     public ArrayList statusEffects;
 

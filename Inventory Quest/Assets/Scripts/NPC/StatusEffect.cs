@@ -13,6 +13,8 @@ public class StatusEffect {
     public NPC owner;
     public int index;
 
+    public delegate void OnExpire();
+    
 	// Use this for initialization
 	public void Start () {
         timeleft = duration;

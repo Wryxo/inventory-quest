@@ -16,7 +16,7 @@ public class InventoryUI : MonoBehaviour {
     void Start () {
 
         //testing, debug data
-	    inventory.GetComponent<NPC>().hand = new Item() { id = 1, width = 1, height = 1, stack = 2, maxStack = 5 };
+	    inventory.GetComponent<NPC>().hand = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5 };
         lu = new StatCheck() { statName = "Strength", baseDifficulty = 0, nDice = 2, sidesPerDie = 2};
     }
 	
