@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour {
 
@@ -16,10 +18,11 @@ public class InventoryUI : MonoBehaviour {
     void Start () {
 
         //testing, debug data
-	    inventory.GetComponent<NPC>().hand = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5 };
+	    inventory.GetComponent<NPC>().hand = new Item() { id = 48, width = 1, height = 2, stack = 2, maxStack = 5, img = Resources.Load("Sprites/Gothic_Shield_whole") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Gothic_Shield") as Sprite[] };
         lu = new StatCheck() { statName = "Strength", baseDifficulty = 0, nDice = 2, sidesPerDie = 2};
+        BroadcastMessage("SetImage");
     }
-	
+
     public void getSlotItem(int position)
     {
         // position / 10  = X coordinate
@@ -42,6 +45,7 @@ public class InventoryUI : MonoBehaviour {
             inventory.GetComponent<NPC>().hand = h;
         }
         Debug.Log("End hand " + (inventory.GetComponent<NPC>().hand == null ? "null" : inventory.GetComponent<NPC>().hand.id.ToString()));
+        BroadcastMessage("SetImage");
     }
 
     void OnGUI()

@@ -8,22 +8,26 @@ public class Inventory : MonoBehaviour {
     public int height;
 
     Item[,] contents; //TODO: If needed, use a smarter solution; the Battleships algorithm seems stupid
+    int[,] spriteOffsets; // Offsets for sprites broken down to separate slots
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         contents = new Item[width, height];
+        spriteOffsets = new int[width, height];
 
         // Testing mock up data
         var debugstats = new Stats();
         debugstats.Add("Strength", new Skill() { level = 3, baselevel = 0 });
-        var tmp = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5 };
+        var tmp = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load("Sprites/AmplifiedPotion") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/AmplifiedPotion") as Sprite[] };
         Debug.Log(InsertItem(tmp, 0, 0));
-        tmp = new Item() { id = 48, width = 3, height = 2, stats = debugstats };
+        tmp = new Item() { id = 49, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load("Sprites/Deaths_breath") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Deaths_breath") as Sprite[] };
+        Debug.Log(InsertItem(tmp, 0, 1));
+        /*tmp = new Item() { id = 48, width = 3, height = 2, stats = debugstats };
         Debug.Log(InsertItem(tmp, 2, 1));
         debugstats = new Stats();
         debugstats.Add("Strength", new Skill() { level = 2, baselevel = 0 });
         tmp = new Item() { id = 49, width = 1, height = 2, stats = debugstats };
-        Debug.Log(InsertItem(tmp, 1, 2));
+        Debug.Log(InsertItem(tmp, 1, 2));*/
     }
 	
     public Item ItemAt(int x,int y)
@@ -33,6 +37,15 @@ public class Inventory : MonoBehaviour {
             return contents[x, y];
         }
         return null;
+    }
+
+    public int SpriteAt(int x, int y)
+    {
+        if (x >= 0 && x < width && y >= 0 && y < height)
+        {
+            return spriteOffsets[x, y];
+        }
+        return 0;
     }
 
     public bool IsEmpty(int x,int y, int w, int h)
@@ -55,21 +68,24 @@ public class Inventory : MonoBehaviour {
         int h = what.height;
         if (IsEmpty(x, y, w, h))
         {
-            for (int xi = x; xi < x + w; xi++)
+            int so = 0;
+            for (int yi = y; yi < y + h; yi++)
             {
-                for (int yi = y; yi < y + h; yi++)
+                for (int xi = x; xi < x + w; xi++)
                 {
                     Debug.Log(xi + " " + yi);
                     contents[xi, yi] = what;
+                    spriteOffsets[xi,yi] = so;
+                    so++;
                 }
             }
             return null;
         } else
         {
             //Try to stack same items if possible
-            for (int xi = x; xi < x + w; xi++)
+            for (int yi = y; yi < y + h; yi++)
             {
-                for (int yi = y; yi < y + h; yi++)
+                for (int xi = x; xi < x + w; xi++)
                 {
                     var checkedItem = contents[xi, yi];
                     if(checkedItem != null && checkedItem.id == what.id && checkedItem.stack < checkedItem.maxStack)
@@ -91,9 +107,9 @@ public class Inventory : MonoBehaviour {
             }
             //Swapping: Step 1: Find the item to swap if possible
             Item tmp = null;
-            for (int xi = x; xi < x + w; xi++)
+            for (int yi = y; yi < y + h; yi++)
             {
-                for (int yi = y; yi < y + h; yi++)
+                for (int xi = x; xi < x + w; xi++)
                 {
                     var checkedItem = contents[xi, yi];
                     if(checkedItem != null)
@@ -110,12 +126,15 @@ public class Inventory : MonoBehaviour {
             }
             //Swapping: Step 2: Swap them
             RemoveItem(tmp);
-            for (int xi = x; xi < x + w; xi++)
+            int so = 0;
+            for (int yi = y; yi < y + h; yi++)
             {
-                for (int yi = y; yi < y + h; yi++)
+                for (int xi = x; xi < x + w; xi++)
                 {
                     Debug.Log(xi + " " + yi);
                     contents[xi, yi] = what;
+                    spriteOffsets[xi, yi] = so;
+                    so++;
                 }
             }
             return tmp;
@@ -153,7 +172,11 @@ public class Inventory : MonoBehaviour {
         {
             for(int yi = 0; yi < height; yi++)
             {
-                if (contents[xi, yi] == what) contents[xi, yi] = null;
+                if (contents[xi, yi] == what)
+                {
+                    contents[xi, yi] = null;
+                    spriteOffsets[xi, yi] = 0;
+                }
             }
         }
     }

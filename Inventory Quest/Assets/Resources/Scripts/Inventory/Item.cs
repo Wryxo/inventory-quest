@@ -10,6 +10,7 @@ public class Item {
     public int maxStack = 1;
 
     public Sprite img;
+    public Sprite[] imgs;
 
     public int id;
 

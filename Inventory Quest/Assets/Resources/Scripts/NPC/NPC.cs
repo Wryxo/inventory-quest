@@ -5,7 +5,21 @@ public class NPC : MonoBehaviour {
 
     public Stats skills;
     public Inventory inventory;
-    public Item hand;
+    public Item hand {
+        get { return _hand; }
+        set {
+            if (value != null)
+            {
+                Cursor.SetCursor((value.img == null ? null : HelpFunctions.spriteToTexture(value.imgs[0])), Vector2.zero, CursorMode.Auto);
+            }
+            else
+            {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            }
+            _hand = value;
+        }
+    }
+    private Item _hand;
     public WornEquipment gear;
 
     public ArrayList statusEffects;
