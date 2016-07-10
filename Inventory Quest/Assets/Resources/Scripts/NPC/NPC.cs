@@ -8,15 +8,15 @@ public class NPC : MonoBehaviour {
     public Item hand {
         get { return _hand; }
         set {
-            if (value != null)
+            _hand = value;
+            if (_hand != null)
             {
-                Cursor.SetCursor((value.img == null ? null : HelpFunctions.spriteToTexture(value.imgs[0])), Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(HelpFunctions.spriteToTexture(_hand.img), Vector2.zero, CursorMode.Auto);
             }
             else
             {
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
-            _hand = value;
         }
     }
     private Item _hand;
