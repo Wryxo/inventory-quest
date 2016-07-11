@@ -11,15 +11,12 @@ public class InventoryUI : MonoBehaviour {
     public Rect position;
     public Texture2D inventoryImage;
     public Texture2D slotImage;
-    
-    StatCheck lu; //Debug
 
     // Use this for initialization
     void Start () {
 
         //testing, debug data
 	    inventory.GetComponent<NPC>().hand = new Item() { id = 48, width = 1, height = 2, stack = 1, maxStack = 1, img = Resources.Load<Sprite>("Sprites/Gothic_Shield_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Gothic_Shield") as Sprite[] };
-        lu = new StatCheck() { statName = "Strength", baseDifficulty = 0, nDice = 2, sidesPerDie = 2};
         BroadcastMessage("SetImage");
     }
 
