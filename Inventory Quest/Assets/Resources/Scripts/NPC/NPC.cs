@@ -28,7 +28,7 @@ public class NPC : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        statusEffects = new ArrayList();
+        /*statusEffects = new ArrayList();
         skills = new Stats();
         gear = new WornEquipment();
 
@@ -56,7 +56,7 @@ public class NPC : MonoBehaviour {
         var k = new KeyCheck[] { new KeyCheck() { itemID = 1, amount = 5 }, new KeyCheck() { itemID = 2, amount = 1 } };
         debugObstacle.statChecks = tmp;
         debugObstacle.keyChecks = k;
-        
+        */
 	}
 	
 	// Update is called once per frame
@@ -66,10 +66,10 @@ public class NPC : MonoBehaviour {
 
     void FixedUpdate()
     {
-        foreach(var x in statusEffects)
+        /*foreach(var x in statusEffects)
         {
             ((StatusEffect)x).Update(Time.fixedDeltaTime);
-        }
+        }*/
     }
 
     public void AddStatusEffect(StatusEffect e)

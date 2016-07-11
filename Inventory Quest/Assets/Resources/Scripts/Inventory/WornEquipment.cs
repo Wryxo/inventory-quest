@@ -2,12 +2,12 @@
 using System.Collections;
 using System;
 
-public class WornEquipment {
+public class WornEquipment : MonoBehaviour {
 
     public Hashtable validSlots;
     Hashtable items;
 
-    public WornEquipment()
+    public void Start()
     {
         items = new Hashtable();
         validSlots = new Hashtable();
