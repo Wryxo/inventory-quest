@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class Slot : MonoBehaviour {
+public class InventorySlot : MonoBehaviour {
 
     public Inventory inventory;
 
