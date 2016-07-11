@@ -1,10 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Obstacle {
+public class Obstacle : MonoBehaviour{
 
     public StatCheck[] statChecks;
     public KeyCheck[] keyChecks;
+
+    public void Start()
+    {
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("co sa stalo ??? " + other.ToString());
+        Debug.Log("stalo sa toto: " + Check(other.GetComponent<NPC>()));
+    }
 
     public bool Check(NPC guy)
     {

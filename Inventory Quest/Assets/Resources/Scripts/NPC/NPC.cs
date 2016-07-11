@@ -115,4 +115,9 @@ public class NPC : MonoBehaviour {
         return debt;
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("co sa stalo ???");
+    }
+
 }
