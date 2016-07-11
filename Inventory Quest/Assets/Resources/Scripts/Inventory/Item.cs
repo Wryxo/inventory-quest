@@ -20,6 +20,8 @@ public class Item {
 
     public Hashtable compatibleSlots;
 
+    public bool consumable;
+
     public Item()
     {
         stats = new Stats();

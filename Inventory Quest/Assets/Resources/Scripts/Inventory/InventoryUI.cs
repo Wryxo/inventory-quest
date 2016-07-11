@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour {
 
     public Inventory inventory;
-    
     StatCheck lu; //Debug
     private const string inventoryImageCallback = "SetImage";
 
