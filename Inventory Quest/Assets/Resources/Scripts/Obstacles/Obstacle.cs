@@ -18,10 +18,12 @@ public class Obstacle : MonoBehaviour{
 
     public bool Check(NPC guy)
     {
+        if(statChecks != null)
         foreach(StatCheck x in statChecks)
         {
             if (!x.Check(guy.skills)) return false;
         }
+        if(keyChecks != null)
         foreach (KeyCheck x in keyChecks)
         {
             if (!x.Check(guy)) return false;
