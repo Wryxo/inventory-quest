@@ -2,15 +2,17 @@
 using System.Collections;
 using System;
 
-public class WornEquipment : MonoBehaviour {
+public class Equipment : MonoBehaviour {
 
     public Hashtable validSlots;
     Hashtable items;
 
-    public void Start()
+    public void Awake()
     {
         items = new Hashtable();
         validSlots = new Hashtable();
+        AddSlot("chest");
+        AddSlot("head");
     }
 
     public Item EquipItem(Item item, object slot = null) //TODO: Maybe fix the RuneScape quiver bug

@@ -26,6 +26,8 @@ public class Item {
     {
         stats = new Stats();
         compatibleSlots = new Hashtable();
+        compatibleSlots.Add("chest", 1);
+        compatibleSlots.Add("head", 1);
     }
 
     public override string ToString()

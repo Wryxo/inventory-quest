@@ -5,7 +5,10 @@ public class NPC : MonoBehaviour {
 
     public Stats skills;
     public Inventory inventory;
-    public Item hand {
+    public Inventory lootbox;
+    public Equipment gear;
+    public Item hand
+    {
         get { return _hand; }
         set {
             _hand = value;
@@ -20,7 +23,6 @@ public class NPC : MonoBehaviour {
         }
     }
     private Item _hand;
-    public WornEquipment gear;
 
     public ArrayList statusEffects;
 
@@ -28,6 +30,7 @@ public class NPC : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        hand = new Item() { id = 48, width = 1, height = 2, stack = 1, maxStack = 1, img = Resources.Load<Sprite>("Sprites/Gothic_Shield_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Gothic_Shield") as Sprite[] };
         /*statusEffects = new ArrayList();
         skills = new Stats();
         gear = new WornEquipment();
@@ -57,7 +60,7 @@ public class NPC : MonoBehaviour {
         debugObstacle.statChecks = tmp;
         debugObstacle.keyChecks = k;
         */
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
