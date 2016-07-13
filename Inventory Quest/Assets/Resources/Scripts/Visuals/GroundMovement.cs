@@ -3,22 +3,15 @@ using System.Collections;
 
 public class GroundMovement : MonoBehaviour {
 
-	public float Speed;
-	public float deadX;
-	public GameObject podlaha;
+    private Transform player;
 
 	// Use this for initialization
 	void Start () {
-
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		var old = transform.position;
-		transform.position = new Vector2(old.x - Speed*Time.deltaTime, old.y);
-		if (transform.position.x < deadX) {
-			Instantiate(podlaha, new Vector3(25.5f, 0.2f, 0), Quaternion.identity);
-			Destroy(transform.gameObject);
-		}
+        transform.position = new Vector3(player.position.x + 8, 0.2f, 0);
 	}
 }
