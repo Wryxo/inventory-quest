@@ -102,9 +102,9 @@ public class Inventory : MonoBehaviour {
                         }
                         else
                         {
-                            checkedItem.stack = checkedItem.maxStack;
                             what.stack -= checkedItem.maxStack;
                             what.stack += checkedItem.stack;
+                            checkedItem.stack = checkedItem.maxStack;
                             return what;
                         }
                     }
