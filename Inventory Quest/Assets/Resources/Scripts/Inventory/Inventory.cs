@@ -88,6 +88,10 @@ public class Inventory : MonoBehaviour {
             {
                 for (int xi = x; xi < x + w; xi++)
                 {
+                    if (yi >= height || xi >= width)
+                    {
+                        return what;
+                    }
                     var checkedItem = contents[xi, yi];
                     if(checkedItem != null && checkedItem.id == what.id && checkedItem.stack < checkedItem.maxStack)
                     {

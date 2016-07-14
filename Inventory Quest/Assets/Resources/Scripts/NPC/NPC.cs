@@ -14,7 +14,8 @@ public class NPC : MonoBehaviour {
             _hand = value;
             if (_hand != null)
             {
-                Cursor.SetCursor(HelpFunctions.spriteToTexture(_hand.img), Vector2.zero, CursorMode.Auto);
+                Texture2D x = HelpFunctions.spriteToTexture(_hand.img);
+                Cursor.SetCursor(x, new Vector2(x.width/2, x.height/3), CursorMode.ForceSoftware);
             }
             else
             {
