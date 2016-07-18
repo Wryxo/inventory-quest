@@ -11,9 +11,10 @@ GameObject:
   - 114: {fileID: 11450742}
   - 114: {fileID: 11403928}
   - 212: {fileID: 21238806}
-  - 61: {fileID: 6166226}
   - 50: {fileID: 5065292}
   - 114: {fileID: 11452014}
+  - 60: {fileID: 6015756}
+  - 114: {fileID: 11463364}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -44,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.33, y: 0.7, z: 0}
+  m_LocalPosition: {x: -6, y: 0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -80,9 +81,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &6166226
-BoxCollider2D:
+  m_Constraints: 4
+--- !u!60 &6015756
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -93,8 +94,71 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Points:
+    m_Paths:
+    - - {x: -0.19, y: -0.78999996}
+      - {x: -0.29, y: -0.74}
+      - {x: -0.35999998, y: -0.74}
+      - {x: -0.53999996, y: -0.7}
+      - {x: -0.45, y: -0.41}
+      - {x: -0.35999998, y: -0.31}
+      - {x: -0.29, y: -0.34}
+      - {x: -0.26, y: -0.63}
+      - {x: -0.32, y: -0.72999996}
+      - {x: -0.29, y: -0.74}
+      - {x: -0.25, y: -0.76}
+      - {x: 0.089999996, y: -0.81}
+      - {x: 0.099999994, y: -0.74}
+      - {x: 0.21, y: -0.71}
+      - {x: 0.13, y: -0.59999996}
+      - {x: -0.099999994, y: -0.56}
+      - {x: 0.01, y: -0.06}
+      - {x: 0, y: 0.089999996}
+      - {x: -0.04, y: 0.19}
+      - {x: -0.12, y: 0.28}
+      - {x: -0.02, y: 0.32}
+      - {x: 0.21, y: 0.48999998}
+      - {x: 0.35, y: 0.48}
+      - {x: 0.65999997, y: 0.28}
+      - {x: 0.91999996, y: 0.099999994}
+      - {x: 1.14, y: -0.08}
+      - {x: 1.14, y: -0.17}
+      - {x: 1.1999999, y: -0.16}
+      - {x: 1.22, y: -0.12}
+      - {x: 1.22, y: 0.049999997}
+      - {x: 1.11, y: 0.19}
+      - {x: 0.72999996, y: 0.51}
+      - {x: 0.55, y: 0.69}
+      - {x: 0.55, y: 0.78}
+      - {x: 0.5, y: 0.9}
+      - {x: 0.39, y: 0.96999997}
+      - {x: 0.22, y: 0.96999997}
+      - {x: -0.02, y: 0.85999995}
+      - {x: -0.17, y: 0.83}
+      - {x: -0.48, y: 0.95}
+      - {x: -0.56, y: 0.95}
+      - {x: -0.84, y: 0.81}
+      - {x: -0.91999996, y: 0.74}
+      - {x: -1.04, y: 0.55}
+      - {x: -1.18, y: 0.13}
+      - {x: -1.22, y: 0.04}
+      - {x: -1.22, y: -0.02}
+      - {x: -1.18, y: -0.04}
+      - {x: -1.22, y: -0.17}
+      - {x: -1.22, y: -0.22999999}
+      - {x: -1.11, y: -0.29}
+      - {x: -0.93, y: -0.26999998}
+      - {x: -0.74, y: -0.45}
+      - {x: -0.71, y: -0.58}
+      - {x: -0.69, y: -0.81}
+      - {x: -0.78999996, y: -0.91999996}
+      - {x: -0.74, y: -0.95}
+      - {x: -0.52, y: -0.91999996}
+      - {x: -0.45999998, y: -0.96999997}
+      - {x: -0.29999998, y: -0.96999997}
+      - {x: -0.29, y: -0.93}
+      - {x: -0.35999998, y: -0.87}
+      - {x: -0.21, y: -0.85999995}
 --- !u!114 &11403928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +210,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6452fda9313345e4b9688d0bc4800b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11463364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc66961b7adcc144afa7e07d9826db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  rb: {fileID: 0}
 --- !u!212 &21238806
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -171,9 +248,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6afa67596988b654ba9c65c56dc63416, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.8758622, a: 1}
+  m_SortingOrder: 20
+  m_Sprite: {fileID: 21300000, guid: 89dfb684a6f0ed54bb1ee4d7589a7ea1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &100100000

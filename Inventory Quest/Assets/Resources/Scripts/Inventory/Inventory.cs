@@ -18,11 +18,11 @@ public class Inventory : MonoBehaviour {
         // Testing mock up data
         var debugstats = new Stats();
         debugstats.Add("Strength", new Skill() { level = 3, baselevel = 0 });
-        var tmp = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/AmplifiedPotion_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/AmplifiedPotion") as Sprite[] };
+        var tmp = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/AmplifiedPotion_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/AmplifiedPotion") as Sprite[] };
         Debug.Log(InsertItem(tmp, 0, 0));
-        tmp = new Item() { id = 49, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Deaths_breath_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Deaths_breath") as Sprite[] };
+        tmp = new Item() { id = 49, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/Deaths_breath_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Deaths_breath") as Sprite[] };
         Debug.Log(InsertItem(tmp, 0, 1));
-        tmp = new Item() { id = 49, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Deaths_breath_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Deaths_breath") as Sprite[] };
+        tmp = new Item() { id = 49, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/Deaths_breath_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Deaths_breath") as Sprite[] };
         Debug.Log(InsertItem(tmp, 1, 1));
         /*tmp = new Item() { id = 48, width = 3, height = 2, stats = debugstats };
         Debug.Log(InsertItem(tmp, 2, 1));

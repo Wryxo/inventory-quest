@@ -31,7 +31,7 @@ public class NPC : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        hand = new Item() { id = 48, width = 1, height = 2, stack = 1, maxStack = 1, img = Resources.Load<Sprite>("Sprites/Gothic_Shield_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Gothic_Shield") as Sprite[] };
+        hand = new Item() { id = 48, width = 1, height = 2, stack = 1, maxStack = 1, img = Resources.Load<Sprite>("Sprites/Items/Gothic_Shield_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Gothic_Shield") as Sprite[] };
         /*statusEffects = new ArrayList();
         skills = new Stats();
         gear = new WornEquipment();

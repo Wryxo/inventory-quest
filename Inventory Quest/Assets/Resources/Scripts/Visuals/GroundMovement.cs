@@ -3,15 +3,17 @@ using System.Collections;
 
 public class GroundMovement : MonoBehaviour {
 
-    private Transform player;
+    public float Speed;
+    public Rigidbody2D rb;
 
-	// Use this for initialization
-	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        transform.position = new Vector3(player.position.x + 8, 0.2f, 0);
-	}
+    // Use this for initialization
+    void Start () {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
+        //rb.velocity = new Vector2(Speed, 0);
+        transform.position = new Vector3(transform.position.x + Speed * Time.deltaTime, transform.position.y, transform.position.z);
+    }
 }
