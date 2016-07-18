@@ -11,6 +11,7 @@ public class ButtonClick : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        
         if (eventData.button == PointerEventData.InputButton.Left)
             leftClick.Invoke();
         else if (eventData.button == PointerEventData.InputButton.Middle)

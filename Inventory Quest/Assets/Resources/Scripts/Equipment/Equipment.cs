@@ -13,6 +13,18 @@ public class Equipment : MonoBehaviour {
         validSlots = new Hashtable();
         AddSlot("chest");
         AddSlot("head");
+        InventoryUI.instance.Event_OnInventorySlot += OnInventorySlot;
+    }
+
+    void OnDestroy()
+    {
+        InventoryUI.instance.Event_OnInventorySlot = OnInventorySlot;
+
+    }
+
+    void OnInventorySlot(int num)
+    {
+        Debug.Log("uuuha funguje event");
     }
 
     public Item EquipItem(Item item, object slot = null) //TODO: Maybe fix the RuneScape quiver bug

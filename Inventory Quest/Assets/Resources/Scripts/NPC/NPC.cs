@@ -121,7 +121,7 @@ public class NPC : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("co sa stalo ???");
+        Debug.Log("co sa stalo ???" + other.name);
     }
 
 }
