@@ -25,9 +25,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 487006}
   - 212: {fileID: 21298706}
-  - 61: {fileID: 6149552}
   - 50: {fileID: 5020416}
   - 114: {fileID: 11456766}
+  - 68: {fileID: 6837616}
   m_Layer: 0
   m_Name: 3
   m_TagString: Ground
@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.5, y: -0.8, z: 0}
+  m_LocalPosition: {x: -16.384848, y: 7.340152, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -79,8 +79,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6149552
-BoxCollider2D:
+--- !u!68 &6837616
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -90,9 +90,19 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -1}
-  serializedVersion: 2
-  m_Size: {x: 12.27, y: 2.5}
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: -6.135, y: 0.84875965}
+  - {x: -3.3115692, y: 0.736372}
+  - {x: -1.9088459, y: 0.5333462}
+  - {x: -0.644474, y: 0.35182}
+  - {x: -0.16848183, y: 0.31380558}
+  - {x: 1.3379211, y: 0.6718111}
+  - {x: 2.7152872, y: 0.6723347}
+  - {x: 4.3520317, y: 0.740468}
+  - {x: 5.193716, y: 0.7034035}
+  - {x: 5.5318546, y: 0.84159946}
+  - {x: 6.1420727, y: 0.84875965}
 --- !u!114 &11456766
 MonoBehaviour:
   m_ObjectHideFlags: 1

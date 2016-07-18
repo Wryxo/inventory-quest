@@ -25,9 +25,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 483106}
   - 212: {fileID: 21217676}
-  - 61: {fileID: 6178780}
   - 50: {fileID: 5022390}
   - 114: {fileID: 11480550}
+  - 68: {fileID: 6878104}
   m_Layer: 0
   m_Name: 1
   m_TagString: Ground
@@ -79,8 +79,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6178780
-BoxCollider2D:
+--- !u!68 &6878104
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -90,9 +90,24 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -1}
-  serializedVersion: 2
-  m_Size: {x: 12.27, y: 2.5}
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: -6.143551, y: 0.91487885}
+  - {x: -5.6826954, y: 0.9096441}
+  - {x: -5.3719044, y: 0.85414696}
+  - {x: -2.8003101, y: 0.79816055}
+  - {x: -1.291645, y: 0.84401417}
+  - {x: -0.65445805, y: 0.7393389}
+  - {x: 0.06272316, y: 0.3519888}
+  - {x: 0.6555586, y: 0.2552948}
+  - {x: 1.0090265, y: 0.30204964}
+  - {x: 1.4439297, y: 0.6752777}
+  - {x: 1.7744064, y: 0.72778225}
+  - {x: 4.42772, y: 0.76828}
+  - {x: 4.762783, y: 0.8731537}
+  - {x: 5.0435038, y: 0.8639822}
+  - {x: 5.448903, y: 0.64106274}
+  - {x: 6.1264496, y: 0.9234295}
 --- !u!114 &11480550
 MonoBehaviour:
   m_ObjectHideFlags: 1
