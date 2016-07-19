@@ -230,7 +230,7 @@ public class Inventory : MonoBehaviour {
         return count/area;
     }
 
-    public void getInventorySlot(int position)
+    public void UI_getInventorySlot(int position)
     {
 
         // position / 10  = X coordinate
