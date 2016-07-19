@@ -27,11 +27,24 @@ public class NPC : MonoBehaviour {
 
     public ArrayList statusEffects;
 
+    public static NPC instance;
+
     Obstacle debugObstacle; //Remove this later on
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
 	// Use this for initialization
 	void Start () {
-        hand = new Item() { id = 48, width = 1, height = 2, stack = 1, maxStack = 1, img = Resources.Load<Sprite>("Sprites/Items/Gothic_Shield_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Gothic_Shield") as Sprite[] };
+        var tmp = new Item() { id = 48, width = 1, height = 2, stack = 1, maxStack = 1, img = Resources.Load<Sprite>("Sprites/Items/Gothic_Shield_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Gothic_Shield") as Sprite[] };
+        tmp.AddSlot("chest");
+        hand = tmp;
+
         /*statusEffects = new ArrayList();
         skills = new Stats();
         gear = new WornEquipment();
@@ -96,8 +109,8 @@ public class NPC : MonoBehaviour {
     public Item EquipItem(Item item, object slot = null)
     {
         var r = gear.EquipItem(item, slot);
-        if(r != null) skills.Subtract(r.stats);
-        if(item != null) skills.Add(item.stats);
+        //if(r != null) skills.Subtract(r.stats);
+        //if(item != null) skills.Add(item.stats);
         return r;
     }
 
@@ -121,7 +134,6 @@ public class NPC : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("co sa stalo ???" + other.name);
     }
 
 }

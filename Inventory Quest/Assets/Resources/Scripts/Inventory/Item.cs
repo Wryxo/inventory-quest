@@ -26,8 +26,21 @@ public class Item {
     {
         stats = new Stats();
         compatibleSlots = new Hashtable();
-        compatibleSlots.Add("chest", 1);
-        compatibleSlots.Add("head", 1);
+    }
+
+    public void AddSlot(string name)
+    {
+        if (!compatibleSlots.Contains(name))
+        { 
+            compatibleSlots.Add(name, 1);
+        }
+    }
+
+    public void AddStat(string name, Skill value)
+    {
+        if (!stats.contents.Contains(name)) { 
+            stats.Add(name, value);
+        }
     }
 
     public override string ToString()

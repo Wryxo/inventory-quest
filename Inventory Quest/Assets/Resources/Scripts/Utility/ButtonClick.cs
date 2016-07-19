@@ -2,12 +2,24 @@
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-public class ButtonClick : MonoBehaviour, IPointerClickHandler
+public class ButtonClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     public UnityEvent leftClick;
     public UnityEvent middleClick;
     public UnityEvent rightClick;
+    public UnityEvent enter;
+    public UnityEvent exit;
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        enter.Invoke();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        exit.Invoke();
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
