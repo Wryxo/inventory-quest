@@ -20,7 +20,8 @@ public class Item {
 
     public Hashtable compatibleSlots;
 
-    public bool consumable;
+    public float consumableBonus;
+    public float wornStatBonus; 
 
     public Item()
     {
