@@ -10,8 +10,11 @@ public class Inventory : MonoBehaviour {
     Item[,] contents; //TODO: If needed, use a smarter solution; the Battleships algorithm seems stupid
     int[,] spriteOffsets; // Offsets for sprites broken down to separate slots
 
-	// Use this for initialization
-	void Awake () {
+    public delegate void del_onInventoryChange();
+    public del_onInventoryChange Event_onInventoryChange;
+
+    // Use this for initialization
+    void Awake () {
         contents = new Item[width, height];
         spriteOffsets = new int[width, height];
 
@@ -19,17 +22,19 @@ public class Inventory : MonoBehaviour {
         var debugstats = new Stats();
         debugstats.Add("Strength", new Skill() { level = 3, baselevel = 0 });
         var tmp = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/AmplifiedPotion_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/AmplifiedPotion") as Sprite[] };
-        Debug.Log(InsertItem(tmp, 0, 0));
+        tmp.AddSlot("head");
+        InsertItem(tmp, 0, 0);
         tmp = new Item() { id = 49, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/Deaths_breath_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Deaths_breath") as Sprite[] };
-        Debug.Log(InsertItem(tmp, 0, 1));
+        tmp.AddSlot("head");
+        InsertItem(tmp, 0, 1);
         tmp = new Item() { id = 49, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/Deaths_breath_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Deaths_breath") as Sprite[] };
-        Debug.Log(InsertItem(tmp, 1, 1));
-        /*tmp = new Item() { id = 48, width = 3, height = 2, stats = debugstats };
-        Debug.Log(InsertItem(tmp, 2, 1));
-        debugstats = new Stats();
-        debugstats.Add("Strength", new Skill() { level = 2, baselevel = 0 });
-        tmp = new Item() { id = 49, width = 1, height = 2, stats = debugstats };
-        Debug.Log(InsertItem(tmp, 1, 2));*/
+        tmp.AddSlot("head");
+        InsertItem(tmp, 1, 1);
+
+        if (Event_onInventoryChange != null)
+        {
+            Event_onInventoryChange();
+        }
     }
 	
     public Item ItemAt(int x,int y)
@@ -80,6 +85,10 @@ public class Inventory : MonoBehaviour {
                     so++;
                 }
             }
+            if (Event_onInventoryChange != null)
+            {
+                Event_onInventoryChange();
+            }
             return null;
         } else
         {
@@ -98,6 +107,10 @@ public class Inventory : MonoBehaviour {
                         if(checkedItem.stack + what.stack <= checkedItem.maxStack)
                         {
                             checkedItem.stack += what.stack;
+                            if (Event_onInventoryChange != null)
+                            {
+                                Event_onInventoryChange();
+                            }
                             return null;
                         }
                         else
@@ -105,9 +118,14 @@ public class Inventory : MonoBehaviour {
                             what.stack -= checkedItem.maxStack;
                             what.stack += checkedItem.stack;
                             checkedItem.stack = checkedItem.maxStack;
+                            if (Event_onInventoryChange != null)
+                            {
+                                Event_onInventoryChange();
+                            }
                             return what;
                         }
                     }
+                    
                 }
             }
             //Swapping: Step 1: Find the item to swap if possible
@@ -140,6 +158,10 @@ public class Inventory : MonoBehaviour {
                     spriteOffsets[xi, yi] = so;
                     so++;
                 }
+            }
+            if (Event_onInventoryChange != null)
+            {
+                Event_onInventoryChange();
             }
             return tmp;
         }
@@ -183,6 +205,10 @@ public class Inventory : MonoBehaviour {
                 }
             }
         }
+        if (Event_onInventoryChange != null)
+        {
+            Event_onInventoryChange();
+        }
     }
 
     public int CountItemsWithId(int id)
@@ -204,8 +230,31 @@ public class Inventory : MonoBehaviour {
         return count/area;
     }
 
-	// Update is called once per frame
-	void Update () {
+    public void UI_getInventorySlot(int position)
+    {
+
+        // position / 10  = X coordinate
+        // position % 10  = Y coordinate
+        int x = position / 10;
+        int y = position % 10;
+        if (NPC.instance.hand == null)
+        {
+            var h = ItemAt(x, y);
+            if (h != null)
+            {
+                RemoveItem(h);
+            }
+            NPC.instance.hand = h;
+        }
+        else
+        {
+            var h = InsertItem(NPC.instance.hand, x, y);
+            NPC.instance.hand = h;
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 }

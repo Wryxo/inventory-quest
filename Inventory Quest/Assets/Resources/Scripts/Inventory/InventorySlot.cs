@@ -5,11 +5,10 @@ using System;
 
 public class InventorySlot : MonoBehaviour {
 
-    private Inventory inventory;
 
     void Awake()
     {
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<NPC>().inventory;
+        NPC.instance.inventory.Event_onInventoryChange += SetImage;
     }
 
 	void SetImage()
@@ -18,11 +17,11 @@ public class InventorySlot : MonoBehaviour {
         int x = pos / 10;
         int y = pos % 10;
         Image tmp = GetComponent<Image>();
-        var tmp2 = inventory.ItemAt(x, y);
+        var tmp2 = NPC.instance.inventory.ItemAt(x, y);
         Text tmp3 = GetComponentInChildren<Text>();
         if (tmp2 != null)
         {
-            tmp.sprite = tmp2.imgs[inventory.SpriteAt(x, y)];
+            tmp.sprite = tmp2.imgs[NPC.instance.inventory.SpriteAt(x, y)];
             tmp.color = new Color(1, 1, 1, 1);
         }
         else
@@ -32,11 +31,11 @@ public class InventorySlot : MonoBehaviour {
             tmp3.text = "";
             return;
         }
-        var tmpp = inventory.ItemAt(x+1, y);
-        var tmpp2 = inventory.ItemAt(x, y+1);
+        var tmpp = NPC.instance.inventory.ItemAt(x+1, y);
+        var tmpp2 = NPC.instance.inventory.ItemAt(x, y+1);
         var last = true;
-        if (tmpp != null && tmpp.id == tmp2.id && inventory.SpriteAt(x, y) < inventory.SpriteAt(x + 1, y)) last = false;
-        if (tmpp2 != null && tmpp2.id == tmp2.id && inventory.SpriteAt(x, y) < inventory.SpriteAt(x, y + 1)) last = false;
+        if (tmpp != null && tmpp.id == tmp2.id && NPC.instance.inventory.SpriteAt(x, y) < NPC.instance.inventory.SpriteAt(x + 1, y)) last = false;
+        if (tmpp2 != null && tmpp2.id == tmp2.id && NPC.instance.inventory.SpriteAt(x, y) < NPC.instance.inventory.SpriteAt(x, y + 1)) last = false;
         if (tmp2.stack < 2 || !last)
         {
             tmp3.text = "";

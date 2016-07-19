@@ -12,7 +12,6 @@ public class GameMaster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 
     public bool createObstacle()

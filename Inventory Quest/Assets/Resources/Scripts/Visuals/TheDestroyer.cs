@@ -22,7 +22,9 @@ public class TheDestroyer : MonoBehaviour {
 
     private void SpawnGround()
     {
-        Instantiate(Grounds[(int)(UnityEngine.Random.value * Grounds.Length)], new Vector3(transform.position.x + Range, transform.position.y, transform.position.z), Quaternion.identity);
+        GameObject tmp = Grounds[Random.Range(0, Grounds.Length-1)];
+        Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
+        Instantiate(tmp, new Vector3(transform.position.x + (3.5f * sprite.rect.width / 100), transform.position.y, transform.position.z), Quaternion.identity);
     }
 }
 

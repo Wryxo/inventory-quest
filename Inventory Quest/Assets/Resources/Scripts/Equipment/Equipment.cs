@@ -6,6 +6,8 @@ public class Equipment : MonoBehaviour {
 
     public Hashtable validSlots;
     Hashtable items;
+    public delegate void del_onEquipmentChange();
+    public del_onEquipmentChange Event_onEquipmentChange;
 
     public void Awake()
     {
@@ -15,9 +17,25 @@ public class Equipment : MonoBehaviour {
         AddSlot("head");
     }
 
+    public void Start()
+    {
+        if (Event_onEquipmentChange != null)
+        {
+            Event_onEquipmentChange();
+        }
+    }
+
+    public void UI_getSlotItem(string slot)
+    {
+        NPC.instance.hand = EquipItem(NPC.instance.hand, slot);
+    }
+
     public Item EquipItem(Item item, object slot = null) //TODO: Maybe fix the RuneScape quiver bug
     {
-        if (item == null) return Unequip(slot); 
+        if (item == null)
+        {
+            return Unequip(slot);
+        }
         if (slot == null) 
         {
             foreach(DictionaryEntry de in validSlots)
@@ -27,6 +45,10 @@ public class Equipment : MonoBehaviour {
                     if (!items.Contains(de.Key))
                     {
                         items[de.Key] = item;
+                        if (Event_onEquipmentChange != null)
+                        {
+                            Event_onEquipmentChange();
+                        }
                         return null;
                     }
                 }
@@ -37,6 +59,10 @@ public class Equipment : MonoBehaviour {
                 {
                     var tmp = (Item)items[de.Key];
                     items[de.Key] = item;
+                    if (Event_onEquipmentChange != null)
+                    {
+                        Event_onEquipmentChange();
+                    }
                     return tmp;
                 }
             }
@@ -48,6 +74,10 @@ public class Equipment : MonoBehaviour {
             {
                 var tmp = (Item)items[slot];
                 items[slot] = item;
+                if (Event_onEquipmentChange != null)
+                {
+                    Event_onEquipmentChange();
+                }
                 return tmp;
             }
             else return item;
@@ -59,7 +89,14 @@ public class Equipment : MonoBehaviour {
     {
         if (slot == null) throw (new System.Exception("Error: Can't remove item from null slot")); //this should never happen
         var s = ItemAt(slot);
-        if(s != null) items.Remove(slot);
+        if (s != null)
+        {
+            items.Remove(slot);
+            if (Event_onEquipmentChange != null)
+            {
+                Event_onEquipmentChange();
+            }
+        }
         return s;
     }
 
