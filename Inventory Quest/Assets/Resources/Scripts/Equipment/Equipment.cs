@@ -27,7 +27,7 @@ public class Equipment : MonoBehaviour {
 
     public void UI_getSlotItem(string slot)
     {
-        NPC.instance.hand = EquipItem(NPC.instance.hand, slot);
+        NPC.instance.hand = NPC.instance.EquipItem(NPC.instance.hand, slot);
     }
 
     public Item EquipItem(Item item, object slot = null) //TODO: Maybe fix the RuneScape quiver bug

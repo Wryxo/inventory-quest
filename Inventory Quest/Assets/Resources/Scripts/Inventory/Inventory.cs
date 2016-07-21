@@ -13,21 +13,26 @@ public class Inventory : MonoBehaviour {
     public delegate void del_onInventoryChange();
     public del_onInventoryChange Event_onInventoryChange;
 
+    
+
     // Use this for initialization
     void Awake () {
         contents = new Item[width, height];
         spriteOffsets = new int[width, height];
 
         // Testing mock up data
-        var debugstats = new Stats();
-        debugstats.Add("Strength", new Skill() { level = 3, baselevel = 0 });
+        //var debugstats = new Stats();
+        //debugstats.Add("Strength", new Skill() { level = 3, baselevel = 0 });
         var tmp = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/AmplifiedPotion_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/AmplifiedPotion") as Sprite[] };
+        tmp.stats.Add("Attractivity", 5);
         tmp.AddSlot("head");
         InsertItem(tmp, 0, 0);
         tmp = new Item() { id = 49, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/Deaths_breath_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Deaths_breath") as Sprite[] };
+        tmp.stats.Add("Attractivity", 10);
         tmp.AddSlot("head");
         InsertItem(tmp, 0, 1);
         tmp = new Item() { id = 49, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/Deaths_breath_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Deaths_breath") as Sprite[] };
+        tmp.stats.Add("Attractivity", 10);
         tmp.AddSlot("head");
         InsertItem(tmp, 1, 1);
 

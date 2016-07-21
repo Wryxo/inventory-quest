@@ -29,6 +29,9 @@ public class NPC : MonoBehaviour {
 
     public static NPC instance;
 
+    public delegate void del_onStatsChange();
+    public del_onStatsChange Event_onStatsChange;
+
     Obstacle debugObstacle; //Remove this later on
 
     void Awake()
@@ -37,56 +40,25 @@ public class NPC : MonoBehaviour {
         {
             instance = this;
         }
-    }
-
-	// Use this for initialization
-	void Start () {
         var tmp = new Item() { id = 48, width = 1, height = 2, stack = 1, maxStack = 1, img = Resources.Load<Sprite>("Sprites/Items/Gothic_Shield_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Gothic_Shield") as Sprite[] };
+        tmp.stats.Add("Branches", 5);
+        tmp.stats.Add("Jump", -5);
         tmp.AddSlot("chest");
         hand = tmp;
-
-        /*statusEffects = new ArrayList();
         skills = new Stats();
-        gear = new WornEquipment();
-
-
-        //DEBUG
-        skills.Add("swag", new Skill(2));
-
-        gear.AddSlot("Head");
-
-        var h = new Item() {name="Hat of yolo swag", id = 50 };
-        h.stats.Add("yolo", 1);
-        h.stats.Add("swag", 2);
-        h.compatibleSlots.Add("Head", null);
-        Debug.Log("Swag level: " + skills.contents["swag"]);
-        Debug.Log("Cool items in inventory: "+CountItem(50));
-        EquipItem(h);
-        Debug.Log("Swag level: " + skills.contents["swag"]);
-        Debug.Log("Cool items in inventory: " + CountItem(50));
-        UnequipItem("Head");
-        Debug.Log("Swag level: " + skills.contents["swag"]);
-        Debug.Log("Cool items in inventory: " + CountItem(50));
-
-        debugObstacle = new Obstacle();
-        var tmp = new StatCheck[] { new StatCheck() {statName="Strength",baseDifficulty=-0,nDice=2,sidesPerDie=2 },new StatCheck() { statName = "Agility", baseDifficulty = 1, nDice = 0, sidesPerDie = 2 } };
-        var k = new KeyCheck[] { new KeyCheck() { itemID = 1, amount = 5 }, new KeyCheck() { itemID = 2, amount = 1 } };
-        debugObstacle.statChecks = tmp;
-        debugObstacle.keyChecks = k;
-        */
+        skills.Add("Attractivity", 10);
+        skills.Add("Jump", 10);
+        skills.Add("Swim", 10);
+        skills.Add("Branches", 10);
+        skills.Add("Run", 10);
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
-
-    void FixedUpdate()
-    {
-        /*foreach(var x in statusEffects)
+    // Use this for initialization
+    void Start () {
+        if (Event_onStatsChange != null)
         {
-            ((StatusEffect)x).Update(Time.fixedDeltaTime);
-        }*/
+            Event_onStatsChange();
+        }
     }
 
     public void AddStatusEffect(StatusEffect e)
@@ -109,8 +81,18 @@ public class NPC : MonoBehaviour {
     public Item EquipItem(Item item, object slot = null)
     {
         var r = gear.EquipItem(item, slot);
-        //if(r != null) skills.Subtract(r.stats);
-        //if(item != null) skills.Add(item.stats);
+        if (r != null)
+        {
+            skills.Subtract(r.stats);
+        }
+        if (item != null)
+        {
+            skills.Add(item.stats);
+        }
+        if (Event_onStatsChange != null)
+        {
+            Event_onStatsChange();
+        }
         return r;
     }
 
