@@ -35,6 +35,11 @@ public class Inventory : MonoBehaviour {
         tmp.stats.Add("Attractivity", 10);
         tmp.AddSlot("head");
         InsertItem(tmp, 1, 1);
+        tmp = new Item() { id = 48, width = 1, height = 2, stack = 1, maxStack = 1, img = Resources.Load<Sprite>("Sprites/Items/Gothic_Shield_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Gothic_Shield") as Sprite[] };
+        tmp.stats.Add("Branches", 5);
+        tmp.stats.Add("Jump", -5);
+        tmp.AddSlot("chest");
+        InsertItem(tmp, 3, 1);
 
         if (Event_onInventoryChange != null)
         {

@@ -10,6 +10,11 @@ public class EquipmentSlot : MonoBehaviour {
         NPC.instance.gear.Event_onEquipmentChange += SetImage;
     }
 
+    void OnDestroy()
+    {
+        NPC.instance.gear.Event_onEquipmentChange -= SetImage;
+    }
+
     void SetImage()
     {
         Image tmp = GetComponent<Image>();

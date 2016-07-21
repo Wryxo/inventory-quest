@@ -32,7 +32,11 @@ public class NPC : MonoBehaviour {
     public delegate void del_onStatsChange();
     public del_onStatsChange Event_onStatsChange;
 
-    Obstacle debugObstacle; //Remove this later on
+    public delegate void del_onItemHover(Item item);
+    public del_onItemHover Event_onItemHover;
+
+    public delegate void del_onItemExit();
+    public del_onItemExit Event_onItemExit;
 
     void Awake()
     {
@@ -40,11 +44,6 @@ public class NPC : MonoBehaviour {
         {
             instance = this;
         }
-        var tmp = new Item() { id = 48, width = 1, height = 2, stack = 1, maxStack = 1, img = Resources.Load<Sprite>("Sprites/Items/Gothic_Shield_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/Gothic_Shield") as Sprite[] };
-        tmp.stats.Add("Branches", 5);
-        tmp.stats.Add("Jump", -5);
-        tmp.AddSlot("chest");
-        hand = tmp;
         skills = new Stats();
         skills.Add("Attractivity", 10);
         skills.Add("Jump", 10);
@@ -112,6 +111,84 @@ public class NPC : MonoBehaviour {
         debt = inventory.SpendItem(id, debt);
         debt = gear.SpendItem(id, debt);
         return debt;
+    }
+
+    public int GetEquippedDifference(Item item, object stat)
+    {
+        if (item == null) return 0;
+        foreach (DictionaryEntry de in item.compatibleSlots)
+        {
+            var r = gear.ItemAt(de.Key);
+            if (r == null)
+            {
+                return item.stats.LevelOf(stat);
+            } else
+            {
+                return item.stats.LevelOf(stat) - r.stats.LevelOf(stat);
+            }
+        }
+        return 0;
+    }
+
+    public void OnInventoryItemHover(int position)
+    {
+        var item = inventory.ItemAt(position / 10, position % 10);
+        if (hand == null)
+        {
+            if (item != null && Event_onItemHover != null)
+            {
+                Event_onItemHover(item);
+            }
+        }
+        else
+        {
+            if (Event_onItemHover != null)
+            {
+                Event_onItemHover(hand);
+            }
+        }
+    }
+
+    public void OnLootBoxItemHover(int position)
+    {
+        var item = lootbox.ItemAt(position / 10, position % 10);
+        if (hand == null) { 
+            if (item != null && Event_onItemHover != null)
+            {
+                Event_onItemHover(item);
+            }
+        } else
+        {
+            if (Event_onItemHover != null)
+            {
+                Event_onItemHover(hand);
+            }
+        }
+    }
+
+    public void OnEquipClick()
+    {
+        if (hand == null)
+        {
+            if (Event_onItemExit != null)
+            {
+                Event_onItemExit();
+            }
+        }
+        else
+        {
+            if (Event_onItemHover != null)
+            {
+                Event_onItemHover(hand);
+            }
+        }
+    }
+
+    public void OnItemExit()
+    {
+        if (hand == null && Event_onItemExit != null) { 
+            Event_onItemExit();
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)

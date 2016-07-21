@@ -8,8 +8,13 @@ public class StatUI : MonoBehaviour {
     {
         NPC.instance.Event_onStatsChange += SetValue;
     }
+    
+    void OnDestroy()
+    {
+        NPC.instance.Event_onStatsChange -= SetValue;
+    }
 
-	void SetValue()
+    void SetValue()
     {
         GetComponent<Text>().text = NPC.instance.skills.LevelOf(name).ToString();
     }
