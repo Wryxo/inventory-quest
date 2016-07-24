@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour {
         // Testing mock up data
         //var debugstats = new Stats();
         //debugstats.Add("Strength", new Skill() { level = 3, baselevel = 0 });
-        var tmp = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/AmplifiedPotion_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/AmplifiedPotion") as Sprite[] };
+        /*var tmp = new Item() { id = 47, width = 1, height = 1, stack = 2, maxStack = 5, img = Resources.Load<Sprite>("Sprites/Items/AmplifiedPotion_mouse") as Sprite, imgs = Resources.LoadAll<Sprite>("Sprites/Items/AmplifiedPotion") as Sprite[] };
         tmp.stats.Add("Attractivity", 5);
         tmp.AddSlot("head");
         InsertItem(tmp, 0, 0);
@@ -39,7 +39,7 @@ public class Inventory : MonoBehaviour {
         tmp.stats.Add("Branches", 5);
         tmp.stats.Add("Jump", -5);
         tmp.AddSlot("chest");
-        InsertItem(tmp, 3, 1);
+        InsertItem(tmp, 3, 1);*/
 
         if (Event_onInventoryChange != null)
         {

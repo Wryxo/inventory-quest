@@ -60,6 +60,14 @@ public class NPC : MonoBehaviour {
         }
     }
 
+    void FixedUpdate()
+    {
+        if (transform.position.x > -16 && transform.position.y < 2.8f)
+        {
+            transform.position = new Vector3(transform.position.x - Time.deltaTime, transform.position.y, transform.position.z);
+        }
+    }
+
     public void AddStatusEffect(StatusEffect e)
     {
         e.owner = this;
@@ -193,6 +201,11 @@ public class NPC : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+    }
+
+    public void Jump()
+    {
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(5.0f,15.0f),ForceMode2D.Impulse);
     }
 
 }
