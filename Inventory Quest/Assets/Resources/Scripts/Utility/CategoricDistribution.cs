@@ -10,12 +10,36 @@ public class CategoricDistribution {
 
     float area; //the area under the curve
 
+    public CategoricDistribution()
+    {
+        categories = new ArrayList();
+        helpIndex = new Hashtable();
+    }
+
     public object Random()
     {
+        if (categories.Count == 0) throw new System.Exception("Error: Can't select a random category out of 0 options");
         float v = UnityEngine.Random.value;
         if (sorted < categories.Count) Normalize();
-        //TODO: Implement binary search
-        return null;
+        bool ok = false;
+        int i = 1;
+        while (!ok)
+        {
+            if (i < categories.Count) i <<= 1;
+            else ok = true;
+        }
+        i >>= 1;
+        ok = false;
+        int j = 0;
+        while (i > 0)
+        {
+            if(v > ((RandomItem)categories[i | j]).quad)
+            {
+                j |= i;
+            }
+            i >>= 1;
+        }
+        return ((RandomItem)categories[i | j]).value;
     }
 
     public void AddCategory(object what, float weight = 1)
@@ -27,16 +51,22 @@ public class CategoricDistribution {
             area += weight;
             f.weight += weight;
             f.quad += weight;
-            if (i < sorted) sorted = i;
+            if (i < sorted) sorted = i+1;
             
         } else
         {
             RandomItem f = new RandomItem() { value = what, weight = weight, quad = area + weight };
             area += weight;
+            if (categories.Count == sorted) sorted += 1;
             categories.Add(f);
             helpIndex.Add(what, categories.Count-1);
         }
 
+    }
+
+    public RandomItem find(object key)
+    {
+        return (RandomItem)helpIndex[key];
     }
 
     public void Add(CategoricDistribution rhs, float weight = 1)
@@ -61,6 +91,19 @@ public class CategoricDistribution {
 
     public void Normalize()
     {
-
+        float surface = 0;
+        for(int i = 0; i < categories.Count; i++)
+        {
+            RandomItem f = (RandomItem)categories[i];
+            f.quad = surface + f.weight;
+            surface = f.quad;
+        }
+        for (int i = 0; i < categories.Count; i++)
+        {
+            RandomItem f = (RandomItem)categories[i];
+            f.quad /= surface;
+            f.weight /= surface;
+        }
+        sorted = categories.Count;
     }
 }

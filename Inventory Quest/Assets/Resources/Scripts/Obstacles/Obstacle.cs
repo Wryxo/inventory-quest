@@ -28,4 +28,5 @@ public class Obstacle : MonoBehaviour{
         }
         return true;
     }
+
 }
