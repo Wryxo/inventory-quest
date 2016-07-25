@@ -41,24 +41,10 @@ public class GameMaster : MonoBehaviour {
         infinario.Initialize("7b3b027c-5245-11e6-8785-b083fedeed2e");
         infinario.TrackSessionStart();
 
-        fakePlayer = Instantiate(player);
-        killerGM = Instantiate(player);
-
         passChance = new ArrayList();
         passChance.Add(null);
         passChance.Add(null);
         passChance.Add(null);
-
-        events = new CategoricDistribution();
-   /*     var bottomlessPit = Instantiate(BaseObstacle);
-        Obstacle o = bottomlessPit.GetComponent<Obstacle>();
-        o.statChecks = new StatCheck[1] { new StatCheck() { statName = "Jump", sidesPerDie = -1 } };
-        events.AddCategory(bottomlessPit);
-        var water = Instantiate(BaseObstacle);
-        o = water.GetComponent<Obstacle>();
-        o.statChecks = new StatCheck[1] { new StatCheck() { statName = "Swim", sidesPerDie = -1 } };
-        events.AddCategory(water);
-        createObstacle();*/
     }
 
     StatCheck FitStatCheck(string statName, ArrayList f) //May be replaced later on, it's really dumb
@@ -94,7 +80,7 @@ public class GameMaster : MonoBehaviour {
         float b = UnityEngine.Random.value;
         float c = UnityEngine.Random.value * mean + UnityEngine.Random.value * (range - mean);
         if (a > b) a = b;
-        if (c / pmean < (range - c) / (1 - pmean))
+        if (pmean != 0 && (pmean == 1 || c / pmean < (range - c) / (1 - pmean)))
         {
             min += c * (1 - a);
             range = c * a / pmean;
@@ -113,6 +99,21 @@ public class GameMaster : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
+/*
+        fakePlayer = Instantiate(player);
+        killerGM = Instantiate(player);
+
+        events = new CategoricDistribution();
+         var bottomlessPit = Instantiate(BaseObstacle);
+         Obstacle o = bottomlessPit.GetComponent<Obstacle>();
+             o.statChecks.Add (new StatCheck() { statName = "Jump", sidesPerDie = -1 });
+             events.AddCategory(bottomlessPit);
+             var water = Instantiate(BaseObstacle);
+             o = water.GetComponent<Obstacle>();
+             o.statChecks.Add(new StatCheck() { statName = "Swim", sidesPerDie = -1 });
+             events.AddCategory(water);
+             createObstacle();*/
+
         if (instance == null)
         {
             instance = this;
