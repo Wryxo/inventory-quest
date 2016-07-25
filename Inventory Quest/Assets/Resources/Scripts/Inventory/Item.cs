@@ -99,7 +99,7 @@ public class Item {
             imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_nasada_na_zobak") as Sprite[]
         };
         res.AddSlot("head");
-        res.AddStat(HelpFunctions.Branches, new Skill(val));
+        res.AddStat(HelpFunctions.Swim, new Skill(val));
         return res;
     }
 

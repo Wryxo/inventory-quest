@@ -60,6 +60,14 @@ public class NPC : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            GameMaster.instance.ShowGameMenu(false);
+        }
+    }
+
     void FixedUpdate()
     {
         if (transform.position.x > -16 && transform.position.y < 2.8f)
