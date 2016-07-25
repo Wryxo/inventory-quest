@@ -11,4 +11,11 @@ public static class HelpFunctions {
         croppedTexture.Apply();
         return croppedTexture;
     }
+
+    public static string Attract = "Attractivity";
+    public static string Jump = "Jump";
+    public static string Swim = "Swim";
+    public static string Branches = "Branches";
+    public static string Run = "Run";
+
 }

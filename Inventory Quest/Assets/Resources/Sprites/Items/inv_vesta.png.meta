@@ -1,0 +1,274 @@
+fileFormatVersion: 2
+guid: 59b8e2ba90d5584499d44958d7eaa540
+timeCreated: 1469401330
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: vesta_0
+    21300002: vesta_1
+    21300004: inv_vesta_0
+    21300006: inv_vesta_1
+    21300008: inv_vesta_2
+    21300010: inv_vesta_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: inv_vesta_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368.5
+        width: 305.5
+        height: 368.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 185}
+        - {x: -22, y: 182}
+        - {x: -24, y: 183}
+        - {x: -25, y: 182}
+        - {x: -36, y: 182}
+        - {x: -37, y: 181}
+        - {x: -42, y: 180}
+        - {x: -46, y: 177}
+        - {x: -52, y: 171}
+        - {x: -52, y: 170}
+        - {x: -55, y: 167}
+        - {x: -58, y: 163}
+        - {x: -61, y: 162}
+        - {x: -64, y: 164}
+        - {x: -69, y: 165}
+        - {x: -71, y: 167}
+        - {x: -75, y: 167}
+        - {x: -76, y: 168}
+        - {x: -82, y: 169}
+        - {x: -83, y: 170}
+        - {x: -87, y: 170}
+        - {x: -88, y: 171}
+        - {x: -94, y: 171}
+        - {x: -96, y: 173}
+        - {x: -103, y: 173}
+        - {x: -104, y: 174}
+        - {x: -109, y: 174}
+        - {x: -110, y: 175}
+        - {x: -114, y: 175}
+        - {x: -115, y: 176}
+        - {x: -119, y: 176}
+        - {x: -120, y: 177}
+        - {x: -130, y: 177}
+        - {x: -131, y: 178}
+        - {x: -148, y: 178}
+        - {x: -151, y: 176}
+        - {x: -153, y: 177}
+        - {x: -153, y: -184}
+        - {x: 153, y: -184}
+        - {x: 153, y: 185}
+    - name: inv_vesta_1
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 368.5
+        width: 305.5
+        height: 368.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 132, y: 171}
+        - {x: 131, y: 170}
+        - {x: 126, y: 171}
+        - {x: 125, y: 170}
+        - {x: 119, y: 170}
+        - {x: 118, y: 169}
+        - {x: 111, y: 169}
+        - {x: 110, y: 168}
+        - {x: 105, y: 168}
+        - {x: 104, y: 167}
+        - {x: 98, y: 167}
+        - {x: 96, y: 165}
+        - {x: 85, y: 164}
+        - {x: 82, y: 162}
+        - {x: 78, y: 162}
+        - {x: 72, y: 159}
+        - {x: 69, y: 159}
+        - {x: 66, y: 157}
+        - {x: 63, y: 157}
+        - {x: 61, y: 159}
+        - {x: 59, y: 162}
+        - {x: 57, y: 166}
+        - {x: 48, y: 174}
+        - {x: 46, y: 174}
+        - {x: 43, y: 176}
+        - {x: 39, y: 176}
+        - {x: 37, y: 177}
+        - {x: 36, y: 176}
+        - {x: 34, y: 177}
+        - {x: 14, y: 177}
+        - {x: 13, y: 176}
+        - {x: 3, y: 176}
+        - {x: 2, y: 175}
+        - {x: -5, y: 175}
+        - {x: -7, y: 178}
+        - {x: -7, y: 180}
+        - {x: -11, y: 185}
+        - {x: -153, y: 185}
+        - {x: -153, y: -184}
+        - {x: 153, y: -184}
+        - {x: 153, y: 169}
+        - {x: 151, y: 171}
+    - name: inv_vesta_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.5
+        width: 305.5
+        height: 368.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 92, y: -159}
+        - {x: 102, y: -165}
+        - {x: 104, y: -172}
+        - {x: 109, y: -180}
+        - {x: 113, y: -184}
+        - {x: 153, y: -184}
+        - {x: 153, y: 185}
+        - {x: -153, y: 185}
+        - {x: -153, y: 146}
+        - {x: -150, y: 137}
+        - {x: -144, y: 122}
+        - {x: -140, y: 117}
+        - {x: -134, y: 113}
+        - {x: -136, y: 106}
+        - {x: -135, y: 101}
+        - {x: -136, y: 90}
+        - {x: -136, y: 87}
+        - {x: -135, y: 86}
+        - {x: -135, y: 48}
+        - {x: -136, y: 47}
+        - {x: -136, y: 27}
+        - {x: -137, y: 26}
+        - {x: -137, y: 3}
+        - {x: -138, y: -5}
+        - {x: -138, y: -17}
+        - {x: -140, y: -20}
+        - {x: -142, y: -26}
+        - {x: -144, y: -33}
+        - {x: -147, y: -43}
+        - {x: -150, y: -57}
+        - {x: -152, y: -63}
+        - {x: -153, y: -67}
+        - {x: -153, y: -175}
+        - {x: -148, y: -176}
+        - {x: -139, y: -176}
+        - {x: -126, y: -175}
+        - {x: -118, y: -174}
+        - {x: -116, y: -184}
+        - {x: 76, y: -184}
+        - {x: 77, y: -183}
+        - {x: 85, y: -172}
+        - {x: 89, y: -165}
+    - name: inv_vesta_3
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 0.5
+        width: 305.5
+        height: 368.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 153, y: -184}
+        - {x: 153, y: -54}
+        - {x: 152, y: -52}
+        - {x: 152, y: -48}
+        - {x: 149, y: -42}
+        - {x: 149, y: -37}
+        - {x: 148, y: -34}
+        - {x: 146, y: -32}
+        - {x: 146, y: -26}
+        - {x: 145, y: -22}
+        - {x: 145, y: -8}
+        - {x: 144, y: -7}
+        - {x: 144, y: 1}
+        - {x: 145, y: 2}
+        - {x: 145, y: 6}
+        - {x: 144, y: 7}
+        - {x: 144, y: 22}
+        - {x: 143, y: 23}
+        - {x: 143, y: 33}
+        - {x: 142, y: 34}
+        - {x: 142, y: 39}
+        - {x: 143, y: 40}
+        - {x: 143, y: 66}
+        - {x: 142, y: 67}
+        - {x: 142, y: 76}
+        - {x: 141, y: 80}
+        - {x: 142, y: 81}
+        - {x: 142, y: 83}
+        - {x: 141, y: 84}
+        - {x: 141, y: 97}
+        - {x: 140, y: 98}
+        - {x: 140, y: 102}
+        - {x: 146, y: 105}
+        - {x: 152, y: 113}
+        - {x: 152, y: 115}
+        - {x: 153, y: 116}
+        - {x: 153, y: 185}
+        - {x: -153, y: 185}
+        - {x: -153, y: -184}
+        - {x: -91, y: -184}
+        - {x: -89, y: -182}
+        - {x: -88, y: -180}
+        - {x: -86, y: -184}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

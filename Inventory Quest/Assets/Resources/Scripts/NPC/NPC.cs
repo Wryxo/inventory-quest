@@ -15,7 +15,7 @@ public class NPC : MonoBehaviour {
             if (_hand != null)
             {
                 Texture2D x = HelpFunctions.spriteToTexture(_hand.img);
-                Cursor.SetCursor(x, new Vector2(x.width/2, x.height/3), CursorMode.ForceSoftware);
+                Cursor.SetCursor(x, new Vector2(x.width/2, x.height/3), CursorMode.Auto);
             }
             else
             {
@@ -57,6 +57,22 @@ public class NPC : MonoBehaviour {
         if (Event_onStatsChange != null)
         {
             Event_onStatsChange();
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            GameMaster.instance.ShowGameMenu(false);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (transform.position.x > -16 && transform.position.y < 2.8f)
+        {
+            transform.position = new Vector3(transform.position.x - Time.deltaTime, transform.position.y, transform.position.z);
         }
     }
 
@@ -193,6 +209,11 @@ public class NPC : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+    }
+
+    public void Jump()
+    {
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(5.0f,15.0f),ForceMode2D.Impulse);
     }
 
 }

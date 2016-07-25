@@ -43,6 +43,15 @@ MonoBehaviour:
   evilness: 0
   intelligence: 0
   speed: 0
+  goodScore: 0
+  badScore: 0
+  Speed: -5
+  Frequency: 3
+  TimeLimit: 180
+  GameMenu: {fileID: 160878, guid: ca3f8aac9bce4b84682bda85e229f9e0, type: 2}
+  VictoryGO: {fileID: 141530, guid: c8ab66cc2113d3f4086b7b6feaed56dd, type: 2}
+  FeedbackGO: {fileID: 180044, guid: a78dc1a543d1566489a295501c10e413, type: 2}
+  Feedback: {fileID: 11432198, guid: a78dc1a543d1566489a295501c10e413, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
