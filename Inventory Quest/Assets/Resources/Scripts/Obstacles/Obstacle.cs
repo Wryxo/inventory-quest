@@ -6,6 +6,7 @@ public class Obstacle : MonoBehaviour{
 
     public List<StatCheck> statChecks;
     public List<KeyCheck> keyChecks;
+    public Item reward;
 
     public void Start()
     {
@@ -14,7 +15,15 @@ public class Obstacle : MonoBehaviour{
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player" && (statChecks != null || keyChecks != null)) { 
-            Debug.Log(Check(NPC.instance));
+            if (Check(NPC.instance))
+            {
+                GameMaster.instance.goodScore++;
+            } else
+            {
+                GameMaster.instance.badScore++;
+            }
+            NPC.instance.lootbox.EmptyInventory();
+            NPC.instance.lootbox.InsertItem(reward, 0, 0);
             Destroy(transform.parent.FindChild("text").gameObject);
             Destroy(gameObject);
         }

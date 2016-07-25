@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: b183448793d19474a8713bd2a52499e2
-timeCreated: 1468158433
+guid: a2000a4440f7ee54a814393f55a66c2b
+timeCreated: 1469398992
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Gothic_Shield_0
-    21300002: Gothic_Shield_1
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -21,14 +19,14 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
     filterMode: 2
@@ -40,7 +38,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,44 +46,10 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  textureType: 8
+  textureType: 5
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: Gothic_Shield_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -15, y: 32}
-        - {x: -31, y: 6}
-        - {x: -31, y: -32}
-        - {x: 30, y: -32}
-        - {x: 30, y: 31}
-        - {x: 27, y: 32}
-    - name: Gothic_Shield_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -30, y: 32}
-        - {x: -30, y: 0}
-        - {x: -16, y: -31}
-        - {x: 6, y: -31}
-        - {x: 24, y: -8}
-        - {x: 29, y: 32}
+    sprites: []
     outline: []
   spritePackingTag: 
   userData: 

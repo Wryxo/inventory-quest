@@ -15,6 +15,7 @@ public class Equipment : MonoBehaviour {
         validSlots = new Hashtable();
         AddSlot("chest");
         AddSlot("head");
+        AddSlot("feet");
     }
 
     public void Start()

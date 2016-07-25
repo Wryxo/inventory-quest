@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 355ffd5a1c8a03f48aead72e61384871
+timeCreated: 1469399616
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: topnaky_2_0
+    21300002: topnaky_2_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: topnaky_2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 421.5
+        height: 493
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 108, y: -222.5}
+        - {x: 114, y: -211.5}
+        - {x: 118, y: -197.5}
+        - {x: 123, y: -188.5}
+        - {x: 129, y: -179.5}
+        - {x: 155, y: -154.5}
+        - {x: 182, y: -127.5}
+        - {x: 191, y: -117.5}
+        - {x: 196, y: -109.5}
+        - {x: 202, y: -101.5}
+        - {x: 211, y: -82.5}
+        - {x: 211, y: 85.5}
+        - {x: 208, y: 90.5}
+        - {x: 200, y: 107.5}
+        - {x: 194, y: 116.5}
+        - {x: 182, y: 128.5}
+        - {x: 169, y: 137.5}
+        - {x: 161, y: 161.5}
+        - {x: 156, y: 185.5}
+        - {x: 153, y: 206.5}
+        - {x: 150, y: 219.5}
+        - {x: 147, y: 234.5}
+        - {x: 142, y: 242.5}
+        - {x: 137, y: 246.5}
+        - {x: 11, y: 246.5}
+        - {x: 4, y: 243.5}
+        - {x: -19, y: 232.5}
+        - {x: -33, y: 224.5}
+        - {x: -40, y: 219.5}
+        - {x: -52, y: 207.5}
+        - {x: -58, y: 200.5}
+        - {x: -81, y: 172.5}
+        - {x: -85, y: 158.5}
+        - {x: -86, y: 136.5}
+        - {x: -86, y: 119.5}
+        - {x: -85, y: 106.5}
+        - {x: -84, y: 98.5}
+        - {x: -81, y: 83.5}
+        - {x: -72, y: 69.5}
+        - {x: -117, y: 24.5}
+        - {x: -118, y: 24.5}
+        - {x: -124, y: 19.5}
+        - {x: -146, y: 4.5}
+        - {x: -162, y: -4.5}
+        - {x: -182, y: -15.5}
+        - {x: -192, y: -22.5}
+        - {x: -202, y: -32.5}
+        - {x: -207, y: -41.5}
+        - {x: -211, y: -50.5}
+        - {x: -211, y: -184.5}
+        - {x: -206, y: -191.5}
+        - {x: -197, y: -206.5}
+        - {x: -197, y: -208.5}
+        - {x: -185, y: -232.5}
+        - {x: -177, y: -244.5}
+        - {x: -174, y: -246.5}
+        - {x: 87, y: -246.5}
+        - {x: 101, y: -232.5}
+    - name: topnaky_2_1
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 0
+        width: 421.5
+        height: 493
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 198, y: -203.5}
+        - {x: 205, y: -189.5}
+        - {x: 211, y: -180.5}
+        - {x: 211, y: -54.5}
+        - {x: 203, y: -38.5}
+        - {x: 198, y: -31.5}
+        - {x: 186, y: -20.5}
+        - {x: 181, y: -16.5}
+        - {x: 154, y: -1.5}
+        - {x: 141, y: 6.5}
+        - {x: 119, y: 21.5}
+        - {x: 111, y: 28.5}
+        - {x: 81, y: 57.5}
+        - {x: 70, y: 67.5}
+        - {x: 79, y: 84.5}
+        - {x: 81, y: 89.5}
+        - {x: 83, y: 98.5}
+        - {x: 85, y: 119.5}
+        - {x: 85, y: 136.5}
+        - {x: 83, y: 157.5}
+        - {x: 81, y: 166.5}
+        - {x: 79, y: 172.5}
+        - {x: 71, y: 183.5}
+        - {x: 57, y: 201.5}
+        - {x: 39, y: 220.5}
+        - {x: 27, y: 227.5}
+        - {x: -5, y: 243.5}
+        - {x: -12, y: 246.5}
+        - {x: -138, y: 246.5}
+        - {x: -143, y: 241.5}
+        - {x: -147, y: 234.5}
+        - {x: -151, y: 219.5}
+        - {x: -153, y: 206.5}
+        - {x: -156, y: 184.5}
+        - {x: -160, y: 168.5}
+        - {x: -170, y: 137.5}
+        - {x: -175, y: 132.5}
+        - {x: -184, y: 127.5}
+        - {x: -196, y: 115.5}
+        - {x: -206, y: 98.5}
+        - {x: -210, y: 89.5}
+        - {x: -211, y: 86.5}
+        - {x: -211, y: -84.5}
+        - {x: -203, y: -101.5}
+        - {x: -197, y: -110.5}
+        - {x: -192, y: -117.5}
+        - {x: -183, y: -127.5}
+        - {x: -156, y: -154.5}
+        - {x: -138, y: -171.5}
+        - {x: -130, y: -179.5}
+        - {x: -122, y: -190.5}
+        - {x: -114, y: -210.5}
+        - {x: -109, y: -222.5}
+        - {x: -102, y: -233.5}
+        - {x: -91, y: -243.5}
+        - {x: -88, y: -246.5}
+        - {x: 173, y: -246.5}
+        - {x: 176, y: -244.5}
+        - {x: 184, y: -232.5}
+        - {x: 196, y: -208.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

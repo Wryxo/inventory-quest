@@ -79,6 +79,16 @@ public class Inventory : MonoBehaviour {
         return true;
     }
 
+    public void EmptyInventory()
+    {
+        contents = new Item[width, height];
+        spriteOffsets = new int[width, height];
+        if (Event_onInventoryChange != null)
+        {
+            Event_onInventoryChange();
+        }
+    }
+
     public Item InsertItem(Item what,int x,int y)
     {
         int w = what.width;
@@ -219,6 +229,11 @@ public class Inventory : MonoBehaviour {
         {
             Event_onInventoryChange();
         }
+    }
+
+    public void RemoveItem(int x, int y)
+    {
+        RemoveItem(ItemAt(x, y));
     }
 
     public int CountItemsWithId(int id)

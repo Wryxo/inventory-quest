@@ -43,6 +43,8 @@ MonoBehaviour:
   evilness: 0
   intelligence: 0
   speed: 0
+  goodScore: 0
+  badScore: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
