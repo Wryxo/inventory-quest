@@ -32,22 +32,19 @@ public static class HelpFunctions {
         }
         for(int i = 1; i < f.Count; i++)
         {
-            if (!lowset)
-            {
-                if (plow > ((Vector2)f[i-1]).y)
+                if (plow < ((Vector2)f[i]).y)
                 {
                     dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
                     low = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - plow) + ((Vector2)f[i]).x * (plow - ((Vector2)f[i - 1]).y)) / dy;
                     lowset = true;
                 }
-            } else
+        }
+        for (int i = 1; i < f.Count; i++)
+        {
+            if (phigh < ((Vector2)f[i]).y)
             {
-                if (phigh > ((Vector2)f[i-1]).y)
-                {
-                    dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
-                    high = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - phigh) + ((Vector2)f[i]).x * (phigh - ((Vector2)f[i - 1]).y)) / dy;
-                    break;
-                }
+                dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
+                high = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - phigh) + ((Vector2)f[i]).x * (phigh - ((Vector2)f[i - 1]).y)) / dy;
             }
         }
         x.baseDifficulty = (int)Mathf.Floor(low);

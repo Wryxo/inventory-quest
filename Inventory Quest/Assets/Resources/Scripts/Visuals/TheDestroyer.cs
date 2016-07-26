@@ -66,9 +66,10 @@ public class TheDestroyer : MonoBehaviour {
         int stat = Random.Range(0, stats.Length);
         difficulty[stat]++;
         passchance[3] = new Vector2(cheatbast.character.skills.LevelOf(stats[stat]),1);
-        Debug.Log(cheatbast.character.skills.LevelOf(stats[stat]));
         var check = HelpFunctions.FitStatCheck(stats[stat], passchance);
         int diff = check.baseDifficulty + check.sidesPerDie;
+        Debug.Log(cheatbast.character.skills.LevelOf(stats[stat]));
+        Debug.Log(diff);
         obs.statChecks.Add(check);
         var text = go.transform.FindChild("text").GetComponent<TextMesh>();
         text.text = diff.ToString();
