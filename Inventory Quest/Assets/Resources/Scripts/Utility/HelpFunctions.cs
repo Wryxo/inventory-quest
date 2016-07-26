@@ -17,46 +17,41 @@ public static class HelpFunctions {
         var x = new StatCheck();
         x.statName = statName;
         x.nDice = 1;
-        float min = (float)((DictionaryEntry)f[0]).Value;
-        float max = (float)((DictionaryEntry)f[f.Count - 1]).Value;
-        float range = max - min;
-        float mean = 0;
-        float pquad = 0;
-        float quad = 0;
-        float pmean;
-        for (int i = 1; i < f.Count - 1; i++)
+        float high, low;
+        bool lowset = false;
+        float dy;
+        float phigh = UnityEngine.Random.value;
+        float plow = UnityEngine.Random.value;
+        low = 0;
+        high = 0;
+        if(phigh < plow)
         {
-            mean += (float)((DictionaryEntry)f[i]).Value * (float)((DictionaryEntry)f[i]).Key;
-            quad += (float)((DictionaryEntry)f[i]).Value;
-            pquad += (float)((DictionaryEntry)f[i]).Key;
+            var tmp = phigh;
+            phigh = plow;
+            plow = tmp;
         }
-        if (quad > 0)
+        for(int i = 0; i < f.Count; i++)
         {
-            pmean = mean / pquad;
-            mean /= quad;
+            if (!lowset)
+            {
+                if (plow < ((Vector2)f[i]).y)
+                {
+                    dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
+                    low = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - plow) + ((Vector2)f[i]).x * (plow - ((Vector2)f[i - 1]).y)) / dy;
+                    lowset = true;
+                }
+            } else
+            {
+                if (plow < ((Vector2)f[i]).y)
+                {
+                    dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
+                    high = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - phigh) + ((Vector2)f[i]).x * (phigh - ((Vector2)f[i - 1]).y)) / dy;
+                    break;
+                }
+            }
         }
-        else
-        {
-            mean = min + range / 2;
-            pmean = .5f;
-        }
-        mean -= min;
-        float a = UnityEngine.Random.value;
-        float c = UnityEngine.Random.value * mean + UnityEngine.Random.value * (range - mean);
-        if (pmean != 0 && (pmean == 1 || c / pmean < (range - c) / (1 - pmean)))
-        {
-            min += c * (1 - a);
-            range = c * a / pmean;
-            x.baseDifficulty = (int)Mathf.Floor(min);
-            x.sidesPerDie = (int)Mathf.Ceil(range);
-        }
-        else
-        {
-            max -= c * (1 - a);
-            range = (range - c) * a / (1 - pmean);
-            x.baseDifficulty = (int)Mathf.Floor(max - range);
-            x.sidesPerDie = (int)Mathf.Ceil(range);
-        }
+        x.baseDifficulty = (int)Mathf.Floor(low);
+        x.sidesPerDie = (int)Mathf.Ceil(high - low);
         return x;
     }
 
