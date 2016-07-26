@@ -7,16 +7,22 @@ public class TheDestroyer : MonoBehaviour {
     public GameObject[] Grounds;
     public Sprite[] StatsSprites;
 
+    public CheatingBastard cheatbast;
+
     private string[] stats = new string[] { HelpFunctions.Attract, HelpFunctions.Jump, HelpFunctions.Run, HelpFunctions.Swim };
     private int[] difficulty = new int[4];
     private int freq;
     private int counter;
     private int itemsID = 10;
 
+    private ArrayList passchance;
 
     // Use this for initialization
     void Start () {
         freq = counter = GameMaster.instance.Frequency;
+        passchance = new ArrayList() { new Vector2(0, 0), new Vector2(4, .1f), new Vector2(5, .2f), new Vector2(10, 1) };
+        Debug.Log(passchance);
+        cheatbast = GetComponentInChildren<CheatingBastard>();
         for (int i = 0; i < 8; i++)
         {
             GameObject tmp = Grounds[Random.Range(0, Grounds.Length)];
@@ -59,8 +65,11 @@ public class TheDestroyer : MonoBehaviour {
         obs.statChecks = new List<StatCheck>();
         int stat = Random.Range(0, stats.Length);
         difficulty[stat]++;
-        int diff = Random.Range(8 * difficulty[stat], 11 * difficulty[stat]);
-        obs.statChecks.Add(new StatCheck() { statName = stats[stat], nDice = 0, sidesPerDie = 6, baseDifficulty = diff });
+        passchance[3] = new Vector2(cheatbast.character.skills.LevelOf(stats[stat]),1);
+        Debug.Log(cheatbast.character.skills.LevelOf(stats[stat]));
+        var check = HelpFunctions.FitStatCheck(stats[stat], passchance);
+        int diff = check.baseDifficulty + check.sidesPerDie;
+        obs.statChecks.Add(check);
         var text = go.transform.FindChild("text").GetComponent<TextMesh>();
         text.text = diff.ToString();
         var s = go.transform.FindChild("obstacle").GetComponent<SpriteRenderer>();
@@ -110,6 +119,7 @@ public class TheDestroyer : MonoBehaviour {
                 }
             }
         }
+        cheatbast.EquipItem(res);
         obs.reward = res;
     }
 }

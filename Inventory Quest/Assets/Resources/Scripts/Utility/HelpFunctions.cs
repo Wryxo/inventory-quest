@@ -12,7 +12,7 @@ public static class HelpFunctions {
         return croppedTexture;
     }
 
-    public static StatCheck FitStatCheck(string statName, ArrayList f) //May be replaced later on, it's really dumb
+    public static StatCheck FitStatCheck(string statName, ArrayList f) //May be replaced later on, this version uses spline interpolation
     {
         var x = new StatCheck();
         x.statName = statName;
@@ -30,11 +30,11 @@ public static class HelpFunctions {
             phigh = plow;
             plow = tmp;
         }
-        for(int i = 0; i < f.Count; i++)
+        for(int i = 1; i < f.Count; i++)
         {
             if (!lowset)
             {
-                if (plow < ((Vector2)f[i]).y)
+                if (plow > ((Vector2)f[i-1]).y)
                 {
                     dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
                     low = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - plow) + ((Vector2)f[i]).x * (plow - ((Vector2)f[i - 1]).y)) / dy;
@@ -42,7 +42,7 @@ public static class HelpFunctions {
                 }
             } else
             {
-                if (plow < ((Vector2)f[i]).y)
+                if (phigh > ((Vector2)f[i-1]).y)
                 {
                     dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
                     high = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - phigh) + ((Vector2)f[i]).x * (phigh - ((Vector2)f[i - 1]).y)) / dy;

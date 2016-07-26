@@ -33,8 +33,15 @@ public class Stats{
 
     public void Add(object key, int level)
     {
-        var value = new Skill(level);
-        contents.Add(key, value);
+        if (contents.Contains(key))
+        {
+            ((Skill)contents[key]).level += level;
+        }
+        else
+        {
+            var value = new Skill(level);
+            contents.Add(key, value);
+        }
     }
 
     public void Subtract(Stats rhs)
