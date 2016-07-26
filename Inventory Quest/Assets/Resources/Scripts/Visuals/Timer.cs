@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour {
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0.001f)
         {
+            timeLeft = 0.0f;
             GameMaster.instance.Victory();
         }
         TimeSpan ts = TimeSpan.FromSeconds(timeLeft);

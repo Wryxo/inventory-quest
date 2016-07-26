@@ -21,13 +21,12 @@ public class TheDestroyer : MonoBehaviour {
     void Start () {
         freq = counter = GameMaster.instance.Frequency;
         passchance = new ArrayList() { new Vector2(0, 0), new Vector2(4, .1f), new Vector2(5, .2f), new Vector2(10, 1) };
-        Debug.Log(passchance);
         cheatbast = GetComponentInChildren<CheatingBastard>();
         for (int i = 0; i < 8; i++)
         {
             GameObject tmp = Grounds[Random.Range(0, Grounds.Length)];
             Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
-            var ground = Instantiate(tmp, new Vector3(transform.position.x + (i * sprite.texture.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
+            var ground = Instantiate(tmp, new Vector3(transform.position.x + (i * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
             if (i == (8 - freq))
             {
                 var stat = PrepareObstacle(ground);
@@ -50,7 +49,7 @@ public class TheDestroyer : MonoBehaviour {
     {
         GameObject tmp = Grounds[Random.Range(0, Grounds.Length)];
         Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
-        var ground = Instantiate(tmp, new Vector3(transform.position.x  + (8.0f * sprite.texture.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
+        var ground = Instantiate(tmp, new Vector3(transform.position.x  + (8 * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
         counter++;
         if (counter >= freq) {
             var stat = PrepareObstacle(ground);
@@ -68,8 +67,6 @@ public class TheDestroyer : MonoBehaviour {
         passchance[3] = new Vector2(cheatbast.character.skills.LevelOf(stats[stat]),1);
         var check = HelpFunctions.FitStatCheck(stats[stat], passchance);
         int diff = check.baseDifficulty + check.sidesPerDie;
-        Debug.Log(cheatbast.character.skills.LevelOf(stats[stat]));
-        Debug.Log(diff);
         obs.statChecks.Add(check);
         var text = go.transform.FindChild("text").GetComponent<TextMesh>();
         text.text = diff.ToString();
