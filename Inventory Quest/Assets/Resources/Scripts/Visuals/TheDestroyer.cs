@@ -24,12 +24,21 @@ public class TheDestroyer : MonoBehaviour {
         cheatbast = GetComponentInChildren<CheatingBastard>();
         for (int i = 0; i < 8; i++)
         {
-            GameObject tmp = Grounds[Random.Range(0, Grounds.Length)];
+            int stat = Random.Range(0, stats.Length);
+            GameObject tmp = Grounds[Random.Range(0, 4)];
+            if (stat == 1 && i == (8 - freq))
+            {
+                tmp = Grounds[4];
+            }
+            if (stat == 3 && i == (8 - freq))
+            {
+                tmp = Grounds[5];
+            }
             Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
             var ground = Instantiate(tmp, new Vector3(transform.position.x + (i * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
             if (i == (8 - freq))
             {
-                var stat = PrepareObstacle(ground);
+                PrepareObstacle(ground, stat);
                 PrepareReward(ground, stat);
             }
         }
@@ -47,22 +56,30 @@ public class TheDestroyer : MonoBehaviour {
 
     private void SpawnGround()
     {
-        GameObject tmp = Grounds[Random.Range(0, Grounds.Length)];
-        Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
-        var ground = Instantiate(tmp, new Vector3(transform.position.x  + (8 * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
+        int stat = Random.Range(0, stats.Length);
+        GameObject tmp = Grounds[Random.Range(0, 4)];
         counter++;
+        if (stat == 1 && counter >= freq)
+        {
+            tmp = Grounds[4];
+        }
+        if (stat == 3 && counter >= freq)
+        {
+            tmp = Grounds[5];
+        }
+        Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
+        var ground = Instantiate(tmp, new Vector3(transform.position.x  + (7.9f * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
         if (counter >= freq) {
-            var stat = PrepareObstacle(ground);
+            PrepareObstacle(ground, stat);
             PrepareReward(ground, stat);
             counter = 0;
         }
     }
 
-    private int PrepareObstacle(GameObject go)
+    private void PrepareObstacle(GameObject go, int stat)
     {
         var obs = go.transform.FindChild("obstacle").GetComponent<Obstacle>();
         obs.statChecks = new List<StatCheck>();
-        int stat = Random.Range(0, stats.Length);
         difficulty[stat]++;
         passchance[3] = new Vector2(cheatbast.character.skills.LevelOf(stats[stat]),1);
         var check = HelpFunctions.FitStatCheck(stats[stat], passchance);
@@ -72,7 +89,6 @@ public class TheDestroyer : MonoBehaviour {
         text.text = diff.ToString();
         var s = go.transform.FindChild("obstacle").GetComponent<SpriteRenderer>();
         s.sprite = StatsSprites[stat];
-        return stat;
     }
 
     private void PrepareReward(GameObject go, int stat)

@@ -70,7 +70,7 @@ public class NPC : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (transform.position.x > -15 && transform.position.y < 2.8f)
+        if (transform.position.x > -15 && transform.position.y < 4.2f)
         {
             transform.position = new Vector3(transform.position.x - Time.deltaTime, transform.position.y, transform.position.z);
         }
