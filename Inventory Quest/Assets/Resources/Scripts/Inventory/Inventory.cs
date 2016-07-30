@@ -255,7 +255,7 @@ public class Inventory : MonoBehaviour {
 
     public int CountItemsWithId(int id)
     {
-        int area = 1;
+        int area = 0;
         int count = 0;
         for (int yi = 0; yi < height; yi++)
         {
@@ -269,7 +269,7 @@ public class Inventory : MonoBehaviour {
                 }
             }
         }
-        return count/area;
+        return area > 0 ? count/area : count;
     }
 
     public void UI_getInventorySlot(int position)

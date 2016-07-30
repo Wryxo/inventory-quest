@@ -20,6 +20,19 @@ public class ItemUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             int y = pos % 10;
             item = NPC.instance.inventory.ItemAt(x, y);
             GetComponent<Image>().sprite = item.imgs[NPC.instance.inventory.SpriteAt(x, y)];
+            var tmpp = NPC.instance.inventory.ItemAt(x + 1, y);
+            var tmpp2 = NPC.instance.inventory.ItemAt(x, y + 1);
+            var last = true;
+            if (tmpp != null && tmpp.id == item.id && NPC.instance.inventory.SpriteAt(x, y) < NPC.instance.inventory.SpriteAt(x + 1, y)) last = false;
+            if (tmpp2 != null && tmpp2.id == item.id && NPC.instance.inventory.SpriteAt(x, y) < NPC.instance.inventory.SpriteAt(x, y + 1)) last = false;
+            if (item.stack < 2 || !last)
+            {
+                GetComponentInChildren<Text>().text = "";
+            }
+            else
+            {
+                GetComponentInChildren<Text>().text = item.stack.ToString();
+            }
         }
         if (transform.parent.parent.name == "LootBox")
         {
@@ -28,6 +41,19 @@ public class ItemUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             int y = pos % 10;
             item = NPC.instance.lootbox.ItemAt(x, y);
             GetComponent<Image>().sprite = item.imgs[NPC.instance.lootbox.SpriteAt(x, y)];
+            var tmpp = NPC.instance.lootbox.ItemAt(x + 1, y);
+            var tmpp2 = NPC.instance.lootbox.ItemAt(x, y + 1);
+            var last = true;
+            if (tmpp != null && tmpp.id == item.id && NPC.instance.lootbox.SpriteAt(x, y) < NPC.instance.lootbox.SpriteAt(x + 1, y)) last = false;
+            if (tmpp2 != null && tmpp2.id == item.id && NPC.instance.lootbox.SpriteAt(x, y) < NPC.instance.lootbox.SpriteAt(x, y + 1)) last = false;
+            if (item.stack < 2 || !last)
+            {
+                GetComponentInChildren<Text>().text = "";
+            }
+            else
+            {
+                GetComponentInChildren<Text>().text = item.stack.ToString();
+            }
         }
         if (transform.parent.parent.name == "EquipUI")
         {

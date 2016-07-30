@@ -54,9 +54,6 @@ public class NPC : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        inventory.InsertItem(Item.Ciapka(47), 0, 0);
-        inventory.InsertItem(Item.Celenka(47), 2, 0);
-        inventory.InsertItem(Item.Vesta(47), 0, 1);
         if (Event_onStatsChange != null)
         {
             Event_onStatsChange();
@@ -152,18 +149,25 @@ public class NPC : MonoBehaviour {
     public void OnInventoryItemHover(int position)
     {
         var item = inventory.ItemAt(position / 10, position % 10);
-        if (hand == null)
-        {
-            if (item != null && Event_onItemHover != null)
-            {
-                Event_onItemHover(item);
-            }
-        }
-        else
+        if (hand != null)
         {
             if (Event_onItemHover != null)
             {
                 Event_onItemHover(hand);
+            }
+        }
+        else if (ItemUI.itemBeingDragged != null)
+        {
+            if (Event_onItemHover != null)
+            {
+                Event_onItemHover(ItemUI.itemBeingDragged.GetComponent<ItemUI>().item);
+            }
+        }
+        else 
+        {
+            if (item != null && Event_onItemHover != null)
+            {
+                Event_onItemHover(item);
             }
         }
     }
@@ -171,52 +175,90 @@ public class NPC : MonoBehaviour {
     public void OnLootBoxItemHover(int position)
     {
         var item = lootbox.ItemAt(position / 10, position % 10);
-        if (hand == null) { 
-            if (item != null && Event_onItemHover != null)
-            {
-                Event_onItemHover(item);
-            }
-        } else
+        if (hand != null)
         {
             if (Event_onItemHover != null)
             {
                 Event_onItemHover(hand);
+            }
+        }
+        else if (ItemUI.itemBeingDragged != null)
+        {
+            if (Event_onItemHover != null)
+            {
+                Event_onItemHover(ItemUI.itemBeingDragged.GetComponent<ItemUI>().item);
+            }
+        }
+        else
+        {
+            if (item != null && Event_onItemHover != null)
+            {
+                Event_onItemHover(item);
+            }
+        }
+    }
+
+    public void OnEquippedItemHover(string position)
+    {
+        var item = gear.ItemAt(position);
+        if (hand != null)
+        {
+            if (Event_onItemHover != null)
+            {
+                Event_onItemHover(hand);
+            }
+        }
+        else if (ItemUI.itemBeingDragged != null)
+        {
+            if (Event_onItemHover != null)
+            {
+                Event_onItemHover(ItemUI.itemBeingDragged.GetComponent<ItemUI>().item);
+            }
+        }
+        else
+        {
+            if (item != null && Event_onItemHover != null)
+            {
+                Event_onItemHover(item);
             }
         }
     }
 
     public void OnEquipClick()
     {
-        if (hand == null)
-        {
-            if (Event_onItemExit != null)
-            {
-                Event_onItemExit();
-            }
-        }
-        else
+        if (hand != null)
         {
             if (Event_onItemHover != null)
             {
                 Event_onItemHover(hand);
             }
         }
+        else if (ItemUI.itemBeingDragged != null)
+        {
+            if (Event_onItemHover != null)
+            {
+                Event_onItemHover(ItemUI.itemBeingDragged.GetComponent<ItemUI>().item);
+            }
+        }
+        else
+        {
+            if (Event_onItemExit != null)
+            {
+                Event_onItemExit();
+            }
+        }
     }
 
     public void OnItemExit()
     {
-        if (hand == null && Event_onItemExit != null) { 
+        if (hand == null && Event_onItemExit != null && ItemUI.itemBeingDragged == null) { 
             Event_onItemExit();
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-    }
-
     public void Jump()
     {
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(5.0f,15.0f),ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(5.0f,10.0f),ForceMode2D.Impulse);
     }
 
 }

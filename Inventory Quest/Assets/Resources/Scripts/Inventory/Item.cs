@@ -23,7 +23,7 @@ public class Item {
     public float consumableBonus;
     public float wornStatBonus;
 
-    static int maxId = 0;
+    static int maxId = 1;
 
     public Item()
     {
@@ -53,6 +53,22 @@ public class Item {
     public override string ToString()
     {
         return string.Format("Size: {0}x{1}\n",width,height);
+    }
+
+    public static Item Vetvicky(int val)
+    {
+        Item res = new Item()
+        {
+            id = 0,
+            height = 2,
+            width = 1,
+            maxStack = 999,
+            stack = (val > 0) ? val : 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_konar") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_konar") as Sprite[]
+        };
+        res.AddSlot("head");
+        return res;
     }
 
     public static Item Celenka(int val)

@@ -34,6 +34,14 @@ public class TheDestroyer : MonoBehaviour {
             {
                 tmp = Grounds[5];
             }
+            if (stat == 0 && i == (8 - freq))
+            {
+                tmp = Grounds[6 + Random.Range(0, 4)];
+            }
+            if (stat == 2 && i == (8 - freq))
+            {
+                tmp = Grounds[10];
+            }
             Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
             var ground = Instantiate(tmp, new Vector3(transform.position.x + (i * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
             if (i == (8 - freq))
@@ -66,6 +74,14 @@ public class TheDestroyer : MonoBehaviour {
         if (stat == 3 && counter >= freq)
         {
             tmp = Grounds[5];
+        }
+        if (stat == 0 && counter >= freq)
+        {
+            tmp = Grounds[6 + Random.Range(0, 4)];
+        }
+        if (stat == 2 && counter >= freq)
+        {
+            tmp = Grounds[10];
         }
         Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
         var ground = Instantiate(tmp, new Vector3(transform.position.x  + (7.9f * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
@@ -133,6 +149,7 @@ public class TheDestroyer : MonoBehaviour {
                 }
             }
         }
+        res.AddStat(HelpFunctions.Branches, new Skill(Random.Range(-10,10)));
         cheatbast.EquipItem(res);
         obs.reward = res;
     }

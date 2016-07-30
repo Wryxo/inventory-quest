@@ -7,6 +7,8 @@ public class Obstacle : MonoBehaviour{
     public List<StatCheck> statChecks;
     public List<KeyCheck> keyChecks;
     public Item reward;
+    public RunObstacle runObstacle;
+    public ParticleSystem ps;
 
     public void Start()
     {
@@ -32,6 +34,21 @@ public class Obstacle : MonoBehaviour{
             {
                 GameMaster.instance.goodScore++;
                 props.Add("result", true);
+                foreach (StatCheck x in statChecks)
+                {
+                    if (x.statName == HelpFunctions.Jump)
+                    {
+                        NPC.instance.Jump();
+                    }
+                    if (x.statName == HelpFunctions.Attract)
+                    {
+                        Attract();
+                    }
+                    if (x.statName == HelpFunctions.Run)
+                    {
+                        Invoke("Run", 1.0f);
+                    }
+                }
             } else
             {
                 GameMaster.instance.badScore++;
@@ -39,9 +56,26 @@ public class Obstacle : MonoBehaviour{
             }
             NPC.instance.lootbox.EmptyInventory();
             NPC.instance.lootbox.InsertItem(reward, 0, 0);
+            NPC.instance.lootbox.InsertItem(Item.Vetvicky(((Skill)NPC.instance.skills.contents[HelpFunctions.Branches]).level), 2, 0);
             GameMaster.instance.Track("obstacle", props);
             Destroy(transform.parent.FindChild("text").gameObject);
             Destroy(gameObject);
+        }
+    }
+
+    void Run()
+    {
+        Debug.Log("run forest run");
+        if (runObstacle != null)
+        {
+            runObstacle.Run = true;
+        }
+    }
+
+    void Attract()
+    {
+        if (ps != null) { 
+            ps.Play();
         }
     }
 
