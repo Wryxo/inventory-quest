@@ -54,6 +54,9 @@ public class NPC : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        inventory.InsertItem(Item.Ciapka(47), 0, 0);
+        inventory.InsertItem(Item.Celenka(47), 2, 0);
+        inventory.InsertItem(Item.Vesta(47), 0, 1);
         if (Event_onStatsChange != null)
         {
             Event_onStatsChange();
@@ -72,7 +75,7 @@ public class NPC : MonoBehaviour {
     {
         if (transform.position.x > -15 && transform.position.y < 4.2f)
         {
-            transform.position = new Vector3(transform.position.x - Time.deltaTime, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - (Time.deltaTime * 3), transform.position.y, transform.position.z);
         }
     }
 

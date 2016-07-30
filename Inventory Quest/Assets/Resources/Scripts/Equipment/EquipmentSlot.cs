@@ -2,17 +2,37 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using UnityEngine.EventSystems;
 
-public class EquipmentSlot : MonoBehaviour {
+public class EquipmentSlot : MonoBehaviour, IDropHandler
+{
+    public GameObject item
+    {
+        get
+        {
+            if (transform.childCount > 0)
+            {
+                return transform.GetChild(0).gameObject;
+            }
+            return null;
+        }
+    }
+
+    public GameObject itemPrefab;
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        ItemUI.itemBeingDragged.transform.SetParent(transform);
+    }
 
     void Awake()
     {
-        NPC.instance.gear.Event_onEquipmentChange += SetImage;
+        NPC.instance.gear.Event_onEquipmentChange += SetItem;
     }
 
     void OnDestroy()
     {
-        NPC.instance.gear.Event_onEquipmentChange -= SetImage;
+        NPC.instance.gear.Event_onEquipmentChange -= SetItem;
     }
 
     void SetImage()
@@ -38,6 +58,21 @@ public class EquipmentSlot : MonoBehaviour {
         } else
         {
             tmp3.text = ""; 
+        }
+    }
+
+    void SetItem()
+    {
+        var tmp = NPC.instance.gear.ItemAt(name);
+        foreach (Transform go in transform)
+        {
+            Destroy(go.gameObject);
+        }
+        if (tmp != null)
+        {
+
+            var go = Instantiate(itemPrefab, transform.position, Quaternion.identity) as GameObject;
+            go.transform.SetParent(transform);
         }
     }
 }

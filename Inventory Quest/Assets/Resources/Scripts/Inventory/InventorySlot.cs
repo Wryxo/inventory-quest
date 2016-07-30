@@ -1,17 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System;
 
-public class InventorySlot : MonoBehaviour {
+public class InventorySlot : MonoBehaviour, IDropHandler {
+    public GameObject item
+    {
+        get
+        {
+            if (transform.childCount > 0)
+            {
+                return transform.GetChild(0).gameObject;
+            }
+            return null;
+        }
+    }
 
+    public GameObject itemPrefab;
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        ItemUI.itemBeingDragged.transform.SetParent(transform);
+    }
 
     void Awake()
     {
-        NPC.instance.inventory.Event_onInventoryChange += SetImage;
+        NPC.instance.inventory.Event_onInventoryChange += SetItem;
     }
 
-	void SetImage()
+    void OnDestroy()
+    {
+        NPC.instance.inventory.Event_onInventoryChange -= SetItem;
+    }
+
+    void SetImage()
     {
         int pos = Convert.ToInt32(name);
         int x = pos / 10;
@@ -42,6 +65,23 @@ public class InventorySlot : MonoBehaviour {
         } else
         {
             tmp3.text = tmp2.stack.ToString();
+        }
+    }
+
+    void SetItem()
+    {
+        int pos = Convert.ToInt32(name);
+        int x = pos / 10;
+        int y = pos % 10;
+        var tmp = NPC.instance.inventory.ItemAt(x, y);
+        foreach(Transform go in transform)
+        {
+            Destroy(go.gameObject);
+        }
+        if (tmp != null)
+        {
+            var go = Instantiate(itemPrefab, transform.position, Quaternion.identity) as GameObject;
+            go.transform.SetParent(transform);
         }
     }
 }

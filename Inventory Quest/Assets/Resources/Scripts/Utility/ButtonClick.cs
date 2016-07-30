@@ -21,6 +21,8 @@ public class ButtonClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         exit.Invoke();
     }
 
+    
+
     public void OnPointerClick(PointerEventData eventData)
     {
         

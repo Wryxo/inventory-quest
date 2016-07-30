@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour {
         tmp.stats.Add("Jump", -5);
         tmp.AddSlot("chest");
         InsertItem(tmp, 3, 1);*/
-
+        
         if (Event_onInventoryChange != null)
         {
             Event_onInventoryChange();
@@ -87,6 +87,23 @@ public class Inventory : MonoBehaviour {
         {
             Event_onInventoryChange();
         }
+    }
+
+    public int ItemFitHere(Item what, int x, int y)
+    {
+        int w = what.width;
+        int h = what.height;
+        for (int i = y; i > y - h; i--)
+        {
+            for (int j =  x; j > x - w; j--)
+            {
+                if (IsEmpty(j, i, w, h))
+                {
+                    return j*10 + i;
+                }
+            }
+        }
+        return x*10 + y;
     }
 
     public Item InsertItem(Item what,int x,int y)
@@ -273,7 +290,8 @@ public class Inventory : MonoBehaviour {
         }
         else
         {
-            var h = InsertItem(NPC.instance.hand, x, y);
+            var newPos = ItemFitHere(NPC.instance.hand, x, y);
+            var h = InsertItem(NPC.instance.hand, newPos / 10, newPos % 10);
             NPC.instance.hand = h;
         }
     }

@@ -21,9 +21,9 @@ public class Item {
     public Hashtable compatibleSlots;
 
     public float consumableBonus;
-    public float wornStatBonus; 
+    public float wornStatBonus;
 
-
+    static int maxId = 0;
 
     public Item()
     {
@@ -52,13 +52,14 @@ public class Item {
 
     public override string ToString()
     {
-        return string.Format("{0}\nStats: {1}\nCompatible slots: {2}\nSize: {3}x{4}\nAmount: {5}",name,stats,compatibleSlots,width,height,stack);
+        return string.Format("Size: {0}x{1}\n",width,height);
     }
 
     public static Item Celenka(int val)
     {
         Item res = new Item()
         {
+            id = maxId++,
             height = 2,
             width = 1,
             maxStack = 1,
@@ -75,6 +76,7 @@ public class Item {
     {
         Item res = new Item()
         {
+            id = maxId++,
             height = 1,
             width = 1,
             maxStack = 1,
@@ -91,6 +93,7 @@ public class Item {
     {
         Item res = new Item()
         {
+            id = maxId++,
             height = 1,
             width = 2,
             maxStack = 1,
@@ -107,6 +110,7 @@ public class Item {
     {
         Item res = new Item()
         {
+            id = maxId++,
             height = 1,
             width = 2,
             maxStack = 1,
@@ -123,6 +127,7 @@ public class Item {
     {
         Item res = new Item()
         {
+            id = maxId++,
             height = 1,
             width = 1,
             maxStack = 1,
@@ -139,6 +144,7 @@ public class Item {
     {
         Item res = new Item()
         {
+            id = maxId++,
             height = 1,
             width = 2,
             maxStack = 1,
@@ -155,6 +161,7 @@ public class Item {
     {
         Item res = new Item()
         {
+            id = maxId++,
             height = 3,
             width = 2,
             maxStack = 1,
@@ -171,6 +178,7 @@ public class Item {
     {
         Item res = new Item()
         {
+            id = maxId++,
             height = 2,
             width = 2,
             maxStack = 1,
