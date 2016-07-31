@@ -115,6 +115,7 @@ MonoBehaviour:
   inventory: {fileID: 11401784}
   lootbox: {fileID: 11401784}
   gear: {fileID: 11446474}
+  animator: {fileID: 0}
 --- !u!114 &11472770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,6 +146,7 @@ MonoBehaviour:
   - {fileID: 175414, guid: 4a15411e6a518024fb4c77c093ca9382, type: 2}
   - {fileID: 189576, guid: 73493a26a92643a4bbaa1640601f7ff2, type: 2}
   - {fileID: 148216, guid: e8bd292372953de44ad81e29c9fd4921, type: 2}
+  FinishGround: {fileID: 178798, guid: 30233bbd4943a6a43b51e5824e477469, type: 2}
   StatsSprites:
   - {fileID: 21300000, guid: 877ac12b4dae2d1478c3e383724e7961, type: 3}
   - {fileID: 21300000, guid: fa9194222e3614a4ba1f422cf917f14d, type: 3}

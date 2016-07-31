@@ -411,7 +411,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 4}
   m_Points:
-  - {x: 0, y: 0}
+  - {x: -0.027635098, y: -2.3489914}
   - {x: 0.412035, y: -2.345726}
   - {x: 6.257688, y: -2.3527794}
   - {x: 12.27, y: 0}
@@ -549,6 +549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558db61bf1846274da59c17c65b416b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runObstacle: {fileID: 0}
+  ps: {fileID: 0}
 --- !u!114 &11489138
 MonoBehaviour:
   m_ObjectHideFlags: 1

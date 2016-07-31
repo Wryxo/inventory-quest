@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class TheDestroyer : MonoBehaviour {
 
     public GameObject[] Grounds;
+    public GameObject FinishGround;
     public Sprite[] StatsSprites;
 
     public CheatingBastard cheatbast;
@@ -13,7 +15,28 @@ public class TheDestroyer : MonoBehaviour {
     private int[] difficulty = new int[4];
     private int freq;
     private int counter;
-    private int itemsID = 10;
+    private bool finishSpawned = false;
+    private Func<int, Item>[] itemFunkcie =
+    {
+        x => { return Item.Celenka(x); },
+        x => { return Item.Ciapka(x); },
+        x => { return Item.Nasada(x); },
+        x => { return Item.Pruziny(x); },
+        x => { return Item.Topanka(x); },
+        x => { return Item.Topanky(x); },
+        x => { return Item.Trysky(x); },
+        x => { return Item.Vesta(x); },
+        x => { return Item.Delfin(x); },
+        x => { return Item.DelfinBota(x); },
+        x => { return Item.DelfinBoty(x); },
+        x => { return Item.Kridla(x); },
+        x => { return Item.Magnet(x); },
+        x => { return Item.Neopren(x); },
+        x => { return Item.Plutva(x); },
+        x => { return Item.Plutvy(x); },
+        x => { return Item.Tryska(x); },
+        x => { return Item.Trysky2(x); }
+    };
 
     private ArrayList passchance;
 
@@ -24,8 +47,8 @@ public class TheDestroyer : MonoBehaviour {
         cheatbast = GetComponentInChildren<CheatingBastard>();
         for (int i = 0; i < 8; i++)
         {
-            int stat = Random.Range(0, stats.Length);
-            GameObject tmp = Grounds[Random.Range(0, 4)];
+            int stat = UnityEngine.Random.Range(0, stats.Length);
+            GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
             if (stat == 1 && i == (8 - freq))
             {
                 tmp = Grounds[4];
@@ -36,7 +59,7 @@ public class TheDestroyer : MonoBehaviour {
             }
             if (stat == 0 && i == (8 - freq))
             {
-                tmp = Grounds[6 + Random.Range(0, 4)];
+                tmp = Grounds[6 + UnityEngine.Random.Range(0, 4)];
             }
             if (stat == 2 && i == (8 - freq))
             {
@@ -56,36 +79,51 @@ public class TheDestroyer : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Ground")
         {
-            SpawnGround();
+            if (GameMaster.instance.Overtime && !finishSpawned)
+            {
+                finishSpawned = true;
+                SpawnFinish();
+            } else
+            {
+                SpawnGround();
+            }
         }
         Destroy(other.gameObject);
 
 	}
 
+    private void SpawnFinish()
+    {
+        Sprite sprite = FinishGround.GetComponent<SpriteRenderer>().sprite;
+        var ground = Instantiate(FinishGround, new Vector3(transform.position.x  + (7.9f * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
+    }
+
     private void SpawnGround()
     {
-        int stat = Random.Range(0, stats.Length);
-        GameObject tmp = Grounds[Random.Range(0, 4)];
+        int stat = UnityEngine.Random.Range(0, stats.Length);
+        GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
         counter++;
-        if (stat == 1 && counter >= freq)
-        {
-            tmp = Grounds[4];
-        }
-        if (stat == 3 && counter >= freq)
-        {
-            tmp = Grounds[5];
-        }
-        if (stat == 0 && counter >= freq)
-        {
-            tmp = Grounds[6 + Random.Range(0, 4)];
-        }
-        if (stat == 2 && counter >= freq)
-        {
-            tmp = Grounds[10];
+        if (!GameMaster.instance.Overtime) { 
+            if (stat == 1 && counter >= freq)
+            {
+                tmp = Grounds[4];
+            }
+            if (stat == 3 && counter >= freq)
+            {
+                tmp = Grounds[5];
+            }
+            if (stat == 0 && counter >= freq)
+            {
+                tmp = Grounds[6 + UnityEngine.Random.Range(0, 4)];
+            }
+            if (stat == 2 && counter >= freq)
+            {
+                tmp = Grounds[10];
+            }
         }
         Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
         var ground = Instantiate(tmp, new Vector3(transform.position.x  + (7.9f * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
-        if (counter >= freq) {
+        if (counter >= freq && !GameMaster.instance.Overtime) {
             PrepareObstacle(ground, stat);
             PrepareReward(ground, stat);
             counter = 0;
@@ -109,47 +147,22 @@ public class TheDestroyer : MonoBehaviour {
 
     private void PrepareReward(GameObject go, int stat)
     {
-        int choice = Random.Range(0, 8);
+        int choice = UnityEngine.Random.Range(0, itemFunkcie.Length);
         Item res = new Item();
         var obs = go.transform.FindChild("obstacle").GetComponent<Obstacle>();
-        switch (choice) {
-            case 0:
-                res = Item.Celenka(Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));
-                break;
-            case 1:
-                res = Item.Ciapka(Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));
-                break;
-            case 2:
-                res = Item.Pruziny(Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));
-                break;
-            case 3:
-                res = Item.Topanka(Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));
-                break;
-            case 4:
-                res = Item.Topanky(Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));
-                break;
-            case 5:
-                res = Item.Trysky(Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));
-                break;
-            case 6:
-                res = Item.Vesta(Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));
-                break;
-            default:
-                res = Item.Nasada(Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));
-                break;
-        }
+        res = itemFunkcie[choice].Invoke(UnityEngine.Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));
         for (int i = 0; i < 4; i++)
         {
-            int chance = Random.Range(0, 10);
-            if (chance < 6)
+            int chance = UnityEngine.Random.Range(0, 10);
+            if (chance < 5)
             {
                 if (!res.stats.contents.Contains(stats[i]))
                 {
-                    res.AddStat(stats[i], new Skill(Random.Range(-7 * (difficulty[i] / 2), 7 * (difficulty[i] / 3))));
+                    res.AddStat(stats[i], new Skill(UnityEngine.Random.Range(-7 * (difficulty[i] / 2), 7 * (difficulty[i] / 3))));
                 }
             }
         }
-        res.AddStat(HelpFunctions.Branches, new Skill(Random.Range(-10,10)));
+        res.AddStat(HelpFunctions.Branches, new Skill(UnityEngine.Random.Range(-10,10)));
         cheatbast.EquipItem(res);
         obs.reward = res;
     }

@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class Victory : MonoBehaviour {
 
-    public Text GoodText;
-    public Text BadText;
+    public Text DisplayText;
 
     // Use this for initialization
     void Start () {
-        GoodText.text = NPC.instance.inventory.CountItemsWithId(0).ToString();
-        BadText.text = GameMaster.instance.badScore.ToString();
+        if (DisplayText != null)
+        {
+            DisplayText.text = NPC.instance.inventory.CountItemsWithId(0).ToString();
+        }
     }
 }

@@ -25,15 +25,24 @@ public class GameMaster : MonoBehaviour {
 
     public int goodScore;
     public int badScore;
+    public bool Overtime = false;
 
     public float Speed;
     public int Frequency;
     public float TimeLimit;
 
-    public GameObject GameMenu, VictoryGO;
+    public GameObject GameMenu, VictoryGO, DefeatGO;
     private bool menu;
     private GameObject ui;
     private float _speed;
+
+    public delegate void InvokedFunction();
+    public IEnumerator WaitAndInvoke(float secondsToWait, InvokedFunction func)
+    {
+        yield return new WaitForSeconds(secondsToWait);
+        func();
+    }
+
     // Use this for initialization
     void Start () {
 
@@ -145,6 +154,7 @@ public class GameMaster : MonoBehaviour {
     public void RestartLevel()
     {
         Time.timeScale = 1.0f;
+        Speed = 5.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Dictionary<string, object> props = new Dictionary<string, object>();
         props.Add("Speed", -instance.Speed);
@@ -179,6 +189,17 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
+    void StopPlayer()
+    {
+        Speed = 0;
+    }
+
+    public void StartVictory()
+    {
+        StopPlayer();
+        StartCoroutine(WaitAndInvoke(2, Victory));
+    }
+
     public void Victory()
     {
         ui = GameObject.Find("UserInterface");
@@ -190,7 +211,28 @@ public class GameMaster : MonoBehaviour {
         props.Add("Difficulty", instance.Frequency);
         props.Add("TimeLimit", instance.TimeLimit);
         props.Add("GoodScore", NPC.instance.inventory.CountItemsWithId(0));
-        props.Add("BadScore", instance.badScore);
+        props.Add("Result", true);
+        //infinario.Track("level_end", props);
+    }
+
+    public void StartDefeat()
+    {
+        StartCoroutine(WaitAndInvoke(1, StopPlayer));
+        StartCoroutine(WaitAndInvoke(2, Defeat));
+    }
+
+    public void Defeat()
+    {
+        ui = GameObject.Find("UserInterface");
+        var go = Instantiate(DefeatGO) as GameObject;
+        go.transform.SetParent(ui.transform, false);
+        ShowGameMenu(true);
+        Dictionary<string, object> props = new Dictionary<string, object>();
+        props.Add("Speed", -instance.Speed);
+        props.Add("Difficulty", instance.Frequency);
+        props.Add("TimeLimit", instance.TimeLimit);
+        props.Add("GoodScore", NPC.instance.inventory.CountItemsWithId(0));
+        props.Add("Result", false);
         //infinario.Track("level_end", props);
     }
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class RunObstacle : MonoBehaviour {
 
     public bool Run = false;
-    public float Speed = 0.3f;
+    public float Speed = 0.5f;
     public float TimeLeft;
 	
 	// Update is called once per frame

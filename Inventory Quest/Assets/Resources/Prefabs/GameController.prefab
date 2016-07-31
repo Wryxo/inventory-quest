@@ -40,18 +40,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b04b0da28b2b44b829dda55d7f6fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   evilness: 0
   intelligence: 0
   speed: 0
+  BaseObstacle: {fileID: 0}
   goodScore: 0
   badScore: 0
+  Overtime: 0
   Speed: -5
   Frequency: 3
   TimeLimit: 180
   GameMenu: {fileID: 160878, guid: ca3f8aac9bce4b84682bda85e229f9e0, type: 2}
   VictoryGO: {fileID: 141530, guid: c8ab66cc2113d3f4086b7b6feaed56dd, type: 2}
-  FeedbackGO: {fileID: 180044, guid: a78dc1a543d1566489a295501c10e413, type: 2}
-  Feedback: {fileID: 11432198, guid: a78dc1a543d1566489a295501c10e413, type: 2}
+  DefeatGO: {fileID: 114038, guid: 24c71921c6891f24d9f941186f2436db, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

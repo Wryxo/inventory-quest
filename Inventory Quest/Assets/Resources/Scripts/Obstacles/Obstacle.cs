@@ -8,7 +8,7 @@ public class Obstacle : MonoBehaviour{
     public List<KeyCheck> keyChecks;
     public Item reward;
     public RunObstacle runObstacle;
-    public ParticleSystem ps;
+    public AttractObstacle attractObstacle;
 
     public void Start()
     {
@@ -46,7 +46,9 @@ public class Obstacle : MonoBehaviour{
                     }
                     if (x.statName == HelpFunctions.Attract)
                     {
-                        Attract();
+                        if (attractObstacle != null) { 
+                            attractObstacle.Attract();
+                        }
                     }
                     if (x.statName == HelpFunctions.Run)
                     {
@@ -56,12 +58,12 @@ public class Obstacle : MonoBehaviour{
                 }
             } else
             {
-                GameMaster.instance.badScore++;
-                props.Add("result", false);
                 if (runObstacle != null)
                 {
                     runObstacle.Speed = 3;
                 }
+                props.Add("result", false);
+                GameMaster.instance.StartDefeat();
             }
             NPC.instance.lootbox.EmptyInventory();
             NPC.instance.lootbox.InsertItem(reward, 0, 0);
@@ -69,13 +71,6 @@ public class Obstacle : MonoBehaviour{
             GameMaster.instance.Track("obstacle", props);
             Destroy(transform.parent.FindChild("text").gameObject);
             Destroy(gameObject);
-        }
-    }
-
-    void Attract()
-    {
-        if (ps != null) { 
-            ps.Play();
         }
     }
 

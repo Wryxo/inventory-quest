@@ -5,7 +5,7 @@ using System;
 using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
-    private float timeLeft;
+    public float timeLeft;
 
     void Start()
     {
@@ -18,10 +18,10 @@ public class Timer : MonoBehaviour {
         if (timeLeft < 0.001f)
         {
             timeLeft = 0.0f;
-            GameMaster.instance.Victory();
+            GameMaster.instance.Overtime = true;
         }
-        TimeSpan ts = TimeSpan.FromSeconds(timeLeft);
-        GetComponent<Text>().text = ts.Minutes.ToString("D2") + ":" + ts.Seconds.ToString("D2") + "." + ts.Milliseconds.ToString("D3");
+        //TimeSpan ts = TimeSpan.FromSeconds(timeLeft);
+        //GetComponent<Text>().text = ts.Minutes.ToString("D2") + ":" + ts.Seconds.ToString("D2") + "." + ts.Milliseconds.ToString("D3");
     }
 
 }

@@ -70,7 +70,6 @@ public class Item {
         res.AddSlot("head");
         return res;
     }
-
     public static Item Celenka(int val)
     {
         Item res = new Item()
@@ -87,7 +86,6 @@ public class Item {
         res.AddStat(HelpFunctions.Attract, new Skill(val));
         return res;
     }
-
     public static Item Ciapka(int val)
     {
         Item res = new Item()
@@ -104,7 +102,6 @@ public class Item {
         res.AddStat(HelpFunctions.Attract, new Skill(val));
         return res;
     }
-
     public static Item Nasada(int val)
     {
         Item res = new Item()
@@ -118,10 +115,9 @@ public class Item {
             imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_nasada_na_zobak") as Sprite[]
         };
         res.AddSlot("head");
-        res.AddStat(HelpFunctions.Swim, new Skill(val));
+        res.AddStat(HelpFunctions.Branches, new Skill(val));
         return res;
     }
-
     public static Item Pruziny(int val)
     {
         Item res = new Item()
@@ -138,7 +134,6 @@ public class Item {
         res.AddStat(HelpFunctions.Jump, new Skill(val));
         return res;
     }
-
     public static Item Topanka(int val)
     {
         Item res = new Item()
@@ -155,7 +150,6 @@ public class Item {
         res.AddStat(HelpFunctions.Run, new Skill(val));
         return res;
     }
-
     public static Item Topanky(int val)
     {
         Item res = new Item()
@@ -172,7 +166,6 @@ public class Item {
         res.AddStat(HelpFunctions.Run, new Skill(val));
         return res;
     }
-
     public static Item Trysky(int val)
     {
         Item res = new Item()
@@ -189,7 +182,6 @@ public class Item {
         res.AddStat(HelpFunctions.Jump, new Skill(val));
         return res;
     }
-
     public static Item Vesta(int val)
     {
         Item res = new Item()
@@ -203,7 +195,167 @@ public class Item {
             imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_vesta") as Sprite[]
         };
         res.AddSlot("chest");
+        res.AddStat(HelpFunctions.Attract, new Skill(val));
+        return res;
+    }
+    public static Item Delfin(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 2,
+            width = 2,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_delfin") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_delfin") as Sprite[]
+        };
+        res.AddSlot("chest");
         res.AddStat(HelpFunctions.Swim, new Skill(val));
+        return res;
+    }
+    public static Item DelfinBota(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 1,
+            width = 1,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_delfinBota") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_delfinBota") as Sprite[]
+        };
+        res.AddSlot("feet");
+        res.AddStat(HelpFunctions.Swim, new Skill(val));
+        return res;
+    }
+    public static Item DelfinBoty(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 1,
+            width = 2,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_delfinBoty") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_delfinBoty") as Sprite[]
+        };
+        res.AddSlot("feet");
+        res.AddStat(HelpFunctions.Swim, new Skill(val));
+        return res;
+    }
+    public static Item Kridla(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 2,
+            width = 3,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_kridla") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_kridla") as Sprite[]
+        };
+        res.AddSlot("chest");
+        res.AddStat(HelpFunctions.Jump, new Skill(val));
+        return res;
+    }
+    public static Item Magnet(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 1,
+            width = 1,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_magnet") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_magnet") as Sprite[]
+        };
+        res.AddSlot("head");
+        res.AddStat(HelpFunctions.Branches, new Skill(val));
+        return res;
+    }
+    public static Item Neopren(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 2,
+            width = 2,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_neopren") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_neopren") as Sprite[]
+        };
+        res.AddSlot("chest");
+        res.AddStat(HelpFunctions.Swim, new Skill(val));
+        return res;
+    }
+    public static Item Plutva(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 1,
+            width = 1,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_plutva") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_plutva") as Sprite[]
+        };
+        res.AddSlot("feet");
+        res.AddStat(HelpFunctions.Swim, new Skill(val));
+        return res;
+    }
+    public static Item Plutvy(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 1,
+            width = 2,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_plutvy") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_plutvy") as Sprite[]
+        };
+        res.AddSlot("feet");
+        res.AddStat(HelpFunctions.Swim, new Skill(val));
+        return res;
+    }
+    public static Item Tryska(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 3,
+            width = 1,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_tryska") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_tryska") as Sprite[]
+        };
+        res.AddSlot("chest");
+        res.AddStat(HelpFunctions.Jump, new Skill(val));
+        return res;
+    }
+    public static Item Trysky2(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            height = 3,
+            width = 2,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_trysky_2") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_trysky_2") as Sprite[]
+        };
+        res.AddSlot("chest");
+        res.AddStat(HelpFunctions.Jump, new Skill(val));
         return res;
     }
 }
