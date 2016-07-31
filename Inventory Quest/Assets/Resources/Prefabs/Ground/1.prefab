@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.1, y: -5.3, z: 0}
+  m_LocalPosition: {x: -3, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -229,6 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558db61bf1846274da59c17c65b416b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runObstacle: {fileID: 0}
+  attractObstacle: {fileID: 0}
 --- !u!114 &11480550
 MonoBehaviour:
   m_ObjectHideFlags: 1
