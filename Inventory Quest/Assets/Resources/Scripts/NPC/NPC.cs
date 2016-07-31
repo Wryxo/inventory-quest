@@ -7,6 +7,7 @@ public class NPC : MonoBehaviour {
     public Inventory inventory;
     public Inventory lootbox;
     public Equipment gear;
+    public Animator animator;
     public Item hand
     {
         get { return _hand; }
@@ -37,6 +38,10 @@ public class NPC : MonoBehaviour {
 
     public delegate void del_onItemExit();
     public del_onItemExit Event_onItemExit;
+
+    float runDuration;
+    bool running;
+    bool jumping = false;
 
     void Awake()
     {
@@ -73,6 +78,21 @@ public class NPC : MonoBehaviour {
         if (transform.position.x > -15 && transform.position.y < 4.2f)
         {
             transform.position = new Vector3(transform.position.x - (Time.deltaTime * 3), transform.position.y, transform.position.z);
+        }
+        if (transform.position.y < 4.2f && jumping)
+        {
+            jumping = false;
+            animator.SetBool("Jump", false);
+        }
+        if (running)
+        {
+            runDuration -= Time.deltaTime;
+        }
+        if (running && runDuration < 0)
+        {
+            running = false;
+            GameMaster.instance.Speed /= 1.5f;
+            SetRun(0);
         }
     }
 
@@ -259,6 +279,23 @@ public class NPC : MonoBehaviour {
     public void Jump()
     {
         GetComponent<Rigidbody2D>().AddForce(new Vector2(5.0f,10.0f),ForceMode2D.Impulse);
+        jumping = true;
+        animator.SetBool("Jump", true);
     }
 
+    public void SetRun(float duration)
+    {
+        if (duration > 0) { 
+            runDuration = duration;
+            running = true;
+        }
+        if (GameMaster.instance.Speed <= -5.5f)
+        {
+            animator.SetBool("Run", true);
+        }
+        if (GameMaster.instance.Speed > -5.5f)
+        {
+            animator.SetBool("Run", false);
+        }
+    }
 }

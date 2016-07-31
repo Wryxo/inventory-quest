@@ -30,6 +30,10 @@ public class Obstacle : MonoBehaviour{
                     props.Add("o_" + x.statName, x.baseDifficulty);
                 }
             }
+            if (runObstacle != null)
+            {
+                runObstacle.Run = true;
+            }
             if (Check(NPC.instance))
             {
                 GameMaster.instance.goodScore++;
@@ -46,13 +50,18 @@ public class Obstacle : MonoBehaviour{
                     }
                     if (x.statName == HelpFunctions.Run)
                     {
-                        Invoke("Run", 1.0f);
+                        GameMaster.instance.Speed *= 1.5f;
+                        NPC.instance.SetRun(1.5f);
                     }
                 }
             } else
             {
                 GameMaster.instance.badScore++;
                 props.Add("result", false);
+                if (runObstacle != null)
+                {
+                    runObstacle.Speed = 3;
+                }
             }
             NPC.instance.lootbox.EmptyInventory();
             NPC.instance.lootbox.InsertItem(reward, 0, 0);
@@ -60,15 +69,6 @@ public class Obstacle : MonoBehaviour{
             GameMaster.instance.Track("obstacle", props);
             Destroy(transform.parent.FindChild("text").gameObject);
             Destroy(gameObject);
-        }
-    }
-
-    void Run()
-    {
-        Debug.Log("run forest run");
-        if (runObstacle != null)
-        {
-            runObstacle.Run = true;
         }
     }
 

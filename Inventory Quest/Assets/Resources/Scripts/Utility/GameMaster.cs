@@ -33,13 +33,13 @@ public class GameMaster : MonoBehaviour {
     public GameObject GameMenu, VictoryGO;
     private bool menu;
     private GameObject ui;
-
+    private float _speed;
     // Use this for initialization
     void Start () {
 
         infinario = Infinario.Infinario.GetInstance();
         infinario.Initialize("7b3b027c-5245-11e6-8785-b083fedeed2e");
-        infinario.TrackSessionStart();
+        //infinario.TrackSessionStart();
     }
 
     // Use this for initialization
@@ -60,7 +60,7 @@ public class GameMaster : MonoBehaviour {
 
     public void Track(string name, Dictionary<string, object> value)
     {
-        infinario.Track(name, value);
+        //infinario.Track(name, value);
     }
 
     public void GoToGame()
@@ -77,7 +77,7 @@ public class GameMaster : MonoBehaviour {
         props.Add("Difficulty", instance.Frequency);
         props.Add("TimeLimit", instance.TimeLimit);
         props.Add("Restart", false);
-        infinario.Track("level_start", props);
+        //infinario.Track("level_start", props);
         SceneManager.LoadScene(1);
     }
 
@@ -97,7 +97,7 @@ public class GameMaster : MonoBehaviour {
 
     void OnApplicationQuit()
     {
-        infinario.TrackSessionEnd();
+        //infinario.TrackSessionEnd();
     }
 
     public void ShowGameMenu(bool end)
@@ -115,7 +115,7 @@ public class GameMaster : MonoBehaviour {
             else
             {
                 GameObject.Find("BackButtonT").GetComponent<Button>().interactable = true;
-                infinario.Track("game_paused");
+                //infinario.Track("game_paused");
             }
         }
         //GameUI.SetActive(false);
@@ -131,7 +131,7 @@ public class GameMaster : MonoBehaviour {
         props.Add("GoodScore", instance.goodScore);
         props.Add("BadScore", instance.badScore);
         props.Add("Text", tmp.text);
-        infinario.Track("feedback", props);
+        //infinario.Track("feedback", props);
     }
 
     public void HideGameMenu()
@@ -139,7 +139,7 @@ public class GameMaster : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag("GameMenu"));
         //GameUI.SetActive(true);
         PauseGame(false);
-        infinario.Track("game_resumed");
+        //infinario.Track("game_resumed");
     }
 
     public void RestartLevel()
@@ -151,7 +151,7 @@ public class GameMaster : MonoBehaviour {
         props.Add("Difficulty", instance.Frequency);
         props.Add("TimeLimit", instance.TimeLimit);
         props.Add("Restart", true);
-        infinario.Track("level_start", props);
+        //infinario.Track("level_start", props);
     }
 
     public void GoToMainMenu()
@@ -163,7 +163,7 @@ public class GameMaster : MonoBehaviour {
         props.Add("TimeLimit", instance.TimeLimit);
         props.Add("GoodScore", instance.goodScore);
         props.Add("BadScore", instance.badScore);
-        infinario.Track("main_menu", props);
+        //infinario.Track("main_menu", props);
         SceneManager.LoadScene(0);
     }
 
@@ -191,7 +191,7 @@ public class GameMaster : MonoBehaviour {
         props.Add("TimeLimit", instance.TimeLimit);
         props.Add("GoodScore", NPC.instance.inventory.CountItemsWithId(0));
         props.Add("BadScore", instance.badScore);
-        infinario.Track("level_end", props);
+        //infinario.Track("level_end", props);
     }
 
     public void createObstacle()

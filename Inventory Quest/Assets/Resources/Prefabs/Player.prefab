@@ -224,6 +224,7 @@ MonoBehaviour:
   inventory: {fileID: 11450742}
   lootbox: {fileID: 11446680}
   gear: {fileID: 11452014}
+  animator: {fileID: 9539390}
 --- !u!114 &11446680
 MonoBehaviour:
   m_ObjectHideFlags: 1
