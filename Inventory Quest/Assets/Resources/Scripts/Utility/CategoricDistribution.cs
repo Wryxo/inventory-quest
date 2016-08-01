@@ -20,7 +20,9 @@ public class CategoricDistribution {
     {
         if (categories.Count == 0) throw new System.Exception("Error: Can't select a random category out of 0 options");
         float v = UnityEngine.Random.value;
+        Debug.Log(this);
         if (sorted < categories.Count) Normalize();
+        v *= area;
         bool ok = false;
         int i = 1;
         while (!ok)
@@ -105,5 +107,15 @@ public class CategoricDistribution {
             f.weight /= surface;
         }
         sorted = categories.Count;
+    }
+
+    public override string ToString()
+    {
+        var ret = "";
+        for(int i = 0; i < categories.Count; i++)
+        {
+            ret += categories[i] + "\n";
+        }
+        return ret;
     }
 }

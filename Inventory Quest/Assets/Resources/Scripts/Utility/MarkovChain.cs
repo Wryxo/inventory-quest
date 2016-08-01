@@ -1,15 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MarkovChain : MonoBehaviour {
+public class MarkovChain{
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Hashtable states;
+
+    public object currentstate;
+
+    public CategoricDistribution pagerank; //Doesn't actually compute anything, maybe fix later
+
+    public object Random()
+    {
+        if (currentstate != null && states.Contains(currentstate))
+        {
+            var ret = ((CategoricDistribution)states[currentstate]).Random();
+            currentstate = ret;
+            return ret;
+        }
+        return pagerank.Random();
+    }
+
+    public static MarkovChain Clique(ICollection vertices)
+    {
+        var ret = new MarkovChain();
+        foreach(var i in vertices)
+        {
+            var col = new CategoricDistribution();
+            foreach(var j in vertices)
+            {
+                if (i != j) col.AddCategory(j);
+            }
+            ret.pagerank.AddCategory(i);
+            ret.states.Add(i, col);
+        }
+        return ret;
+    }
+
+    public MarkovChain()
+    {
+        pagerank = new CategoricDistribution();
+        states = new Hashtable();
+    }
 }
