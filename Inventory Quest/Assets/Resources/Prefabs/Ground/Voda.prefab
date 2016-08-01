@@ -234,7 +234,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.984829, y: 34.233444, z: 0}
+  m_LocalPosition: {x: -16.035, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -413,8 +413,8 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.027635098, y: -2.3489914}
   - {x: 0.412035, y: -2.345726}
-  - {x: 6.257688, y: -2.3527794}
-  - {x: 12.27, y: 0}
+  - {x: 5.862462, y: -1.2925699}
+  - {x: 12.032194, y: 0.099086285}
 --- !u!95 &9518222
 Animator:
   serializedVersion: 3
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runObstacle: {fileID: 0}
-  ps: {fileID: 0}
+  attractObstacle: {fileID: 0}
 --- !u!114 &11489138
 MonoBehaviour:
   m_ObjectHideFlags: 1
