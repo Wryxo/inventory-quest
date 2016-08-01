@@ -18,7 +18,6 @@ public static class HelpFunctions {
         x.statName = statName;
         x.nDice = 1;
         float high, low;
-        bool lowset = false;
         float dy;
         float phigh = UnityEngine.Random.value;
         float plow = UnityEngine.Random.value;
@@ -36,16 +35,15 @@ public static class HelpFunctions {
                 {
                     dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
                     low = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - plow) + ((Vector2)f[i]).x * (plow - ((Vector2)f[i - 1]).y)) / dy;
-                    lowset = true;
                 }
         }
         for (int i = 1; i < f.Count; i++)
         {
-            if (phigh < ((Vector2)f[i]).y)
-            {
-                dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
-                high = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - phigh) + ((Vector2)f[i]).x * (phigh - ((Vector2)f[i - 1]).y)) / dy;
-            }
+                if (phigh < ((Vector2)f[i]).y)
+                {
+                    dy = ((Vector2)f[i]).y - ((Vector2)f[i - 1]).y;
+                    high = (((Vector2)f[i - 1]).x * (((Vector2)f[i]).y - phigh) + ((Vector2)f[i]).x * (phigh - ((Vector2)f[i - 1]).y)) / dy;
+                }
         }
         x.baseDifficulty = (int)Mathf.Floor(low);
         x.sidesPerDie = (int)Mathf.Ceil(high - low);

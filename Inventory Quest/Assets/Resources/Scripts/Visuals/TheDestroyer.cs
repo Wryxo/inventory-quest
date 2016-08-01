@@ -11,6 +11,8 @@ public class TheDestroyer : MonoBehaviour {
 
     public CheatingBastard cheatbast;
 
+    public LevelBuilder lb;
+
     private string[] stats = new string[] { HelpFunctions.Attract, HelpFunctions.Jump, HelpFunctions.Run, HelpFunctions.Swim };
     private int[] difficulty = new int[4];
     private int freq;
@@ -43,11 +45,15 @@ public class TheDestroyer : MonoBehaviour {
     // Use this for initialization
     void Start () {
         freq = counter = GameMaster.instance.Frequency;
-        passchance = new ArrayList() { new Vector2(0, 0), new Vector2(4, .1f), new Vector2(5, .2f), new Vector2(10, 1) };
+        passchance = new ArrayList() { new Vector2(0, 0), new Vector2(8, .1f), new Vector2(9, .2f), new Vector2(10, 1) };
         cheatbast = GetComponentInChildren<CheatingBastard>();
+        lb = new LevelBuilder();
+        lb.obstacles = MarkovChain.Clique(new ArrayList(){0,1,2,3});
+        lb.items = MarkovChain.Clique(new ArrayList() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 });
         for (int i = 0; i < 8; i++)
         {
-            int stat = UnityEngine.Random.Range(0, stats.Length);
+            int stat = 0;
+            if (i == (8 - freq)) { stat = (int)lb.obstacles.Random(); }
             GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
             if (stat == 1 && i == (8 - freq))
             {
@@ -100,9 +106,10 @@ public class TheDestroyer : MonoBehaviour {
 
     private void SpawnGround()
     {
-        int stat = UnityEngine.Random.Range(0, stats.Length);
-        GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
+        int stat = 0;
         counter++;
+        if (counter >= freq) { stat = (int)lb.obstacles.Random(); }
+        GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
         if (!GameMaster.instance.Overtime) { 
             if (stat == 1 && counter >= freq)
             {
@@ -147,7 +154,7 @@ public class TheDestroyer : MonoBehaviour {
 
     private void PrepareReward(GameObject go, int stat)
     {
-        int choice = UnityEngine.Random.Range(0, itemFunkcie.Length);
+        int choice = (int)lb.items.Random();
         Item res = new Item();
         var obs = go.transform.FindChild("obstacle").GetComponent<Obstacle>();
         res = itemFunkcie[choice].Invoke(UnityEngine.Random.Range(7 * (difficulty[stat] - 1), 13 * (difficulty[stat] + 1)));

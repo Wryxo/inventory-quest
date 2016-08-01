@@ -69,4 +69,14 @@ public class Stats{
         return 0;
     }
 
+    public int Dot(Stats rhs)
+    {
+        int ret = 0;
+        foreach(DictionaryEntry de in contents)
+        {
+            if (rhs.contents.Contains(de.Key)) ret += ((Skill)de.Value).level * rhs.LevelOf(de.Key);
+        }
+        return ret;
+    }
+
 }
