@@ -159,6 +159,7 @@ public class GameMaster : MonoBehaviour {
         instance.Speed = -5.0f;
         instance.TimeLimit = 60;
         Time.timeScale = 1.0f;
+        instance.Overtime = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Dictionary<string, object> props = new Dictionary<string, object>();
         props.Add("Speed", -instance.Speed);
@@ -170,7 +171,10 @@ public class GameMaster : MonoBehaviour {
 
     public void GoToMainMenu()
     {
+        instance.Speed = -5.0f;
+        instance.TimeLimit = 60;
         Time.timeScale = 1.0f;
+        instance.Overtime = false;
         Dictionary<string, object> props = new Dictionary<string, object>();
         props.Add("Speed", -instance.Speed);
         props.Add("Difficulty", instance.Frequency);
