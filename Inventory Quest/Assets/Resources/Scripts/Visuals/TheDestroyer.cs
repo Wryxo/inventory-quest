@@ -45,7 +45,7 @@ public class TheDestroyer : MonoBehaviour {
     // Use this for initialization
     void Start () {
         freq = counter = GameMaster.instance.Frequency;
-        passchance = new ArrayList() { new Vector2(0, 0), new Vector2(4, .1f), new Vector2(5, .2f), new Vector2(10, 1) };
+        passchance = new ArrayList() { new Vector2(0, 0), new Vector2(8, .1f), new Vector2(9, .2f), new Vector2(10, 1) };
         cheatbast = GetComponentInChildren<CheatingBastard>();
         lb = new LevelBuilder();
         lb.obstacles = MarkovChain.Clique(new ArrayList(){0,1,2,3});
