@@ -42,8 +42,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 472484}
   - 212: {fileID: 21274508}
+  - 68: {fileID: 6850432}
   m_Layer: 0
-  m_Name: player
+  m_Name: hniezdo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110962}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -0.32, y: -0.93, z: 0}
+  m_LocalPosition: {x: -1.61, y: -3.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
@@ -106,7 +107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.9975, y: 17.456745, z: 0}
+  m_LocalPosition: {x: -16.04, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -122,7 +123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3, y: 6, z: 0}
+  m_LocalPosition: {x: 10.42, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -148,8 +149,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.09, y: 2.98, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalPosition: {x: 8.96, y: 4.08, z: 0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 411044}
@@ -201,6 +202,22 @@ EdgeCollider2D:
   m_Points:
   - {x: 0, y: 0}
   - {x: 12.27, y: 0}
+--- !u!68 &6850432
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111082}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 2, y: 0}
+  m_Points:
+  - {x: -11.864503, y: -4.622784}
+  - {x: -5.6423683, y: -2.8451242}
+  - {x: -0.94322586, y: -2.787713}
 --- !u!114 &11423832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1747,7 +1764,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 18
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -1818,8 +1835,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: 89dfb684a6f0ed54bb1ee4d7589a7ea1, type: 3}
+  m_SortingOrder: 25
+  m_Sprite: {fileID: 21300000, guid: 3beb86a6afa03d4428140f3ce16388f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

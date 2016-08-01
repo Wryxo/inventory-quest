@@ -276,9 +276,9 @@ public class NPC : MonoBehaviour {
         }
     }
 
-    public void Jump()
+    public void Jump(float x, float y)
     {
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(5.0f,10.0f),ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(x,y),ForceMode2D.Impulse);
         jumping = true;
         animator.SetBool("Jump", true);
     }
@@ -291,11 +291,21 @@ public class NPC : MonoBehaviour {
         }
         if (GameMaster.instance.Speed <= -5.5f)
         {
+            transform.localScale = new Vector3(1.3f, 1.3f);
             animator.SetBool("Run", true);
         }
         if (GameMaster.instance.Speed > -5.5f)
         {
             animator.SetBool("Run", false);
+            transform.localScale = new Vector3(2.0f, 2.0f);
         }
+    }
+
+    public void SetVictory()
+    {
+        animator.SetBool("Victory", true);
+        transform.localScale = new Vector3(1.3f, 1.3f);
+        GetComponent<BoxCollider2D>().offset = new Vector2(-2, -2);
+        transform.position = new Vector3(transform.position.x - 1f, transform.position.y + 1);
     }
 }
