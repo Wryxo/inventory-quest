@@ -42,6 +42,7 @@ public class NPC : MonoBehaviour {
     float runDuration;
     bool running;
     bool jumping = false;
+    float jumpDuration;
 
     void Awake()
     {
@@ -71,6 +72,10 @@ public class NPC : MonoBehaviour {
         {
             GameMaster.instance.ShowGameMenu(false);
         }
+        if (Input.GetButtonDown("Kill"))
+        {
+            GameMaster.instance.StartDefeat();
+        }
     }
 
     void FixedUpdate()
@@ -79,10 +84,14 @@ public class NPC : MonoBehaviour {
         {
             transform.position = new Vector3(transform.position.x - (Time.deltaTime * 3), transform.position.y, transform.position.z);
         }
-        if (transform.position.y < 4.2f && jumping)
+        if (jumping)
         {
-            jumping = false;
+            jumpDuration -= Time.deltaTime;
+        }
+        if (jumping && jumpDuration < 0)
+        {
             animator.SetBool("Jump", false);
+            jumping = false;
         }
         if (running)
         {
@@ -278,9 +287,10 @@ public class NPC : MonoBehaviour {
 
     public void Jump(float x, float y)
     {
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(x,y),ForceMode2D.Impulse);
+        //GetComponent<Rigidbody2D>().AddForce(new Vector2(0,5),ForceMode2D.Impulse);
         jumping = true;
         animator.SetBool("Jump", true);
+        jumpDuration = 3.0f;
     }
 
     public void SetRun(float duration)
@@ -307,5 +317,13 @@ public class NPC : MonoBehaviour {
         transform.localScale = new Vector3(1.3f, 1.3f);
         GetComponent<BoxCollider2D>().offset = new Vector2(-2, -2);
         transform.position = new Vector3(transform.position.x - 1f, transform.position.y + 1);
+    }
+
+    public void SetDefeat()
+    {
+        animator.SetBool("Defeat", true);
+        transform.localScale = new Vector3(1.3f, 1.3f);
+        GetComponent<BoxCollider2D>().offset = new Vector2(-2, -2);
+        //transform.position = new Vector3(transform.position.x, transform.position.y + 2);
     }
 }

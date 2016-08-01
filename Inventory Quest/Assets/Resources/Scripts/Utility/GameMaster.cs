@@ -81,7 +81,7 @@ public class GameMaster : MonoBehaviour {
         //instance.TimeLimit = Convert.ToSingle(GameObject.Find("TValue").GetComponent<Text>().text);
         instance.Speed = -5;
         instance.Frequency = 3;
-        instance.TimeLimit = 1;
+        instance.TimeLimit = 60;
         string name = GameObject.Find("Meno").GetComponent<Text>().text;
         infinario.Identify(name);
         Dictionary<string, object> props = new Dictionary<string, object>();
@@ -157,6 +157,7 @@ public class GameMaster : MonoBehaviour {
     public void RestartLevel()
     {
         instance.Speed = -5.0f;
+        instance.TimeLimit = 60;
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Dictionary<string, object> props = new Dictionary<string, object>();
@@ -219,10 +220,16 @@ public class GameMaster : MonoBehaviour {
         //infinario.Track("level_end", props);
     }
 
+    void PomocDefeat()
+    {
+        NPC.instance.SetDefeat();
+    }
+
     public void StartDefeat()
     {
+        StartCoroutine(WaitAndInvoke(1, PomocDefeat));
         StartCoroutine(WaitAndInvoke(1, StopPlayer));
-        StartCoroutine(WaitAndInvoke(2, Defeat));
+        StartCoroutine(WaitAndInvoke(4, Defeat));
     }
 
     public void Defeat()
