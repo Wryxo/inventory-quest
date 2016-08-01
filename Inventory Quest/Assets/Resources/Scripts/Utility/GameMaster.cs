@@ -81,7 +81,7 @@ public class GameMaster : MonoBehaviour {
         //instance.TimeLimit = Convert.ToSingle(GameObject.Find("TValue").GetComponent<Text>().text);
         instance.Speed = -5;
         instance.Frequency = 3;
-        instance.TimeLimit = 1;
+        instance.TimeLimit = 60;
         string name = GameObject.Find("Meno").GetComponent<Text>().text;
         infinario.Identify(name);
         Dictionary<string, object> props = new Dictionary<string, object>();

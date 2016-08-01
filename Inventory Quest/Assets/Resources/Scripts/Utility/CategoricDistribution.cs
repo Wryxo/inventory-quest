@@ -35,7 +35,7 @@ public class CategoricDistribution {
         int j = 0;
         while (i > 0)
         {
-            if(v > ((RandomItem)categories[i | j]).quad)
+            if((i|j) <= categories.Count && v > ((RandomItem)categories[i | j]).quad)
             {
                 j |= i;
             }
