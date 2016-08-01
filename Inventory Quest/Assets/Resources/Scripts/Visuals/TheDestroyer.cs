@@ -52,8 +52,8 @@ public class TheDestroyer : MonoBehaviour {
         lb.items = MarkovChain.Clique(new ArrayList() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 });
         for (int i = 0; i < 8; i++)
         {
-            stats = 0;
-            if (i == (8 - freq)) { int stat = (int)lb.obstacles.Random(); }
+            int stat = 0;
+            if (i == (8 - freq)) { stat = (int)lb.obstacles.Random(); }
             GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
             if (stat == 1 && i == (8 - freq))
             {
@@ -106,9 +106,10 @@ public class TheDestroyer : MonoBehaviour {
 
     private void SpawnGround()
     {
-        int stat = (int)lb.obstacles.Random();
-        GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
+        int stat = 0;
         counter++;
+        if (counter >= freq) { stat = (int)lb.obstacles.Random(); }
+        GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
         if (!GameMaster.instance.Overtime) { 
             if (stat == 1 && counter >= freq)
             {
