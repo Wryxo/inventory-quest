@@ -13,11 +13,13 @@ public class MarkovChain{
     {
         if (currentstate != null && states.Contains(currentstate))
         {
-            var ret = ((CategoricDistribution)states[currentstate]).Random();
-            currentstate = ret;
-            return ret;
+            currentstate = ((CategoricDistribution)states[currentstate]).Random();
         }
-        return pagerank.Random();
+        else
+        {
+            currentstate = pagerank.Random();
+        }
+        return currentstate;
     }
 
     public static MarkovChain Clique(ICollection vertices)

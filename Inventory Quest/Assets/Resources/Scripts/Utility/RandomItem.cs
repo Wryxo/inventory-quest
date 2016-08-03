@@ -6,7 +6,7 @@
 
     public override string ToString()
     {
-        return value + " " + weight.ToString();
+        return value + " " + weight.ToString() + " " + quad.ToString();
     }
 
 }

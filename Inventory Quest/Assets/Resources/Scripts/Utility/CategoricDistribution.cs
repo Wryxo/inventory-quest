@@ -35,13 +35,13 @@ public class CategoricDistribution {
         int j = 0;
         while (i > 0)
         {
-            if((i|j) <= categories.Count && v > ((RandomItem)categories[i | j]).quad)
+            if((i|j) < categories.Count && v < ((RandomItem)categories[i | j]).quad)
             {
                 j |= i;
             }
             i >>= 1;
         }
-        return ((RandomItem)categories[i | j]).value;
+        return ((RandomItem)categories[j]).value;
     }
 
     public void AddCategory(object what, float weight = 1)
@@ -52,12 +52,11 @@ public class CategoricDistribution {
             RandomItem f = (RandomItem)categories[i];
             area += weight;
             f.weight += weight;
-            f.quad += weight;
             if (i < sorted) sorted = i+1;
             
         } else
         {
-            RandomItem f = new RandomItem() { value = what, weight = weight, quad = area + weight };
+            RandomItem f = new RandomItem() { value = what, weight = weight, quad = area };
             area += weight;
             if (categories.Count == sorted) sorted += 1;
             categories.Add(f);
@@ -94,13 +93,13 @@ public class CategoricDistribution {
     public void Normalize()
     {
         float surface = 0;
-        for(int i = 0; i < categories.Count; i++)
+        for(int i = 1; i < categories.Count; i++)
         {
             RandomItem f = (RandomItem)categories[i];
-            f.quad = surface + f.weight;
-            surface = f.quad;
+            f.quad = surface;
+            surface = f.quad + f.weight;
         }
-        for (int i = 0; i < categories.Count; i++)
+        for (int i = 1; i < categories.Count; i++)
         {
             RandomItem f = (RandomItem)categories[i];
             f.quad /= surface;
