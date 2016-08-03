@@ -157,7 +157,9 @@ public class GameMaster : MonoBehaviour {
     public void RestartLevel()
     {
         instance.Speed = -5.0f;
+        instance.TimeLimit = 60;
         Time.timeScale = 1.0f;
+        instance.Overtime = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Dictionary<string, object> props = new Dictionary<string, object>();
         props.Add("Speed", -instance.Speed);
@@ -169,7 +171,10 @@ public class GameMaster : MonoBehaviour {
 
     public void GoToMainMenu()
     {
+        instance.Speed = -5.0f;
+        instance.TimeLimit = 60;
         Time.timeScale = 1.0f;
+        instance.Overtime = false;
         Dictionary<string, object> props = new Dictionary<string, object>();
         props.Add("Speed", -instance.Speed);
         props.Add("Difficulty", instance.Frequency);
@@ -219,10 +224,16 @@ public class GameMaster : MonoBehaviour {
         //infinario.Track("level_end", props);
     }
 
+    void PomocDefeat()
+    {
+        NPC.instance.SetDefeat();
+    }
+
     public void StartDefeat()
     {
+        StartCoroutine(WaitAndInvoke(1, PomocDefeat));
         StartCoroutine(WaitAndInvoke(1, StopPlayer));
-        StartCoroutine(WaitAndInvoke(2, Defeat));
+        StartCoroutine(WaitAndInvoke(4, Defeat));
     }
 
     public void Defeat()

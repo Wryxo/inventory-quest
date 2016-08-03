@@ -146,6 +146,11 @@ MonoBehaviour:
   - {fileID: 175414, guid: 4a15411e6a518024fb4c77c093ca9382, type: 2}
   - {fileID: 189576, guid: 73493a26a92643a4bbaa1640601f7ff2, type: 2}
   - {fileID: 148216, guid: e8bd292372953de44ad81e29c9fd4921, type: 2}
+  - {fileID: 175414, guid: e6ab811219bd35244ba59cdd63609d0e, type: 2}
+  - {fileID: 178022, guid: 65cc946d9cef90348bbf0f8c9eb44168, type: 2}
+  - {fileID: 165706, guid: da233e896e2644747bf986a2434aa413, type: 2}
+  - {fileID: 127502, guid: 32837283945907540a3cab5bc197a46c, type: 2}
+  - {fileID: 189576, guid: de119657eb2d1474c96d9248e4b0c8d6, type: 2}
   FinishGround: {fileID: 178798, guid: 30233bbd4943a6a43b51e5824e477469, type: 2}
   StatsSprites:
   - {fileID: 21300000, guid: 877ac12b4dae2d1478c3e383724e7961, type: 3}
