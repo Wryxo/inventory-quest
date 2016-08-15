@@ -168,14 +168,7 @@ public class Enemy : MonoBehaviour {
                                             }
                                             else
                                             {
-                                                if (penultimatedel.Contains(c))
-                                                {
-                                                    tswapcost += (((Skill)j.Value).level) * priorities.LevelOf(j.Key);
-                                                }
-                                                else
-                                                {
-                                                    tswapcost += (((Skill)j.Value).level - ((Item)penultimate[c]).stats.LevelOf(j.Key)) * priorities.LevelOf(j.Key);
-                                                }
+                                                tswapcost += (((Item)penultimate[c]).stats.LevelOf(j.Key) - what.stats.LevelOf(j.Key)) * priorities.LevelOf(j.Key);
                                             }
                                         }
                                     }

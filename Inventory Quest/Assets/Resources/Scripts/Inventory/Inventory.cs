@@ -106,6 +106,35 @@ public class Inventory : MonoBehaviour {
         return x*10 + y;
     }
 
+    public ArrayList ForceInsertItem(Item what,int x,int y)
+    {
+        var ans = new ArrayList();
+        int w = what.width;
+        int h = what.height;
+        int so = 0;
+        if (x < 0 || y < 0 || x + w > width || y + h > height) return ans; //out of bounds
+        for (int yi = y; yi < y + h; yi++)
+        {
+            for (int xi = x; xi < x + w; xi++)
+            {
+                var s = ItemAt(xi, yi);
+                if (s != null)
+                {
+                    RemoveItem(s);
+                    ans.Add(s);
+                }
+                contents[xi, yi] = what;
+                spriteOffsets[xi, yi] = so;
+                so++;
+            }
+        }
+        if (Event_onInventoryChange != null)
+        {
+            Event_onInventoryChange();
+        }
+        return ans;
+    }
+
     public Item InsertItem(Item what,int x,int y)
     {
         int w = what.width;
