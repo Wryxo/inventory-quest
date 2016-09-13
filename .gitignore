@@ -28,3 +28,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+Inventory Quest/IQ.sublime-project
+Inventory Quest/IQ.sublime-workspace
