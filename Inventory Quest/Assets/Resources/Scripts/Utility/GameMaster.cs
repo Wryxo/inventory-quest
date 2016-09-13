@@ -13,7 +13,7 @@ public class GameMaster : MonoBehaviour {
     public NPC player;
     
     public static GameMaster instance;
-    static Infinario.Infinario infinario;
+    //static Infinario.Infinario infinario;
     public float evilness;
     public int intelligence;
     public float speed;
@@ -46,8 +46,8 @@ public class GameMaster : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        infinario = Infinario.Infinario.GetInstance();
-        infinario.Initialize("7b3b027c-5245-11e6-8785-b083fedeed2e");
+        //infinario = Infinario.Infinario.GetInstance();
+        //infinario.Initialize("7b3b027c-5245-11e6-8785-b083fedeed2e");
         //infinario.TrackSessionStart();
     }
 
@@ -83,7 +83,7 @@ public class GameMaster : MonoBehaviour {
         instance.Frequency = 3;
         instance.TimeLimit = 60;
         string name = GameObject.Find("Meno").GetComponent<Text>().text;
-        infinario.Identify(name);
+        //infinario.Identify(name);
         Dictionary<string, object> props = new Dictionary<string, object>();
         props.Add("Speed", -instance.Speed);
         props.Add("Difficulty", instance.Frequency);
@@ -187,14 +187,7 @@ public class GameMaster : MonoBehaviour {
 
     void PauseGame(bool pause)
     {
-        if (pause)
-        {
-            Time.timeScale = 0.0f;
-        }
-        else
-        {
-            Time.timeScale = 1.0f;
-        }
+        Time.timeScale = pause ? 0.0f : 1.0f;
     }
 
     void StopPlayer()
@@ -239,10 +232,10 @@ public class GameMaster : MonoBehaviour {
     public void Defeat()
     {
         ui = GameObject.Find("UserInterface");
-        var go = Instantiate(DefeatGO) as GameObject;
+        var go = Instantiate(DefeatGO);
         go.transform.SetParent(ui.transform, false);
         ShowGameMenu(true);
-        Dictionary<string, object> props = new Dictionary<string, object>();
+        var props = new Dictionary<string, object>();
         props.Add("Speed", -instance.Speed);
         props.Add("Difficulty", instance.Frequency);
         props.Add("TimeLimit", instance.TimeLimit);
@@ -251,7 +244,7 @@ public class GameMaster : MonoBehaviour {
         //infinario.Track("level_end", props);
     }
 
-    public void createObstacle()
+    public void CreateObstacle()
     {
         // vytvor obstacle
  /*       GameObject bo = (GameObject)events.Random();
