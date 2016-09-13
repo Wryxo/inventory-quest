@@ -18,8 +18,11 @@ public class Enemy : MonoBehaviour {
     int currentInventorySlot;
     int currentEquipmentSlot;
 
-	// Use this for initialization
-	void Start () {
+    public delegate void del_onDropItems(ArrayList what);
+    public del_onDropItems Event_onDropItems;
+
+    // Use this for initialization
+    void Start () {
 	    if(character == null)
         {
             character = GetComponent<NPC>();
@@ -75,15 +78,9 @@ public class Enemy : MonoBehaviour {
         return character.skills.LevelOf(statName);
     }
 
-    public bool FitItem(Item what)
+    public float value(Item what)
     {
-        bool ok = false;
-        int startEquipmentSlot = currentEquipmentSlot;
-        int startInventorySlot = currentInventorySlot;
-        int optimalslot = startInventorySlot;
-        int swapvalue = 0;
-        int swapcost = -1;
-        int tswapcost;
+        float ret = 0;
         foreach (DictionaryEntry de in what.compatibleSlots) //If useless, discard it, else calculate the value of having it
         {
             focus--;
@@ -92,14 +89,28 @@ public class Enemy : MonoBehaviour {
                 focus--;
                 if (!maxstats.Contains(de.Key + "/" + j.Key) || (maxstats[de.Key + "/" + j.Key] == null))
                 {
-                    swapvalue += ((Skill)j.Value).level * priorities.LevelOf(j.Key);
-                } else if(((Item)maxstats[de.Key + "/" + j.Key]).stats.LevelOf(j.Key) < ((Skill)j.Value).level)
+                    ret += ((Skill)j.Value).level * priorities.LevelOf(j.Key);
+                }
+                else if (((Item)maxstats[de.Key + "/" + j.Key]).stats.LevelOf(j.Key) < ((Skill)j.Value).level)
                 {
-                    swapvalue += (((Skill)j.Value).level - ((Item)maxstats[de.Key + "/" + j.Key]).stats.LevelOf(j.Key)) * priorities.LevelOf(j.Key);
+                    ret += (((Skill)j.Value).level - ((Item)maxstats[de.Key + "/" + j.Key]).stats.LevelOf(j.Key)) * priorities.LevelOf(j.Key);
                 }
             }
         }
-        if (swapvalue == 0) return false;
+        return ret;
+    }
+
+    public bool FitItem(Item what)
+    {
+        bool ok = false;
+        int startEquipmentSlot = currentEquipmentSlot;
+        int startInventorySlot = currentInventorySlot;
+        int optimalslot = startInventorySlot;
+        float swapvalue = 0;
+        int swapcost = -1;
+        int tswapcost;
+        swapvalue = value(what);
+        if (swapvalue <= 0) return false;
         var maxdel = new Hashtable();
         var penultimatedel = new Hashtable();
         bool sameslot = false;
@@ -178,6 +189,13 @@ public class Enemy : MonoBehaviour {
                     }
                 }
             }
+            if (tswapcost == 0)
+            {
+                ok = true;
+                Event_onDropItems(character.inventory.ForceInsertItem(what, currentInventorySlot % character.inventory.width, currentInventorySlot / character.inventory.width));
+                return true;
+            }
+            else if (tswapcost < swapcost || swapcost == -1) swapcost = tswapcost;
             currentInventorySlot++;
             if (currentInventorySlot == character.inventory.width * character.inventory.height)
             {
@@ -188,8 +206,11 @@ public class Enemy : MonoBehaviour {
                 ok = true;
             }
         }
-        return false;
-        //TODO: Code this
+        if(swapvalue > swapcost)
+        {
+            Event_onDropItems(character.inventory.ForceInsertItem(what, currentInventorySlot % character.inventory.width, currentInventorySlot / character.inventory.width));
+        }
+         //TODO: Code this
     }
 
     public void Refresh()
