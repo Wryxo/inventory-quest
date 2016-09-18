@@ -37,7 +37,7 @@ public class GameMaster : MonoBehaviour {
     private float _speed;
 
     public delegate void InvokedFunction();
-    public IEnumerator WaitAndInvoke(float secondsToWait, InvokedFunction func)
+    public static IEnumerator WaitAndInvoke(float secondsToWait, InvokedFunction func)
     {
         yield return new WaitForSeconds(secondsToWait);
         func();
@@ -81,7 +81,7 @@ public class GameMaster : MonoBehaviour {
         //instance.TimeLimit = Convert.ToSingle(GameObject.Find("TValue").GetComponent<Text>().text);
         instance.Speed = -5;
         instance.Frequency = 3;
-        instance.TimeLimit = 60;
+        instance.TimeLimit = 10;
         string name = GameObject.Find("Meno").GetComponent<Text>().text;
         //infinario.Identify(name);
         Dictionary<string, object> props = new Dictionary<string, object>();

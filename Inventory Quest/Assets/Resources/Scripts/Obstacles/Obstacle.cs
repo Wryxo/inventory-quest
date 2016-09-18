@@ -42,7 +42,7 @@ public class Obstacle : MonoBehaviour{
                 {
                     if (x.statName == HelpFunctions.Jump)
                     {
-                        NPC.instance.Jump(5.0f, 10.0f);
+                        NPC.instance.Jump();
                     }
                     if (x.statName == HelpFunctions.Attract)
                     {

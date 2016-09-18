@@ -210,6 +210,7 @@ public class Enemy : MonoBehaviour {
         {
             Event_onDropItems(character.inventory.ForceInsertItem(what, currentInventorySlot % character.inventory.width, currentInventorySlot / character.inventory.width));
         }
+        return ok;
          //TODO: Code this
     }
 

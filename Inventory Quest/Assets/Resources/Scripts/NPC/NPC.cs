@@ -285,7 +285,7 @@ public class NPC : MonoBehaviour {
         }
     }
 
-    public void Jump(float x, float y)
+    public void Jump()
     {
         GetComponent<Rigidbody2D>().AddForce(new Vector2(2,11),ForceMode2D.Impulse);
         jumping = true;
