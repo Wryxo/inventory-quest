@@ -22,15 +22,15 @@ public class DiffUI : MonoBehaviour {
         Text text = GetComponent<Text>();
         if (val > 0)
         {
-            text.text = "+" + val.ToString();
+            text.text = (NPC.instance.skills.LevelOf(transform.parent.name) + val).ToString();
             text.color = new Color(0, 1, 0, 1);
         } else if (val < 0)
         {
-            text.text = val.ToString();
+            text.text = (NPC.instance.skills.LevelOf(transform.parent.name) + val).ToString();
             text.color = new Color(1, 0, 0, 1);
         } else
         {
-            text.text = val.ToString();
+            text.text = (NPC.instance.skills.LevelOf(transform.parent.name) + val).ToString();
             text.color = new Color(1, 1, 0, 1);
         }
 
@@ -38,6 +38,6 @@ public class DiffUI : MonoBehaviour {
 
     void HideDifference()
     {
-        GetComponent<Text>().color = new Color(1, 1, 0, 0);
+        GetComponent<Text>().color = new Color(1, 1, 1, 0);
     }
 }

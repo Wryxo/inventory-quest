@@ -80,8 +80,8 @@ public class GameMaster : MonoBehaviour {
         //instance.Frequency = Convert.ToInt32(GameObject.Find("DValue").GetComponent<Text>().text);
         //instance.TimeLimit = Convert.ToSingle(GameObject.Find("TValue").GetComponent<Text>().text);
         instance.Speed = -5;
-        instance.Frequency = 3;
-        instance.TimeLimit = 10;
+        instance.Frequency = 5;
+        instance.TimeLimit = 60;
         string name = GameObject.Find("Meno").GetComponent<Text>().text;
         //infinario.Identify(name);
         Dictionary<string, object> props = new Dictionary<string, object>();
@@ -93,7 +93,7 @@ public class GameMaster : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
-    void OnLevelWasLoaded(int level)
+    /*void OnLevelWasLoaded(int level)
     {
         switch (level)
         {
@@ -105,7 +105,7 @@ public class GameMaster : MonoBehaviour {
                 break;
         }
 
-    }
+    }*/
 
     void OnApplicationQuit()
     {

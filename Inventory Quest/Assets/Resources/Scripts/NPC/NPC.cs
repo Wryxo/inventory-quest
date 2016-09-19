@@ -51,11 +51,11 @@ public class NPC : MonoBehaviour {
             instance = this;
         }
         skills = new Stats();
-        skills.Add("Attractivity", 10);
-        skills.Add("Jump", 10);
-        skills.Add("Swim", 10);
-        skills.Add("Branches", 10);
-        skills.Add("Run", 10);
+        skills.Add(HelpFunctions.Attract, 10);
+        skills.Add(HelpFunctions.Jump, 10);
+        skills.Add(HelpFunctions.Swim, 10);
+        skills.Add(HelpFunctions.Branches, 10);
+        skills.Add(HelpFunctions.Run, 10);
     }
 
     // Use this for initialization
@@ -178,109 +178,41 @@ public class NPC : MonoBehaviour {
     public void OnInventoryItemHover(int position)
     {
         var item = inventory.ItemAt(position / 10, position % 10);
-        if (hand != null)
+        if (item != null && Event_onItemHover != null)
         {
-            if (Event_onItemHover != null)
-            {
-                Event_onItemHover(hand);
-            }
-        }
-        else if (ItemUI.itemBeingDragged != null)
-        {
-            if (Event_onItemHover != null)
-            {
-                Event_onItemHover(ItemUI.itemBeingDragged.GetComponent<ItemUI>().item);
-            }
-        }
-        else 
-        {
-            if (item != null && Event_onItemHover != null)
-            {
-                Event_onItemHover(item);
-            }
+            Event_onItemHover(item);
         }
     }
 
     public void OnLootBoxItemHover(int position)
     {
         var item = lootbox.ItemAt(position / 10, position % 10);
-        if (hand != null)
+        if (item != null && Event_onItemHover != null)
         {
-            if (Event_onItemHover != null)
-            {
-                Event_onItemHover(hand);
-            }
-        }
-        else if (ItemUI.itemBeingDragged != null)
-        {
-            if (Event_onItemHover != null)
-            {
-                Event_onItemHover(ItemUI.itemBeingDragged.GetComponent<ItemUI>().item);
-            }
-        }
-        else
-        {
-            if (item != null && Event_onItemHover != null)
-            {
-                Event_onItemHover(item);
-            }
+            Event_onItemHover(item);
         }
     }
 
     public void OnEquippedItemHover(string position)
     {
         var item = gear.ItemAt(position);
-        if (hand != null)
+        if (item != null && Event_onItemHover != null)
         {
-            if (Event_onItemHover != null)
-            {
-                Event_onItemHover(hand);
-            }
-        }
-        else if (ItemUI.itemBeingDragged != null)
-        {
-            if (Event_onItemHover != null)
-            {
-                Event_onItemHover(ItemUI.itemBeingDragged.GetComponent<ItemUI>().item);
-            }
-        }
-        else
-        {
-            if (item != null && Event_onItemHover != null)
-            {
-                Event_onItemHover(item);
-            }
+            Event_onItemHover(item);
         }
     }
 
     public void OnEquipClick()
     {
-        if (hand != null)
+        if (Event_onItemExit != null)
         {
-            if (Event_onItemHover != null)
-            {
-                Event_onItemHover(hand);
-            }
-        }
-        else if (ItemUI.itemBeingDragged != null)
-        {
-            if (Event_onItemHover != null)
-            {
-                Event_onItemHover(ItemUI.itemBeingDragged.GetComponent<ItemUI>().item);
-            }
-        }
-        else
-        {
-            if (Event_onItemExit != null)
-            {
-                Event_onItemExit();
-            }
+            Event_onItemExit();
         }
     }
 
     public void OnItemExit()
     {
-        if (hand == null && Event_onItemExit != null && ItemUI.itemBeingDragged == null) { 
+        if (Event_onItemExit != null) { 
             Event_onItemExit();
         }
     }

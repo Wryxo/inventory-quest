@@ -41,6 +41,7 @@ public class TheDestroyer : MonoBehaviour {
     };
 
     private ArrayList passchance;
+    private bool nextWater = false;
 
     // Use this for initialization
     void Start () {
@@ -52,28 +53,34 @@ public class TheDestroyer : MonoBehaviour {
         lb.items = MarkovChain.Clique(new ArrayList() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 });
         for (int i = 0; i < 8; i++)
         {
+            
             int stat = 0;
-            if (i == (8 - freq)) { stat = (int)lb.obstacles.Random(); }
+            if (i == 5) { stat = (int)lb.obstacles.Random(); }
             GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
-            if (stat == 1 && i == (8 - freq))
+            if (stat == 1 && i == 5)
             {
                 tmp = Grounds[4];
             }
-            if (stat == 3 && i == (8 - freq))
+            if (stat == 3 && i == 5)
             {
                 tmp = Grounds[5];
+                nextWater = true;
             }
-            if (stat == 0 && i == (8 - freq))
+            if (stat == 0 && i == 5)
             {
                 tmp = Grounds[6 + UnityEngine.Random.Range(0, 4)];
             }
-            if (stat == 2 && i == (8 - freq))
+            if (stat == 2 && i == 5)
             {
                 tmp = Grounds[10];
             }
+            if (nextWater && stat != 3) {
+                tmp = Grounds[11];
+                nextWater = false;
+            }
             Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
             var ground = Instantiate(tmp, new Vector3(transform.position.x + (i * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
-            if (i == (8 - freq))
+            if (i == 5)
             {
                 PrepareObstacle(ground, stat);
                 PrepareReward(ground, stat);
@@ -118,6 +125,7 @@ public class TheDestroyer : MonoBehaviour {
             if (stat == 3 && counter >= freq)
             {
                 tmp = Grounds[5];
+                nextWater = true;
             }
             if (stat == 0 && counter >= freq)
             {
@@ -127,9 +135,13 @@ public class TheDestroyer : MonoBehaviour {
             {
                 tmp = Grounds[10];
             }
+            if (nextWater && stat != 3) {
+                tmp = Grounds[11];
+                nextWater = false;
+            }
         }
         Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
-        var ground = Instantiate(tmp, new Vector3(transform.position.x  + (7.9f * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
+        var ground = Instantiate(tmp, new Vector3(transform.position.x  + (7.8f * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
         if (counter >= freq && !GameMaster.instance.Overtime) {
             PrepareObstacle(ground, stat);
             PrepareReward(ground, stat);

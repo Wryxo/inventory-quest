@@ -59,6 +59,7 @@ public class Item {
     {
         Item res = new Item()
         {
+            name = "Vetva",
             id = 0,
             height = 2,
             width = 1,
@@ -75,6 +76,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Celenka Of Doom",
             height = 2,
             width = 1,
             maxStack = 1,
@@ -91,6 +93,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Santova Ciapka",
             height = 1,
             width = 1,
             maxStack = 1,
@@ -107,6 +110,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Nasada Na Zobak",
             height = 1,
             width = 2,
             maxStack = 1,
@@ -123,6 +127,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Super Pruziny",
             height = 1,
             width = 2,
             maxStack = 1,
@@ -139,6 +144,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Piratske Topanky",
             height = 1,
             width = 1,
             maxStack = 1,
@@ -155,6 +161,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Tenisky",
             height = 1,
             width = 2,
             maxStack = 1,
@@ -171,6 +178,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "SpaceX",
             height = 3,
             width = 2,
             maxStack = 1,
@@ -187,6 +195,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Perova Vesta",
             height = 2,
             width = 2,
             maxStack = 1,
@@ -203,6 +212,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Willy",
             height = 2,
             width = 2,
             maxStack = 1,
@@ -219,6 +229,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Mrtvy Willy",
             height = 1,
             width = 1,
             maxStack = 1,
@@ -235,6 +246,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Uz Su Dvaja",
             height = 1,
             width = 2,
             maxStack = 1,
@@ -251,6 +263,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Angel Wings",
             height = 2,
             width = 3,
             maxStack = 1,
@@ -267,6 +280,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Wood Magnet",
             height = 1,
             width = 1,
             maxStack = 1,
@@ -283,6 +297,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Chudnuci Pas",
             height = 2,
             width = 2,
             maxStack = 1,
@@ -299,6 +314,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Plutva Vznasania",
             height = 1,
             width = 1,
             maxStack = 1,
@@ -315,6 +331,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Plutvy Rychlosti",
             height = 1,
             width = 2,
             maxStack = 1,
@@ -331,6 +348,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Maly SpaceX",
             height = 3,
             width = 1,
             maxStack = 1,
@@ -347,6 +365,7 @@ public class Item {
         Item res = new Item()
         {
             id = maxId++,
+            name = "Hyper SpaceX",
             height = 3,
             width = 2,
             maxStack = 1,

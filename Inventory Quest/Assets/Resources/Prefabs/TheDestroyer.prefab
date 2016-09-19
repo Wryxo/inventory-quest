@@ -151,12 +151,13 @@ MonoBehaviour:
   - {fileID: 165706, guid: da233e896e2644747bf986a2434aa413, type: 2}
   - {fileID: 127502, guid: 32837283945907540a3cab5bc197a46c, type: 2}
   - {fileID: 189576, guid: de119657eb2d1474c96d9248e4b0c8d6, type: 2}
+  - {fileID: 1000010219384264, guid: aa6c793dab118d3448f8decf6090b743, type: 2}
   FinishGround: {fileID: 178798, guid: 30233bbd4943a6a43b51e5824e477469, type: 2}
   StatsSprites:
-  - {fileID: 21300000, guid: 877ac12b4dae2d1478c3e383724e7961, type: 3}
-  - {fileID: 21300000, guid: fa9194222e3614a4ba1f422cf917f14d, type: 3}
-  - {fileID: 21300000, guid: 7e5f0b2c345401849943c8bb823a68b0, type: 3}
-  - {fileID: 21300000, guid: b46a450161824d9448d83775f0b4517f, type: 3}
+  - {fileID: 21300000, guid: 6240d5a09ba277749ab4b2161d3294e5, type: 3}
+  - {fileID: 21300000, guid: 42261389f311533469a024272fc7e819, type: 3}
+  - {fileID: 21300000, guid: 365749436825cd04fa38685c3a5fea5f, type: 3}
+  - {fileID: 21300000, guid: 4255e2a66cd8f7f40b1534524c76d96c, type: 3}
   cheatbast: {fileID: 11472770}
 --- !u!1001 &100100000
 Prefab:
