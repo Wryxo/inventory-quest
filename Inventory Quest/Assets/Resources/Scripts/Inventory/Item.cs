@@ -11,6 +11,7 @@ public class Item {
 
     public Sprite img;
     public Sprite[] imgs;
+    public Sprite equipImg;
 
     public int id;
 
@@ -68,7 +69,6 @@ public class Item {
             img = Resources.Load<Sprite>("Sprites/Items/mouse_konar") as Sprite,
             imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_konar") as Sprite[]
         };
-        res.AddSlot("head");
         return res;
     }
     public static Item Celenka(int val)
@@ -82,7 +82,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_celenka") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_celenka") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_celenka") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/hlava_celenka_2") as Sprite
         };
         res.AddSlot("head");
         res.AddStat(HelpFunctions.Attract, new Skill(val));
@@ -99,7 +100,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_ciapka") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_ciapka") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_ciapka") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/hlava_ciapka_2") as Sprite
         };
         res.AddSlot("head");
         res.AddStat(HelpFunctions.Attract, new Skill(val));
@@ -133,7 +135,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_pruziny") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_pruziny") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_pruziny") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/nohy_pruziny_2") as Sprite
         };
         res.AddSlot("feet");
         res.AddStat(HelpFunctions.Jump, new Skill(val));
@@ -150,7 +153,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_topanka") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_topanka") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_topanka") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/nohy_topanka_2") as Sprite
         };
         res.AddSlot("feet");
         res.AddStat(HelpFunctions.Run, new Skill(val));
@@ -167,7 +171,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_topanky") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_topanky") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_topanky") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/nohy_topanky_2") as Sprite
         };
         res.AddSlot("feet");
         res.AddStat(HelpFunctions.Run, new Skill(val));
@@ -184,7 +189,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_trysky") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_trysky") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_trysky") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/trup_trysky_2") as Sprite
         };
         res.AddSlot("chest");
         res.AddStat(HelpFunctions.Jump, new Skill(val));
@@ -201,7 +207,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_vesta") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_vesta") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_vesta") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/trup_vesta_2") as Sprite
         };
         res.AddSlot("chest");
         res.AddStat(HelpFunctions.Attract, new Skill(val));
@@ -235,7 +242,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_delfinBota") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_delfinBota") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_delfinBota") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/nohy_delfin_2") as Sprite
         };
         res.AddSlot("feet");
         res.AddStat(HelpFunctions.Swim, new Skill(val));
@@ -252,7 +260,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_delfinBoty") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_delfinBoty") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_delfinBoty") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/nohy_delfiny_2") as Sprite
         };
         res.AddSlot("feet");
         res.AddStat(HelpFunctions.Swim, new Skill(val));
@@ -269,7 +278,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_kridla") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_kridla") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_kridla") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/trup_kridla_2") as Sprite
         };
         res.AddSlot("chest");
         res.AddStat(HelpFunctions.Jump, new Skill(val));
@@ -286,9 +296,10 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_magnet") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_magnet") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_magnet") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/trup_magnet_2") as Sprite
         };
-        res.AddSlot("head");
+        res.AddSlot("chest");
         res.AddStat(HelpFunctions.Branches, new Skill(val));
         return res;
     }
@@ -303,7 +314,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_neopren") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_neopren") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_neopren") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/trup_neopren_2") as Sprite
         };
         res.AddSlot("chest");
         res.AddStat(HelpFunctions.Swim, new Skill(val));
@@ -320,7 +332,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_plutva") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_plutva") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_plutva") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/nohy_plutva_2") as Sprite
         };
         res.AddSlot("feet");
         res.AddStat(HelpFunctions.Swim, new Skill(val));
@@ -337,7 +350,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_plutvy") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_plutvy") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_plutvy") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/nohy_plutvy_2") as Sprite
         };
         res.AddSlot("feet");
         res.AddStat(HelpFunctions.Swim, new Skill(val));
@@ -354,7 +368,8 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_tryska") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_tryska") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_tryska") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/trup_tryska_2") as Sprite
         };
         res.AddSlot("chest");
         res.AddStat(HelpFunctions.Jump, new Skill(val));
@@ -371,10 +386,65 @@ public class Item {
             maxStack = 1,
             stack = 1,
             img = Resources.Load<Sprite>("Sprites/Items/mouse_trysky_2") as Sprite,
-            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_trysky_2") as Sprite[]
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_trysky_2") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/trup_trysky_2") as Sprite
         };
         res.AddSlot("chest");
         res.AddStat(HelpFunctions.Jump, new Skill(val));
+        return res;
+    }
+    public static Item Celovka(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            name = "Light In The Dark",
+            height = 1,
+            width = 2,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_celovka") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_celovka") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/hlava_celovka_2") as Sprite
+        };
+        res.AddSlot("head");
+        res.AddStat(HelpFunctions.Branches, new Skill(val));
+        return res;
+    }
+    public static Item Okuliare(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            name = "They See Me Rollin'",
+            height = 1,
+            width = 1,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_okuliare") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_okuliare") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/hlava_okuliare_2") as Sprite
+        };
+        res.AddSlot("head");
+        res.AddStat(HelpFunctions.Branches, new Skill(val));
+        return res;
+    }
+    public static Item Nahrdelnik(int val)
+    {
+        Item res = new Item()
+        {
+            id = maxId++,
+            name = "Swag Necklace",
+            height = 1,
+            width = 1,
+            maxStack = 1,
+            stack = 1,
+            img = Resources.Load<Sprite>("Sprites/Items/mouse_nahrdelnik") as Sprite,
+            imgs = Resources.LoadAll<Sprite>("Sprites/Items/inv_nahrdelnik") as Sprite[],
+            equipImg =  Resources.Load<Sprite>("Sprites/Items/equipment/trup_nahrdelnik_2") as Sprite
+        };
+        res.AddSlot("chest");
+        res.AddStat(HelpFunctions.Attract, new Skill(val));
         return res;
     }
 }

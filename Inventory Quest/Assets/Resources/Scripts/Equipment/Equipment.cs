@@ -28,6 +28,7 @@ public class Equipment : MonoBehaviour {
 
     public void UI_getSlotItem(string slot)
     {
+        return;
         NPC.instance.hand = NPC.instance.EquipItem(NPC.instance.hand, slot);
     }
 

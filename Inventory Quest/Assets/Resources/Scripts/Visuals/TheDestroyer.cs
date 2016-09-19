@@ -22,13 +22,11 @@ public class TheDestroyer : MonoBehaviour {
     {
         x => { return Item.Celenka(x); },
         x => { return Item.Ciapka(x); },
-        x => { return Item.Nasada(x); },
         x => { return Item.Pruziny(x); },
         x => { return Item.Topanka(x); },
         x => { return Item.Topanky(x); },
         x => { return Item.Trysky(x); },
         x => { return Item.Vesta(x); },
-        x => { return Item.Delfin(x); },
         x => { return Item.DelfinBota(x); },
         x => { return Item.DelfinBoty(x); },
         x => { return Item.Kridla(x); },
@@ -37,7 +35,10 @@ public class TheDestroyer : MonoBehaviour {
         x => { return Item.Plutva(x); },
         x => { return Item.Plutvy(x); },
         x => { return Item.Tryska(x); },
-        x => { return Item.Trysky2(x); }
+        x => { return Item.Trysky2(x); },
+        x => { return Item.Celovka(x); },
+        x => { return Item.Okuliare(x); },
+        x => { return Item.Nahrdelnik(x); }
     };
 
     private ArrayList passchance;
@@ -115,6 +116,10 @@ public class TheDestroyer : MonoBehaviour {
     {
         int stat = 0;
         counter++;
+        if (nextWater) {
+            nextWater = false;
+            return;
+        }
         if (counter >= freq) { stat = (int)lb.obstacles.Random(); }
         GameObject tmp = Grounds[UnityEngine.Random.Range(0, 4)];
         if (!GameMaster.instance.Overtime) { 
@@ -135,10 +140,6 @@ public class TheDestroyer : MonoBehaviour {
             {
                 tmp = Grounds[10];
             }
-            if (nextWater && stat != 3) {
-                tmp = Grounds[11];
-                nextWater = false;
-            }
         }
         Sprite sprite = tmp.GetComponent<SpriteRenderer>().sprite;
         var ground = Instantiate(tmp, new Vector3(transform.position.x  + (7.8f * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
@@ -146,6 +147,10 @@ public class TheDestroyer : MonoBehaviour {
             PrepareObstacle(ground, stat);
             PrepareReward(ground, stat);
             counter = 0;
+        }
+        if (nextWater) {
+            tmp = Grounds[11];
+            Instantiate(tmp, new Vector3(transform.position.x  + (8.8f * sprite.rect.width / 100.0f), transform.position.y, transform.position.z), Quaternion.identity);
         }
     }
 

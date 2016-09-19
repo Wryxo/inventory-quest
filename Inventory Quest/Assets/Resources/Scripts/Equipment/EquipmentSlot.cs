@@ -71,8 +71,11 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
         if (tmp != null)
         {
 
+            GetComponent<Image>().color = new Color(1, 1, 1, 0);
             var go = Instantiate(itemPrefab, transform.position, Quaternion.identity) as GameObject;
             go.transform.SetParent(transform);
+        } else {
+            GetComponent<Image>().color = new Color(1, 1, 1, 1);
         }
     }
 }

@@ -58,7 +58,7 @@ public class ItemUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         if (transform.parent.parent.name == "EquipUI")
         {
             item = NPC.instance.gear.ItemAt(transform.parent.name);
-            GetComponent<Image>().sprite = item.img;
+            GetComponent<Image>().sprite = item.equipImg;
         }
         transform.localScale = new Vector3(1, 1);
     }

@@ -303,7 +303,7 @@ public class Inventory : MonoBehaviour {
 
     public void UI_getInventorySlot(int position)
     {
-
+        return;
         // position / 10  = X coordinate
         // position % 10  = Y coordinate
         int x = position / 10;
